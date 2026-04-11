@@ -10,6 +10,7 @@ class ScheduleModel {
   final DateTime endTime;
   final String status; // 'pending' | 'confirmed' | 'cancelled' | 'completed'
   final String? interpreterName;
+  final bool isRated;
 
   const ScheduleModel({
     required this.id,
@@ -23,6 +24,7 @@ class ScheduleModel {
     required this.endTime,
     required this.status,
     this.interpreterName,
+    this.isRated = false,
   });
 
   factory ScheduleModel.fromMap(Map<String, dynamic> map) => ScheduleModel(
@@ -37,6 +39,7 @@ class ScheduleModel {
         endTime: DateTime.parse(map['end_time'] as String),
         status: map['status'] as String,
         interpreterName: map['interpreter_name'] as String?,
+        isRated: (map['is_rated'] as int? ?? 0) == 1,
       );
 
   Map<String, dynamic> toMap() => {
@@ -51,7 +54,23 @@ class ScheduleModel {
         'end_time': endTime.toIso8601String(),
         'status': status,
         'interpreter_name': interpreterName,
+        'is_rated': isRated ? 1 : 0,
       };
+
+  ScheduleModel copyWith({bool? isRated}) => ScheduleModel(
+        id: id,
+        studentId: studentId,
+        interpreterId: interpreterId,
+        courseName: courseName,
+        courseCode: courseCode,
+        location: location,
+        scheduleDate: scheduleDate,
+        startTime: startTime,
+        endTime: endTime,
+        status: status,
+        interpreterName: interpreterName,
+        isRated: isRated ?? this.isRated,
+      );
 
   /// Construct from the REST API JSON response (requests used as schedule source).
   factory ScheduleModel.fromJson(Map<String, dynamic> j) => ScheduleModel(
@@ -70,6 +89,7 @@ class ScheduleModel {
         status: j['status'] as String,
         interpreterName:
             (j['interpreter'] as Map<String, dynamic>?)?['name'] as String?,
+        isRated: (j['is_rated'] as int? ?? 0) == 1,
       );
 
   bool get isToday {
@@ -80,4 +100,6 @@ class ScheduleModel {
   }
 
   bool get hasInterpreter => interpreterId != null;
+
+  bool get canRate => status == 'completed' && hasInterpreter && !isRated;
 }

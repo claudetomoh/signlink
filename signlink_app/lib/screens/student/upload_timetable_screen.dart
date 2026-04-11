@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import '../../services/api_service.dart';
 import '../../utils/constants.dart';
 import '../../widgets/primary_button.dart';
 
@@ -57,17 +58,33 @@ class _UploadTimetableScreenState extends State<UploadTimetableScreen> {
   }
 
   Future<void> _upload() async {
+    if (_filePath == null) return;
     setState(() => _isUploading = true);
-    // Simulate network upload
-    await Future.delayed(const Duration(milliseconds: 900));
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Timetable uploaded successfully!'),
-        backgroundColor: AppColors.success,
-      ),
-    );
-    Navigator.pop(context);
+    try {
+      await ApiService.instance.uploadFile(
+        '/timetable/upload.php',
+        _filePath!,
+        'timetable',
+      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Timetable uploaded successfully!'),
+          backgroundColor: AppColors.success,
+        ),
+      );
+      Navigator.pop(context);
+    } on ApiException catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.message),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } finally {
+      if (mounted) setState(() => _isUploading = false);
+    }
   }
 
   void _applyPick(String path, String name, {required bool isImage}) {

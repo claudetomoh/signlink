@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../services/auth_service.dart';
+import '../services/api_service.dart';
 import '../services/security_service.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -121,6 +122,31 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = false;
     notifyListeners();
     return result;
+  }
+
+  /// Upload [filePath] to the server and update the current user's avatar URL.
+  Future<bool> uploadProfilePhoto(String filePath) async {
+    if (_currentUser == null) return false;
+    _isLoading = true;
+    notifyListeners();
+    try {
+      final data = await ApiService.instance.uploadFile(
+        '/users/upload_photo.php',
+        filePath,
+        'photo',
+      );
+      final url = data['avatar_url'] as String? ?? filePath;
+      _currentUser = _currentUser!.copyWith(profilePhoto: url);
+      _isLoading = false;
+      notifyListeners();
+      return true;
+    } on ApiException {
+      // Fall back to local path so the UI still updates
+      _currentUser = _currentUser!.copyWith(profilePhoto: filePath);
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 
   /// Update the current user's profile photo with a local [filePath] from

@@ -10,6 +10,7 @@ class RequestModel {
   final String status; // 'pending' | 'approved' | 'declined' | 'completed'
   final String? assignedInterpreterId;
   final String? notes;
+  final bool isRated;
 
   const RequestModel({
     required this.id,
@@ -23,6 +24,7 @@ class RequestModel {
     required this.status,
     this.assignedInterpreterId,
     this.notes,
+    this.isRated = false,
   });
 
   factory RequestModel.fromMap(Map<String, dynamic> map) => RequestModel(
@@ -70,12 +72,15 @@ class RequestModel {
         status: j['status'] as String,
         assignedInterpreterId: j['interpreterId'] as String?,
         notes: j['notes'] as String?,
+        isRated: (j['isRated'] as bool?) ?? false,
       );
 
   bool get isPending => status == 'pending';
   bool get isApproved => status == 'approved';
+  bool get isCompleted => status == 'completed';
+  bool get canRate => isCompleted && !isRated && assignedInterpreterId != null;
 
-  RequestModel copyWith({String? status}) => RequestModel(
+  RequestModel copyWith({String? status, bool? isRated}) => RequestModel(
         id: id,
         studentId: studentId,
         studentName: studentName,
@@ -87,5 +92,6 @@ class RequestModel {
         status: status ?? this.status,
         assignedInterpreterId: assignedInterpreterId,
         notes: notes,
+        isRated: isRated ?? this.isRated,
       );
 }

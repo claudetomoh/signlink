@@ -149,6 +149,39 @@ class _ScheduleTile extends StatelessWidget {
                   ),
                 ),
               ],
+              if (schedule.canRate) ...[
+                const SizedBox(height: 12),
+                GestureDetector(
+                  onTap: () => _showRatingDialog(context, schedule),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(AppSizes.radiusSM),
+                      border: Border.all(color: AppColors.primary.withValues(alpha: 0.4)),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.star_rounded, size: 14, color: AppColors.primary),
+                        SizedBox(width: 4),
+                        Text('Rate Interpreter', style: TextStyle(color: AppColors.primary, fontSize: 12, fontWeight: FontWeight.w600, fontFamily: 'Inter')),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              if (schedule.isRated) ...[
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.star_rounded, size: 14, color: AppColors.success),
+                    const SizedBox(width: 4),
+                    Text('Interpreter rated', style: const TextStyle(color: AppColors.success, fontSize: 12, fontWeight: FontWeight.w500, fontFamily: 'Inter')),
+                  ],
+                ),
+              ],
             ],
           ),
         ),
@@ -170,4 +203,93 @@ class _Row extends StatelessWidget {
           Text(text, style: TextStyle(color: color, fontSize: 13)),
         ],
       );
+}
+
+void _showRatingDialog(BuildContext context, ScheduleModel schedule) {
+  showDialog<void>(
+    context: context,
+    builder: (_) => _RatingDialog(schedule: schedule),
+  );
+}
+
+class _RatingDialog extends StatefulWidget {
+  final ScheduleModel schedule;
+  const _RatingDialog({required this.schedule});
+
+  @override
+  State<_RatingDialog> createState() => _RatingDialogState();
+}
+
+class _RatingDialogState extends State<_RatingDialog> {
+  int _rating = 0;
+  bool _submitting = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Rate Interpreter', style: TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.w700)),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('How was your experience with ${widget.schedule.interpreterName ?? "the interpreter"}?',
+              style: const TextStyle(color: AppColors.textSecondary, fontSize: 14)),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(5, (i) {
+              final star = i + 1;
+              return GestureDetector(
+                onTap: () => setState(() => _rating = star),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Icon(
+                    _rating >= star ? Icons.star_rounded : Icons.star_outline_rounded,
+                    color: AppColors.warning,
+                    size: 36,
+                  ),
+                ),
+              );
+            }),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            _rating == 0 ? 'Tap a star to rate' : ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][_rating],
+            style: TextStyle(
+              color: _rating == 0 ? AppColors.textSecondary : AppColors.primary,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Inter',
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: _submitting ? null : () => Navigator.pop(context),
+          child: const Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: (_rating == 0 || _submitting)
+              ? null
+              : () async {
+                  setState(() => _submitting = true);
+                  final provider = context.read<ScheduleProvider>();
+                  final ok = await provider.rateSchedule(
+                    widget.schedule.id,
+                    widget.schedule.interpreterId!,
+                    _rating,
+                  );
+                  if (!mounted) return;
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(ok ? 'Rating submitted — thank you!' : 'Failed to submit rating. Please try again.'),
+                    backgroundColor: ok ? AppColors.success : AppColors.error,
+                  ));
+                },
+          child: _submitting
+              ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+              : const Text('Submit'),
+        ),
+      ],
+    );
+  }
 }

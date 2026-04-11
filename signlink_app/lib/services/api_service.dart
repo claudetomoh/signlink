@@ -106,6 +106,26 @@ class ApiService {
     return _handle(resp);
   }
 
+  /// Multipart file upload. [filePath] is the local path; [fieldName] is the
+  /// form field name expected by the server (e.g. "photo", "timetable").
+  Future<Map<String, dynamic>> uploadFile(
+    String path,
+    String filePath,
+    String fieldName, {
+    Map<String, String>? fields,
+  }) async {
+    final uri = Uri.parse('$baseUrl$path');
+    final request = http.MultipartRequest('POST', uri);
+    // Auth header — no Content-Type; http package sets multipart boundary
+    if (_token != null) request.headers['Authorization'] = 'Bearer $_token';
+    request.headers['Accept'] = 'application/json';
+    if (fields != null) request.fields.addAll(fields);
+    request.files.add(await http.MultipartFile.fromPath(fieldName, filePath));
+    final streamed = await request.send().timeout(const Duration(seconds: 60));
+    final resp = await http.Response.fromStream(streamed);
+    return _handle(resp);
+  }
+
   // ── Response handler ─────────────────────────────────────────────────────
 
   Map<String, dynamic> _handle(http.Response resp) {

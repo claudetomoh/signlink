@@ -127,4 +127,42 @@ class ScheduleProvider extends ChangeNotifier {
     notifyListeners();
     return true;
   }
+
+  /// Submit a 1–5 rating for an interpreter after a completed assignment.
+  Future<bool> rateInterpreter(String requestId, String interpreterId, double rating) async {
+    final idx = _requests.indexWhere((r) => r.id == requestId);
+    try {
+      await _api.post('/users/rate.php', {
+        'interpreter_id': interpreterId,
+        'rating': rating,
+        'request_id': requestId,
+      });
+    } on ApiException {
+      return false;
+    }
+    if (idx != -1) {
+      _requests = List.from(_requests)..[idx] = _requests[idx].copyWith(isRated: true);
+      notifyListeners();
+    }
+    return true;
+  }
+
+  /// Submit a 1–5 rating via a ScheduleModel entry (student timetable screen).
+  Future<bool> rateSchedule(String scheduleId, String interpreterId, int rating) async {
+    final idx = _schedules.indexWhere((s) => s.id == scheduleId);
+    try {
+      await _api.post('/users/rate.php', {
+        'interpreter_id': interpreterId,
+        'rating': rating,
+        'request_id': scheduleId,
+      });
+    } on ApiException {
+      return false;
+    }
+    if (idx != -1) {
+      _schedules = List.from(_schedules)..[idx] = _schedules[idx].copyWith(isRated: true);
+      notifyListeners();
+    }
+    return true;
+  }
 }

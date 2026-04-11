@@ -39,7 +39,7 @@ class StudentProfile extends StatelessWidget {
         await picker.pickImage(source: source, imageQuality: 80);
     if (image == null) return;
     // ignore: use_build_context_synchronously
-    if (context.mounted) context.read<AuthProvider>().updateProfilePhoto(image.path);
+    if (context.mounted) await context.read<AuthProvider>().uploadProfilePhoto(image.path);
   }
 
   @override
