@@ -1,7 +1,7 @@
 <?php
 // ┌─────────────────────────────────────────────────────────────────────────┐
 // │  SignLink — Database Configuration                                      │
-// │  EDIT the four constants below after you run the MySQL setup commands.  │
+// │  Server: 169.239.251.102:280  MySQL user: tomoh.ikfingeh               │
 // └─────────────────────────────────────────────────────────────────────────┘
 //
 // SSH into the server once to find your MySQL credentials:
@@ -27,9 +27,9 @@
 
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_USER', 'signlink_user');   // ← change if needed
-define('DB_PASS', 'STCLAUDE20@?');    // ← change if needed
-define('DB_NAME', 'signlink_db');     // ← change if needed
+define('DB_USER', 'tomoh.ikfingeh');
+define('DB_PASS', 'SqlUssd@2026');
+define('DB_NAME', 'signlink_db');
 
 function getDB(): PDO
 {
