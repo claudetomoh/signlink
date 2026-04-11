@@ -29,7 +29,7 @@ define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_USER', 'tomoh.ikfingeh');
 define('DB_PASS', 'SqlUssd@2026');
-define('DB_NAME', 'signlink_db');
+define('DB_NAME', 'mobileapps_2026B_tomoh_ikfingeh');
 
 function getDB(): PDO
 {
