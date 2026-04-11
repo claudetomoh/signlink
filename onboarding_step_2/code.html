@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Ashesi DASS - Onboarding 2</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex min-h-screen w-full flex-col bg-white dark:bg-background-dark overflow-x-hidden max-w-md mx-auto shadow-2xl">
+        <!-- Top App Bar / Header -->
+        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between">
+            <button class="p-2 text-slate-400" style="">
+<span class="material-symbols-outlined" style="">chevron_left</span>
+</button>
+            <h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center" style="">SignLink</h2>
+            <a href="../login_screen/code.html" class="p-2 text-primary font-semibold text-sm" style="">Skip</a>
+        </div>
+        <div class="flex-1 flex flex-col justify-center px-6">
+            <!-- Illustration Area -->
+            <div class="@container mb-8">
+                <div class="@[480px]:px-4 @[480px]:py-3">
+                    <div class="w-full bg-primary/5 dark:bg-primary/20 flex flex-col items-center justify-center overflow-hidden rounded-xl min-h-[320px] relative">
+                        <!-- Abstract Folder/Document Visual -->
+                        <div class="relative w-48 h-48 bg-primary/10 rounded-full flex items-center justify-center">
+                            <div class="w-32 h-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-primary/10 flex flex-col p-4">
+                                <div class="w-full h-2 bg-primary/20 rounded mb-2"></div>
+                                <div class="w-3/4 h-2 bg-primary/10 rounded mb-4"></div>
+                                <div class="flex-1 border-2 border-dashed border-primary/20 rounded-md flex flex-col items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-3xl" style="">add_circle</span>
+                                    <span class="text-[10px] text-primary font-medium uppercase tracking-wider" style="">Upload</span>
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-20 h-24 bg-primary rounded-lg shadow-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-4xl" style="">folder_managed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="text-center space-y-4">
+                <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-bold leading-tight" style="">
+                    Manage Accommodations
+                </h1>
+                <p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed px-4" style="">
+                    Upload documentation and request academic accommodations directly through the app.
+                </p>
+            </div>
+        </div>
+        <!-- Footer Navigation -->
+        <div class="p-6 space-y-8">
+            <!-- Pagination Dots -->
+            <div class="flex w-full flex-row items-center justify-center gap-3">
+                <div class="h-2 w-2 rounded-full bg-primary/20 dark:bg-slate-700"></div>
+                <div class="h-2 w-6 rounded-full bg-primary"></div>
+                <div class="h-2 w-2 rounded-full bg-primary/20 dark:bg-slate-700"></div>
+            </div>
+            <!-- Next Button -->
+            <a href="../onboarding_step_3/code.html" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2" style="">
+                Next
+                <span class="material-symbols-outlined" style="">arrow_forward</span>
+</a>
+        </div>
+    </div>
+</body>
+
+</html>

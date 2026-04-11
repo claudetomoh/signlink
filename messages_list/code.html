@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Messages - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 px-4 py-4">
+            <div class="flex items-center justify-between mb-3">
+                <h1 class="text-xl font-bold text-primary dark:text-slate-100">Messages</h1>
+                <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary">
+        <span class="material-symbols-outlined">edit_square</span>
+      </button>
+            </div>
+            <!-- Search bar -->
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-slate-800 rounded-full border-none focus:ring-2 focus:ring-primary/20 outline-none text-sm text-slate-700 dark:text-slate-200 placeholder:text-slate-400" placeholder="Search conversations..."
+                    type="text">
+            </div>
+        </header>
+
+        <!-- Conversations List -->
+        <main class="flex-1 overflow-y-auto pb-24">
+
+            <!-- Pinned / active interpreters -->
+            <div class="px-4 pt-4 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Interpreters</p>
+            </div>
+
+            <!-- Conversation 1 - Unread -->
+            <a href="../chat_with_interpreter/code.html" class="flex items-center gap-4 px-4 py-3.5 hover:bg-primary/5 transition-colors border-b border-slate-50 dark:border-slate-800">
+                <div class="relative shrink-0">
+                    <div class="size-14 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Portrait of Kofi Mensah interpreter" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxbz-s7BmU1WJpTMeN9mrTNbxcG_ZLKtWhAmqmRf2xvMDpIOxe6jm0bu0W12yI1pOx6fHea2Cw_flvmYZzzJCIcazpsi39E_Oe1JBmymG5gvbdC5Ukrr0C6d6S3umWvp_3_XzCPoS-iHFM3Tmws4c9P1U4N-XKIeqKRXb72eLSznwXJfaQFxjdty7-7dRzI4DkG7Wjf8H_rTIfX2873nmWQN4FQ2n3YbVnmxIUy_TDF426UFqyW5hU0dfyCuouzAOHNap4EnQbgFg')">
+                    </div>
+                    <div class="absolute bottom-0 right-0 size-3.5 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-slate-900 dark:text-slate-100 text-base">Kofi Mensah</p>
+                        <span class="text-xs text-slate-400">9:43 AM</span>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 truncate mt-0.5">Great, I'm already on my way there.</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">CS 111</span>
+                    </div>
+                </div>
+                <div class="shrink-0 flex flex-col items-end gap-2">
+                    <div class="size-5 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-[10px] text-white font-bold">2</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Conversation 2 - Unread -->
+            <a href="../chat_with_interpreter/code.html" class="flex items-center gap-4 px-4 py-3.5 hover:bg-primary/5 transition-colors border-b border-slate-50 dark:border-slate-800">
+                <div class="relative shrink-0">
+                    <div class="size-14 rounded-full bg-primary/20 flex items-center justify-center border-2 border-slate-100 dark:border-slate-700">
+                        <span class="text-primary text-xl font-bold">A</span>
+                    </div>
+                    <div class="absolute bottom-0 right-0 size-3.5 bg-amber-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-slate-900 dark:text-slate-100 text-base">Ama Serwaa</p>
+                        <span class="text-xs text-slate-400">Yesterday</span>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 truncate mt-0.5">I'll be available for your Psychology class.</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">Psych 101</span>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="size-5 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-[10px] text-white font-bold">1</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- DASS Support Messages -->
+            <div class="px-4 pt-5 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">DASS Support</p>
+            </div>
+
+            <!-- Conversation 3 - DASS Coordinator -->
+            <a href="../chat_with_interpreter/code.html" class="flex items-center gap-4 px-4 py-3.5 hover:bg-primary/5 transition-colors border-b border-slate-50 dark:border-slate-800">
+                <div class="relative shrink-0">
+                    <div class="size-14 rounded-full bg-primary flex items-center justify-center border-2 border-primary/20">
+                        <span class="material-symbols-outlined text-white text-2xl">support_agent</span>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-slate-900 dark:text-slate-100 text-base">DASS Coordinator</p>
+                        <span class="text-xs text-slate-400">Monday</span>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 truncate mt-0.5">Your request for this Friday has been approved.</p>
+                </div>
+                <div class="shrink-0">
+                    <span class="material-symbols-outlined text-slate-300 dark:text-slate-600">chevron_right</span>
+                </div>
+            </a>
+
+            <!-- Conversation 4 - Past / archived -->
+            <div class="px-4 pt-5 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Past Conversations</p>
+            </div>
+
+            <a href="../chat_with_interpreter/code.html" class="flex items-center gap-4 px-4 py-3.5 hover:bg-primary/5 transition-colors border-b border-slate-50 dark:border-slate-800 opacity-70">
+                <div class="relative shrink-0">
+                    <div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <span class="text-slate-500 text-xl font-bold">K</span>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-slate-900 dark:text-slate-100 text-base">Kwame Osei</p>
+                        <span class="text-xs text-slate-400">Oct 10</span>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 truncate mt-0.5">Thank you! See you in class on Wednesday.</p>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 shrink-0">chevron_right</span>
+            </a>
+
+            <!-- Empty state placeholder -->
+            <div class="flex flex-col items-center justify-center py-12 px-8 mt-4">
+                <div class="size-16 bg-primary/5 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-primary/40 text-3xl">chat_bubble_outline</span>
+                </div>
+                <p class="text-sm text-slate-400 text-center font-medium">All your interpreter conversations appear here.</p>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+            <div class="max-w-md mx-auto flex justify-between items-center">
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_dashboard_1/code.html">
+                    <span class="material-symbols-outlined text-[28px]">home</span>
+                    <span class="text-[10px] font-medium">Home</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_timetable/code.html">
+                    <span class="material-symbols-outlined text-[28px]">calendar_month</span>
+                    <span class="text-[10px] font-medium">Schedule</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+                    <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+                    <span class="text-[10px] font-bold">Messages</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_profile/code.html">
+                    <span class="material-symbols-outlined text-[28px]">account_circle</span>
+                    <span class="text-[10px] font-medium">Profile</span>
+                </a>
+            </div>
+        </nav>
+
+    </div>
+</body>
+
+</html>

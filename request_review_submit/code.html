@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+        <!-- Top App Bar -->
+        <div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+            <a href="../request_date_time/code.html" class="text-primary dark:text-slate-100 flex size-12 shrink-0 items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Review Your Request</h2>
+        </div>
+        <!-- Progress Indicator -->
+        <div class="flex flex-col gap-3 p-4">
+            <div class="flex gap-6 justify-between items-center">
+                <p class="text-primary dark:text-slate-300 text-sm font-semibold uppercase tracking-wider">Final Step</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Step 3 of 3</p>
+            </div>
+            <div class="rounded-full bg-slate-200 dark:bg-slate-700 h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-primary" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="flex-1">
+            <!-- Summary Card -->
+            <div class="p-4">
+                <div class="flex flex-col items-stretch justify-start rounded-xl shadow-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 overflow-hidden">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Modern law firm office interior with books" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBCanPobK9xh6HvYacZmzvmpB3APFwWicTI7dO6svhCN9_69w1dqAO3pwRuIzqy6WZ1VUYGDC5vjkXZo2xc_Rv2c6DQoOUg8yXOn-QIIlMPEvHEi8O0I6-cSLRQK2E-ofwxGbjxCr0s1pFsjtEpYdFRYJ_89_VBiNlsWusKyTV62rnGFHBO0rivRMgPN9ZZUHJzPizSR-Ff8SZ0khZxQwLO4LlWCTDOcmd4qlj4grVreWhQTV1HyXgoCv80DMjmaqUrqHz_QUrYA_Q");'>
+                    </div>
+                    <div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-primary dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Service Type</p>
+                                <p class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Legal Consultation</p>
+                            </div>
+                            <button class="text-primary/70 hover:text-primary dark:text-slate-400 dark:hover:text-white text-sm font-semibold underline">Edit</button>
+                        </div>
+                        <div class="space-y-3 pt-2 border-t border-slate-50 dark:border-slate-700">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary dark:text-blue-300 text-xl">calendar_today</span>
+                                </div>
+                                <div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Date</p>
+                                    <p class="text-slate-900 dark:text-slate-100 text-base font-semibold">Monday, Oct 24, 2023</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary dark:text-blue-300 text-xl">schedule</span>
+                                </div>
+                                <div>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Time</p>
+                                    <p class="text-slate-900 dark:text-slate-100 text-base font-semibold">10:00 AM - 11:30 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Notes -->
+            <div class="flex flex-col gap-2 px-4 py-4">
+                <label class="flex flex-col min-w-40 flex-1" for="notes">
+<p class="text-slate-900 dark:text-slate-200 text-base font-bold leading-normal pb-2">Additional Notes (Optional)</p>
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 focus:border-primary border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 placeholder:text-slate-400 dark:placeholder:text-slate-500 p-4 text-base font-normal leading-relaxed min-h-[144px]" id="notes" placeholder="Add any specific details or requirements here..."></textarea>
+</label>
+            </div>
+        </div>
+        <!-- Sticky Bottom Button -->
+        <div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <a href="../request_success/code.html" class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-primary/90 text-white text-lg font-bold leading-normal tracking-wide shadow-lg active:scale-[0.98] transition-all">
+                <span class="truncate">Submit Request</span>
+            </a>
+            <p class="text-center text-slate-400 dark:text-slate-500 text-xs mt-4">
+                By clicking submit, you agree to our Terms of Service
+            </p>
+        </div>
+        <div class="h-6 bg-white dark:bg-slate-900"></div>
+    </div>
+</body>
+
+</html>

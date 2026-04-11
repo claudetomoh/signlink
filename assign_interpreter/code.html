@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Assign Interpreter - Ashesi DASS</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col">
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 flex items-center gap-4">
+            <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+            <h1 class="text-xl font-bold text-primary dark:text-slate-100">Assign Interpreter</h1>
+        </header>
+        <main class="flex-1 overflow-y-auto pb-24">
+            <!-- Request Summary Card -->
+            <section class="p-4">
+                <div class="bg-primary text-white rounded-xl p-5 shadow-lg relative overflow-hidden">
+                    <!-- Decorative background pattern -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-white/70">Request Details</span>
+                        <h2 class="text-xl font-bold mt-1">CS 111 - Intro to Computing</h2>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex items-center gap-2 text-sm text-white/90">
+                                <span class="material-symbols-outlined text-sm">person</span>
+                                <span>Student: <strong>Akua Mensah</strong></span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-white/90">
+                                <span class="material-symbols-outlined text-sm">calendar_today</span>
+                                <span>Oct 24, 2023</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-white/90">
+                                <span class="material-symbols-outlined text-sm">schedule</span>
+                                <span>10:30 AM - 12:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Search and Filter Section -->
+            <section class="px-4 py-2 sticky top-[73px] bg-white dark:bg-slate-900 z-10 space-y-3">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                    <input class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm" placeholder="Search by name or language..." type="text" />
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                    <button class="flex items-center gap-1 px-4 py-2 bg-primary/10 text-primary dark:text-blue-300 rounded-full text-xs font-semibold whitespace-nowrap">
+                        Language <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</button>
+                    <button class="flex items-center gap-1 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-semibold whitespace-nowrap">
+                        Availability <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</button>
+                    <button class="flex items-center gap-1 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-semibold whitespace-nowrap">
+                        Rating <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</button>
+                    <button class="flex items-center gap-1 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-semibold whitespace-nowrap">
+                        ASL Expert <span class="material-symbols-outlined text-xs">close</span>
+</button>
+                </div>
+            </section>
+            <!-- Interpreter List -->
+            <section class="px-4 py-4 space-y-4">
+                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest px-1">Available Interpreters</h3>
+                <!-- Interpreter Card 1 -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-4 hover:border-primary transition-all shadow-sm">
+                    <div class="relative">
+                        <img alt="Kofi Boateng" class="w-16 h-16 rounded-full object-cover" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBciGw2YSIZ7vx31zdqkAVL77U9JQY9cKKJe0HjNaF6iZoX6NfBSA1g0hmPkLgJ8KC5FHsMx-A1r2HusLRglCPt0V92THkB_UFg_dNvUGeTOUaP0eyzutnlxZU4Clqn6RvDDGljqEaF5DUuXZtEtanYiVwgRh-qlo9qbcSSLTknCnSAFhaQ-NJTe2a_K1ucWjwKolTs7lki1nXg_eJ4Mc7usw-OelQmtHBLCnVgisJHV1iN3hO7wTtSgIJjkkTiowroQO-6rGIKkY"
+                        />
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-slate-900 dark:text-white truncate">Kofi Boateng</h4>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">Available</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">ASL Expert • 8 yrs exp.</p>
+                        <div class="flex items-center mt-2">
+                            <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                            <span class="text-xs font-bold ml-1 text-slate-700 dark:text-slate-300">4.9</span>
+                        </div>
+                    </div>
+                    <button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                        Assign
+                    </button>
+                </div>
+                <!-- Interpreter Card 2 -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-4 hover:border-primary transition-all shadow-sm">
+                    <div class="relative">
+                        <img alt="Ama Serwaa" class="w-16 h-16 rounded-full object-cover" data-alt="Portrait of a professional woman with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSU9qOr3H3g-u323d77fVNQ5op4Le_Tlj9pYHaADyFyFK33mZk5Mrl55t4ymWN3G9lISWvCRcTDN-ERn7u756-U0AnDSceNPFRtJxM6_QOJLD4m01m9hgN-bpKdVivrBO95f6XUZAgSvNcxtW0_YZZAz-D9adiOyuoh1gPygQIo-kHgnnvG2D4VeTcqSfc3DNmgvwyNYnn8aFm6TsaPwv70_Yi0AZL_cnO1oJZM02QZ5lCm17NQLL61JCfoAmJ30FKYU3wz06KjKo"
+                        />
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-amber-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-slate-900 dark:text-white truncate">Ama Serwaa</h4>
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded">Busy in 30m</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">GSL Specialist • 5 yrs exp.</p>
+                        <div class="flex items-center mt-2">
+                            <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                            <span class="text-xs font-bold ml-1 text-slate-700 dark:text-slate-300">4.7</span>
+                        </div>
+                    </div>
+                    <button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                        Assign
+                    </button>
+                </div>
+                <!-- Interpreter Card 3 -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-4 hover:border-primary transition-all shadow-sm">
+                    <div class="relative">
+                        <img alt="Kwame Osei" class="w-16 h-16 rounded-full object-cover" data-alt="Portrait of a young man with a smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH04nNInYr07YlIjGaff7JNfRHn8yCcjMGEnlye_e5lvwlQ2MQqUkseLK4ucJ9clQUqPJ8Om1-TMT0Zk_H_q9NOgI60ccCtlFcovcDs5bx3IMVUGbfKdfUQ84n5-Z5J0Ye1IFxbNP9gfG3pS1PP44egEq4MBrhWTZadheDxhTy8Tx6JopqqX2E_DC-Om5xE-KSc2Ya2sAEI3mMkSTQVT8dUYuQIEwbFVcaUyWQxaBlB4Z0korYndLioHmpd2tnQgj42dbb4-S_CQE"
+                        />
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-slate-900 dark:text-white truncate">Kwame Osei</h4>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">Available</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Tactile Signing • 12 yrs exp.</p>
+                        <div class="flex items-center mt-2">
+                            <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                            <span class="text-xs font-bold ml-1 text-slate-700 dark:text-slate-300">5.0</span>
+                        </div>
+                    </div>
+                    <button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                        Assign
+                    </button>
+                </div>
+            </section>
+        </main>
+        <!-- Bottom Navigation (Contextualized for Admin) -->
+        <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center py-2 z-20">
+            <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                <span class="material-symbols-outlined">assignment</span>
+                <span class="text-[10px] font-bold">Requests</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="../manage_users/code.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="text-[10px] font-medium">Interpreters</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="../admin_dashboard/code.html">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span class="text-[10px] font-medium">Schedule</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="text-[10px] font-medium">Settings</span>
+            </a>
+        </nav>
+    </div>
+</body>
+
+</html>

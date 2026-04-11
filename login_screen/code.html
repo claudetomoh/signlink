@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- Main Container -->
+    <div class="w-full max-w-[440px] bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 md:p-10">
+        <!-- Header Section -->
+        <div class="flex flex-col items-center mb-10">
+            <div class="bg-primary/10 p-3 rounded-full mb-4">
+                <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: &quot;FILL&quot; 1;">
+                    school
+                </span>
+            </div>
+            <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold tracking-tight mb-2" style="">SignLink</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-center" style="">Data Analytics &amp; Student Support</p>
+        </div>
+        <!-- Form Section -->
+        <form class="space-y-6" onsubmit="return false;">
+            <!-- Email Field -->
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold leading-none" for="email" style="">
+                    Student/Staff Email
+                </label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-[20px]" style="">
+                            mail
+                        </span>
+                    </div>
+                    <input class="block w-full h-14 pl-11 pr-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base outline-none"
+                        id="email" name="email" placeholder="example@ashesi.edu.gh" type="email">
+                </div>
+            </div>
+            <!-- Password Field -->
+            <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold leading-none" for="password" style="">
+                        Password
+                    </label>
+                    <a class="text-primary hover:underline text-sm font-medium" href="../forgot_password/code.html" style="">Forgot Password?</a>
+                </div>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-[20px]" style="">
+                            lock
+                        </span>
+                    </div>
+                    <input class="block w-full h-14 pl-11 pr-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base outline-none"
+                        id="password" name="password" placeholder="Enter your password" type="password">
+                    <button class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" type="button" style="">
+<span class="material-symbols-outlined text-[20px]" style="">
+                            visibility
+                        </span>
+</button>
+                </div>
+            </div>
+            <!-- Remember Me -->
+            <div class="flex items-center">
+                <input class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary" id="remember" type="checkbox">
+                <label class="ml-2 text-sm text-slate-600 dark:text-slate-400" for="remember" style="">Remember this device</label>
+            </div>
+            <!-- Sign In Button -->
+            <button class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2" style="">
+                Sign In
+                <span class="material-symbols-outlined" style="">
+                    arrow_forward
+                </span>
+</button>
+        </form>
+        <!-- Footer Section -->
+        <div class="mt-10 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
+            <p class="text-slate-600 dark:text-slate-400 text-sm" style="">
+                Don't have an account?
+                <a class="text-primary font-bold hover:underline ml-1" href="../sign_up_screen_1/code.html" style="">Sign Up</a>
+            </p>
+        </div>
+    </div>
+    <!-- Security Badge -->
+    <div class="mt-8 flex items-center gap-2 text-slate-400">
+        <span class="material-symbols-outlined text-sm" style="">verified_user</span>
+        <span class="text-xs font-medium uppercase tracking-widest" style="">Secure Institutional Access</span>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Accessibility Settings - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .toggle-bg {
+            transition: background 0.2s;
+        }
+        
+        input[type=checkbox]:checked~.toggle-bg {
+            background: #003366;
+        }
+        
+        input[type=checkbox]:checked~.toggle-bg .toggle-dot {
+            transform: translateX(26px);
+        }
+        
+        .toggle-dot {
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 px-4 py-4 flex items-center gap-4">
+            <a href="../student_profile/code.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="text-xl font-bold text-primary dark:text-slate-100">Accessibility Settings</h1>
+        </header>
+
+        <main class="flex-1 overflow-y-auto pb-24 space-y-2">
+
+            <!-- Intro -->
+            <div class="px-4 pt-5 pb-3">
+                <div class="flex items-start gap-3 bg-primary/5 dark:bg-primary/10 rounded-xl p-4 border border-primary/10">
+                    <span class="material-symbols-outlined text-primary shrink-0">accessibility_new</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Customise SignLink to work best for you. These settings affect your visual experience and communication features.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section: Display -->
+            <div class="px-4 pt-3 pb-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Display</p>
+            </div>
+
+            <div class="mx-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700 overflow-hidden">
+
+                <!-- Text Size -->
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary">text_fields</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Text Size</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Adjust the app's font size</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">Medium</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-slate-400 font-medium">A</span>
+                        <input class="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-full appearance-none cursor-pointer accent-primary" max="5" min="1" type="range" value="3">
+                        <span class="text-base text-slate-700 dark:text-slate-300 font-bold">A</span>
+                    </div>
+                </div>
+
+                <!-- High Contrast Mode -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">contrast</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">High Contrast Mode</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Increases colour contrast for better visibility</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer">
+          <div class="toggle-bg w-[52px] h-7 bg-slate-200 dark:bg-slate-700 rounded-full peer-checked:bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-[26px]"></div>
+        </label>
+                </div>
+
+                <!-- Dark Mode -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">dark_mode</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Dark Mode</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Use a darker colour theme</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer" id="darkModeToggle">
+          <div class="toggle-bg w-[52px] h-7 bg-slate-200 dark:bg-slate-700 rounded-full peer-checked:bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-[26px]"></div>
+        </label>
+                </div>
+
+                <!-- Reduce Motion -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">motion_photos_off</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Reduce Motion</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Minimise animations throughout the app</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer">
+          <div class="toggle-bg w-[52px] h-7 bg-slate-200 dark:bg-slate-700 rounded-full peer-checked:bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-[26px]"></div>
+        </label>
+                </div>
+
+            </div>
+
+            <!-- Section: Communication -->
+            <div class="px-4 pt-5 pb-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Communication</p>
+            </div>
+
+            <div class="mx-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700 overflow-hidden">
+
+                <!-- Live Captions -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-green-600">closed_caption</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Live Captions</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Auto-generate captions during video calls</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer" checked>
+          <div class="toggle-bg w-[52px] h-7 rounded-full bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow translate-x-[26px]"></div>
+        </label>
+                </div>
+
+                <!-- Visual Alerts -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-amber-600">notifications_active</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Visual Alerts</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Flash screen for incoming notifications</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer" checked>
+          <div class="toggle-bg w-[52px] h-7 rounded-full bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow translate-x-[26px]"></div>
+        </label>
+                </div>
+
+                <!-- Haptic Feedback -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-purple-600">vibration</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Haptic Feedback</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Vibrate for notifications and interactions</p>
+                        </div>
+                    </div>
+                    <label class="relative cursor-pointer shrink-0">
+          <input type="checkbox" class="sr-only peer" checked>
+          <div class="toggle-bg w-[52px] h-7 rounded-full bg-primary transition-colors"></div>
+          <div class="toggle-dot absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow translate-x-[26px]"></div>
+        </label>
+                </div>
+
+            </div>
+
+            <!-- Section: Language -->
+            <div class="px-4 pt-5 pb-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Language</p>
+            </div>
+
+            <div class="mx-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700 overflow-hidden">
+
+                <!-- Preferred Sign Language -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">sign_language</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Preferred Sign Language</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Set your primary sign language</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-primary">
+                        <span class="text-sm font-bold">GSL</span>
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </div>
+                </div>
+
+                <!-- App Language -->
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">language</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">App Language</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Change the app display language</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-primary">
+                        <span class="text-sm font-bold">English</span>
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Save Button -->
+            <div class="px-4 pt-6 pb-6">
+                <button class="w-full flex items-center justify-center gap-2 rounded-xl h-14 bg-primary text-white font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all">
+        <span class="material-symbols-outlined">save</span>
+        Save Settings
+      </button>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>

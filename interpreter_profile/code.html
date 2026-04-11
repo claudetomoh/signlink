@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Interpreter Profile - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col pb-28">
+
+        <!-- Hero Header with Cover -->
+        <div class="relative">
+            <!-- Cover background -->
+            <div class="h-36 bg-gradient-to-br from-primary to-primary/60 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                    <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[200%] bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[150%] bg-white rounded-full blur-3xl"></div>
+                </div>
+                <!-- Back button -->
+                <a href="../student_dashboard_1/code.html" class="absolute top-4 left-4 size-10 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors border border-white/20">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <!-- Options -->
+                <button class="absolute top-4 right-4 size-10 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors border border-white/20">
+        <span class="material-symbols-outlined">more_vert</span>
+      </button>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="relative flex justify-center" style="margin-top: -40px;">
+                <div class="relative">
+                    <div class="size-24 rounded-full border-4 border-white dark:border-slate-900 bg-cover bg-center shadow-xl overflow-hidden" data-alt="Professional portrait of Kofi Mensah interpreter" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxbz-s7BmU1WJpTMeN9mrTNbxcG_ZLKtWhAmqmRf2xvMDpIOxe6jm0bu0W12yI1pOx6fHea2Cw_flvmYZzzJCIcazpsi39E_Oe1JBmymG5gvbdC5Ukrr0C6d6S3umWvp_3_XzCPoS-iHFM3Tmws4c9P1U4N-XKIeqKRXb72eLSznwXJfaQFxjdty7-7dRzI4DkG7Wjf8H_rTIfX2873nmWQN4FQ2n3YbVnmxIUy_TDF426UFqyW5hU0dfyCuouzAOHNap4EnQbgFg')">
+                    </div>
+                    <div class="absolute bottom-1.5 right-1.5 size-4 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name + Role -->
+        <div class="text-center px-6 pt-3 pb-4">
+            <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Kofi Mensah</h1>
+            <p class="text-primary dark:text-blue-400 font-semibold mt-0.5">Sign Language Interpreter</p>
+            <div class="flex items-center justify-center gap-2 mt-2">
+                <span class="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-bold px-3 py-1 rounded-full">Available</span>
+                <span class="text-xs bg-primary/10 text-primary font-bold px-3 py-1 rounded-full">ASL Expert</span>
+                <span class="text-xs bg-primary/10 text-primary font-bold px-3 py-1 rounded-full">GSL</span>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="mx-4 mb-5 grid grid-cols-3 divide-x divide-slate-100 dark:divide-slate-700 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+            <div class="flex flex-col items-center py-4 px-2">
+                <div class="flex items-center gap-0.5">
+                    <span class="material-symbols-outlined text-yellow-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <p class="text-xl font-bold text-slate-900 dark:text-slate-100">4.9</p>
+                </div>
+                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Rating</p>
+            </div>
+            <div class="flex flex-col items-center py-4 px-2">
+                <p class="text-xl font-bold text-slate-900 dark:text-slate-100">8</p>
+                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Yrs Exp.</p>
+            </div>
+            <div class="flex flex-col items-center py-4 px-2">
+                <p class="text-xl font-bold text-slate-900 dark:text-slate-100">124</p>
+                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Sessions</p>
+            </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex gap-3 mx-4 mb-6">
+            <a href="../chat_with_interpreter/code.html" class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined">chat</span> Message
+            </a>
+            <a href="../in_app_video_call/code.html" class="flex-1 flex items-center justify-center gap-2 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-300 font-bold py-3 rounded-xl hover:bg-primary/20 transition-all">
+                <span class="material-symbols-outlined">videocam</span> Video Call
+            </a>
+        </div>
+
+        <!-- Bio -->
+        <div class="px-4 mb-5">
+            <h2 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-2">About</h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Certified ASL and Ghanaian Sign Language interpreter with 8 years of experience supporting Deaf and hard-of-hearing students in academic settings. Specialises in STEM and business courses.
+            </p>
+        </div>
+
+        <!-- Languages -->
+        <div class="px-4 mb-5">
+            <h2 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-3">Languages</h2>
+            <div class="flex flex-wrap gap-2">
+                <div class="flex items-center gap-2 bg-primary/5 dark:bg-primary/15 border border-primary/10 px-3 py-2 rounded-lg">
+                    <span class="material-symbols-outlined text-primary text-sm">sign_language</span>
+                    <span class="text-sm font-semibold text-primary">American Sign Language</span>
+                </div>
+                <div class="flex items-center gap-2 bg-primary/5 dark:bg-primary/15 border border-primary/10 px-3 py-2 rounded-lg">
+                    <span class="material-symbols-outlined text-primary text-sm">sign_language</span>
+                    <span class="text-sm font-semibold text-primary">Ghanaian Sign Language</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="px-4 mb-5">
+            <h2 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-3">Certifications</h2>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl p-3 border border-slate-100 dark:border-slate-700">
+                    <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-primary text-xl">workspace_premium</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Certified Deaf Interpreter (CDI)</p>
+                        <p class="text-xs text-slate-500">Registry of Interpreters for the Deaf · 2019</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl p-3 border border-slate-100 dark:border-slate-700">
+                    <div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-primary text-xl">school</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100">B.A. Linguistics &amp; Communication</p>
+                        <p class="text-xs text-slate-500">Ashesi University · Class of 2016</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Reviews -->
+        <div class="px-4 mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-base font-bold text-slate-900 dark:text-slate-100">Student Reviews</h2>
+                <button class="text-xs font-bold text-primary hover:underline">See all</button>
+            </div>
+            <div class="space-y-3">
+                <div class="bg-slate-50 dark:bg-slate-800/40 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Akua Mensah</p>
+                        <div class="flex gap-0.5">
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">"Kofi is an excellent interpreter. Always on time and very attentive during CS classes."</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/40 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Alex Rivera</p>
+                        <div class="flex gap-0.5">
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-yellow-400 text-sm">star_half</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">"Very professional and skilled in technical vocabulary. Highly recommend!"</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

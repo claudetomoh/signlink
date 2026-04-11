@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ashesi DASS Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 flex items-center justify-between border-b border-primary/10">
+        <div class="flex items-center gap-3">
+            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary">
+                <img alt="Student profile picture" class="w-full h-full object-cover" data-alt="Portrait of a young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7zUc9-EPSC9AbogOoThlO2OXa9Tf53Kj37rCnJg551uO8Dmm2BLrtc5_KGec8tQ_V2G7vkehjAT4wBNqgBO1jg9CwX04vs9uaG1F7e7yjno2k7P_k9BxwlG_6DNOFTDJ4bbKhVPOQBe41H3yBvb59SKvavmeflqQZvb9rgiedSEht2Ia59cqC3c0YeTNNsj2fwfQlvodHsmJjDwwj1W4uHnPE1irJurOQmHf9b3pIfrvN-t2ytknztLBxMR6p9kCkF3kFn2TETtQ"
+                />
+            </div>
+            <div>
+                <p class="text-xs font-medium text-primary/70 dark:text-primary/50 uppercase tracking-wider">Welcome back</p>
+                <h1 class="text-xl font-bold text-slate-900 dark:text-white">Hello, Akua!</h1>
+            </div>
+        </div>
+        <button class="relative p-2 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"></span>
+</button>
+    </header>
+    <main class="px-6 py-4 space-y-8">
+        <!-- Today's Schedule Card -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold tracking-tight">Today's Schedule</h2>
+                <span class="text-xs font-semibold px-2 py-1 bg-primary/10 text-primary rounded-full uppercase">May 24, 2024</span>
+            </div>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="p-5 flex flex-col gap-4">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-primary px-2 py-0.5 bg-primary/10 rounded uppercase">Next Class</span>
+                            <h3 class="text-xl font-bold leading-tight mt-1">CS 111: Intro to Computing</h3>
+                        </div>
+                        <div class="bg-primary text-white p-2 rounded-lg text-center min-w-[60px]">
+                            <p class="text-[10px] font-medium uppercase opacity-80">Starts in</p>
+                            <p class="text-sm font-bold">15m</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 py-3 border-y border-slate-50 dark:border-slate-700">
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <span class="material-symbols-outlined text-[20px]">schedule</span>
+                            <p class="text-sm font-medium">10:30 AM - 12:00 PM</p>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <span class="material-symbols-outlined text-[20px]">location_on</span>
+                            <p class="text-sm font-medium">Lab 214</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between bg-primary/5 dark:bg-primary/20 p-3 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="size-10 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center border border-primary/20 overflow-hidden">
+                                <img alt="Interpreter Kofi Mensah" class="w-full h-full object-cover" data-alt="Professional portrait of a man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-0L41l1jObZEusE2qReeAMBejC4fxaTIPmek0ZUtKHEpafybCQChVOMTbA5uEOxmNbzkG5FPuQWIN_6096rPZbHY0euRXpjB-PjlGL3NzQXSJjCWvKHrApDYodaM3Wyf6ggw-ghVpv9POLlttHNvA34XU1y0-cez4y8kJByR8pqDCQTR9s0bT8zM7Udq_FDW44QfQ4aKjkSK9utTacCLDJlvbqkcO-NDVH_6gS2dS55HHJeBrspEfadFTOBE9o08yfp0CPQbJ3nM"
+                                />
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Assigned Interpreter</p>
+                                <p class="text-sm font-bold text-slate-900 dark:text-white">Kofi Mensah</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-green-600 dark:text-green-400">
+                            <span class="material-symbols-outlined text-[18px] fill-1">check_circle</span>
+                            <span class="text-[10px] font-bold uppercase">Confirmed</span>
+                        </div>
+                    </div>
+                    <a href="../student_timetable/code.html" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                        View Course Details
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Actions -->
+        <section>
+            <h2 class="text-lg font-bold tracking-tight mb-4">Quick Actions</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="../request_interpreter_step_1/code.html" class="flex flex-col items-center justify-center gap-3 p-5 bg-primary rounded-xl text-white shadow-md hover:scale-[1.02] transition-transform">
+                    <div class="size-12 rounded-full bg-white/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[28px]">handshake</span>
+                    </div>
+                    <span class="font-bold text-sm text-center">Request Interpreter</span>
+                </a>
+                <a href="../student_timetable/code.html" class="flex flex-col items-center justify-center gap-3 p-5 bg-white dark:bg-slate-800 rounded-xl text-slate-900 dark:text-white border border-slate-100 dark:border-slate-700 shadow-sm hover:scale-[1.02] transition-transform">
+                    <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[28px] text-primary">calendar_month</span>
+                    </div>
+                    <span class="font-bold text-sm text-center">View Schedule</span>
+                </a>
+            </div>
+        </section>
+        <!-- Upcoming Events -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold tracking-tight">Upcoming Events</h2>
+                <a href="../events_list/code.html" class="text-primary font-bold text-sm">See All</a>
+            </div>
+            <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                <!-- Event 1 -->
+                <a href="../event_detail/code.html" class="min-w-[240px] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden block">
+                    <div class="h-32 bg-slate-200 dark:bg-slate-700 relative">
+                        <img alt="Campus event" class="w-full h-full object-cover" data-alt="People sitting in an auditorium for a lecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjWewXlFjAlF3NdKPcnBZMl4-VXArNCOyXnh2kd-Kk0nkbyuZaAi38X--RqPiIvQHhEQkQNFDK_aVJvbSwNq9l_CEdl-t6UzVNzh1I8S_mURoNyKyY5sgsN4v7h0uq5P_fydqDafNuJV7aXvHltyTyqBXpxDAXltCxLr1TmKnZyEu3HTK904OnGEB6TyNse0uoMR2SueyScebzqPbZjvLlnAsu5DqFpu3-jFyWAUwaCAj4t6Cpp0yjxy-OP1OAgNDzDhN4XsqCCtY"
+                        />
+                        <div class="absolute top-2 right-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-primary">
+                            TOMORROW
+                        </div>
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <h4 class="font-bold text-sm line-clamp-1 text-slate-900 dark:text-white">Career Fair 2024</h4>
+                        <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+                            <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            <span>May 25 • 9:00 AM</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span>Ashesi Courtyard</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Event 2 -->
+                <a href="../event_detail/code.html" class="min-w-[240px] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden block">
+                    <div class="h-32 bg-slate-200 dark:bg-slate-700 relative">
+                        <img alt="Coding workshop" class="w-full h-full object-cover" data-alt="Group of students working on laptops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIEdOsNcu8PiIrAo9a-xdns4GSQCO42i2A4trhOyqSGjqSNoIWN23ItmwSeCZa6mGQ5UEQpewONNT5lMkIDHwKnsfqaccnZuKBz_lcAM9Q4RXYyiXcNICGCr75zt2-_krqfun18p3i4L7GHW-tphd7ihTH5KRZNy7ylooC7PHeUuSZ_8D098txZkFXZiFuPRODxydKlvqJPqtfGHtJkBdOT99XTWbzHqxmhjVprd993v9hwKbF2BNylRdPEX1wdFWExJWtNMUF-n8"
+                        />
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <h4 class="font-bold text-sm line-clamp-1 text-slate-900 dark:text-white">Accessibility Workshop</h4>
+                        <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+                            <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            <span>May 28 • 2:30 PM</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span>Library Lab</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-2 py-3 z-50">
+        <div class="flex justify-around items-center max-w-md mx-auto">
+            <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                <span class="material-symbols-outlined fill-1">home</span>
+                <span class="text-[10px] font-bold">Home</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../student_timetable/code.html">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="text-[10px] font-medium">Schedule</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../events_list/code.html">
+                <span class="material-symbols-outlined">event</span>
+                <span class="text-[10px] font-medium">Events</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../messages_list/code.html">
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="text-[10px] font-medium">Messages</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../student_profile/code.html">
+                <span class="material-symbols-outlined">person_outline</span>
+                <span class="text-[10px] font-medium">Profile</span>
+            </a>
+        </div>
+    </nav>
+</body>
+
+</html>

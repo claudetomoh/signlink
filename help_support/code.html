@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Help & Support - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        details>summary {
+            list-style: none;
+        }
+        
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        details[open] .faq-chevron {
+            transform: rotate(180deg);
+        }
+        
+        .faq-chevron {
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col pb-8">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 px-4 py-4 flex items-center gap-4">
+            <a href="../student_profile/code.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="text-xl font-bold text-primary dark:text-slate-100">Help & Support</h1>
+        </header>
+
+        <main class="flex-1 overflow-y-auto px-4">
+
+            <!-- Search -->
+            <div class="pt-5 pb-4">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+                    <input class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl border-none focus:ring-2 focus:ring-primary/20 outline-none text-sm placeholder:text-slate-400 dark:text-slate-200" placeholder="Search help articles..." type="text">
+                </div>
+            </div>
+
+            <!-- Quick Contact Cards -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <a href="mailto:dass@ashesi.edu.gh" class="flex flex-col items-center gap-2 bg-primary text-white p-4 rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">mail</span>
+                    <p class="text-xs font-bold text-center">Email DASS</p>
+                    <p class="text-[10px] text-white/70 text-center">dass@ashesi.edu.gh</p>
+                </a>
+                <button class="flex flex-col items-center gap-2 bg-white dark:bg-slate-800 border border-primary/20 text-primary p-4 rounded-xl shadow-sm active:scale-95 transition-transform">
+        <span class="material-symbols-outlined text-2xl">support_agent</span>
+        <p class="text-xs font-bold text-center">Live Chat</p>
+        <p class="text-[10px] text-slate-500 dark:text-slate-400 text-center">Mon–Fri, 8AM–5PM</p>
+      </button>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="mb-6">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Quick Links</p>
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700 overflow-hidden">
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl">play_circle</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">How to Request an Interpreter</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl">upload_file</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">How to Upload Your Timetable</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl">videocam</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Using In-App Video Calls</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                    <a href="../accessibility_settings/code.html" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl">accessibility_new</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Accessibility Settings Guide</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-6">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Frequently Asked Questions</p>
+                <div class="space-y-2">
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">How do I request an interpreter for a class?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                From your dashboard, tap "Request Interpreter". Choose the event type, select the date and time, then confirm. Your request will be reviewed by the DASS coordinator who will assign an available interpreter.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">How far in advance should I submit a request?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                We recommend submitting requests at least 48 hours in advance. For urgent requests within 24 hours, contact the DASS office directly at dass@ashesi.edu.gh.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">Can I chat with my interpreter before the session?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Yes! Once an interpreter is assigned, you can message them directly through the app using the Messages tab or the Chat button in your schedule. You can also start a video call from there.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">What if I need to cancel or change a request?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                You can cancel or edit a pending request from your Schedule page. Once a request is approved, please notify the DASS office as early as possible to allow reassignment of the interpreter.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">How do I upload my semester timetable?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Go to your dashboard and tap "Upload Timetable". You can upload a PDF, image, or Excel file. Download your official timetable from the Ashesi student portal for best results.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <summary class="flex items-center justify-between px-4 py-4 cursor-pointer">
+                            <p class="text-sm font-bold text-slate-900 dark:text-slate-100 pr-4">How do I reset my password?</p>
+                            <span class="material-symbols-outlined text-primary shrink-0 faq-chevron">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                On the login screen, tap "Forgot Password?" and enter your Ashesi email. You'll receive a reset link within a few minutes. Check your spam folder if you don't see it.
+                            </p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+            <!-- Report an Issue -->
+            <div class="mb-6">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Feedback & Issues</p>
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700 overflow-hidden">
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-red-500 text-xl">bug_report</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Report a Bug</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-yellow-500 text-xl">star_rate</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Rate SignLink</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between px-4 py-3.5 hover:bg-primary/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-xl">feedback</span>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Send Feedback</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- App Version -->
+            <div class="text-center pb-6">
+                <p class="text-xs text-slate-400">SignLink v1.0.0 · Ashesi University DASS</p>
+                <p class="text-xs text-slate-300 dark:text-slate-600 mt-0.5">© 2026 Ashesi University. All rights reserved.</p>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>

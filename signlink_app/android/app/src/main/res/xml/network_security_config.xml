@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  OWASP A05 – Security Misconfiguration
+  Blocks all cleartext (HTTP) traffic to protect data in transit.
+  Only HTTPS connections are permitted in production.
+  The domain-config below exempts localhost/10.0.2.2 so developers
+  can still connect to a local development server via the emulator.
+-->
+<network-security-config>
+    <!-- Production: no cleartext traffic, trust only system CA certs -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+
+    <!-- Allow HTTP to local dev server (emulator loopback) only -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">localhost</domain>
+    </domain-config>
+</network-security-config>

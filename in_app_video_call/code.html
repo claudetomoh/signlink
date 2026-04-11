@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ashesi DASS - Video Call</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                        "danger": "#D32F2F",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display overflow-hidden">
+<div class="relative h-screen w-full flex flex-col bg-slate-900 overflow-hidden">
+<!-- Main Video: Interpreter (Kofi Mensah) -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-90" data-alt="Close up of a professional male sign language interpreter signing clearly" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC76QMaD2J8vYrTG9DMs3mf_8s1INetkPv60PvUC0cc7ESp1apNLzLCMAxoAaFIFetXIZT_EUftkarPT9w47vUTE67WxYhsdI6hjmJIUYDrNFzOfxJJgoNPfai5IVnnmS6C3Zk0ea0-C2JA1g6ks9tvsUMt-poUhvQmXF7SwoWMAFav56wAOcsC7Lsg9Ka5dRCM0hFIRMqdOTPikeotjMHYgnYskL5btck2xAOKv1HWrYtbE0xv59JCV-WASkVT-cnK3o0rQk1GipA');">
+</div>
+<!-- Overlay to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+</div>
+<!-- Top Navigation / Status Bar -->
+<div class="relative z-20 flex items-center justify-between p-4 lg:p-6">
+<div class="flex items-center gap-3 bg-black/30 backdrop-blur-md p-2 pl-3 pr-5 rounded-full border border-white/10">
+<button class="text-white hover:bg-white/20 rounded-full p-1 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h2 class="text-white text-lg font-bold leading-none">Kofi Mensah</h2>
+<span class="text-green-400 text-xs font-semibold flex items-center gap-1">
+<span class="size-2 bg-green-400 rounded-full animate-pulse"></span>
+                        Stable Connection
+                    </span>
+</div>
+</div>
+<div class="bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+<p class="text-white font-mono text-lg font-bold tracking-wider">05:45</p>
+</div>
+</div>
+<!-- Picture-in-Picture: Student (Akua) -->
+<div class="absolute top-24 right-4 z-20 w-32 h-44 sm:w-40 sm:h-56 md:w-48 md:h-64 rounded-xl border-2 border-white/20 shadow-2xl overflow-hidden group">
+<div class="w-full h-full bg-cover bg-center" data-alt="Small preview window showing a young female student looking at the camera" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzQbgooR1neFiKWdfN0SYVjLCT6Otzi6EoZe_HnOuIdUNyrpxiKbzByC2mxNiF-fmMOE78LQtMG9_WYyKu9XqsEfdTW59KpNNEWrjeKfjcwlA0RggA_wgGOy7jmSjhOiGyEyezz08Z2RF5n-khbahKAtm42ifymooCJKGfhmgxnBpmtLPvElR8L33chyW_2TacCpEOudsKwTcUx0kJ_oXkmK4mJRhSb-8uychrknxKdnvZhRSJxpPg55gS1rosrhmbFEPJi_GED40');">
+</div>
+<div class="absolute bottom-2 left-2 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-white font-medium">
+                Akua (You)
+            </div>
+</div>
+<!-- Right Side Floating Chat Access -->
+<div class="absolute right-4 bottom-32 z-20 flex flex-col gap-4">
+<button class="size-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all shadow-lg">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+</button>
+<button class="size-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all shadow-lg">
+<span class="material-symbols-outlined text-2xl">more_vert</span>
+</button>
+</div>
+<!-- Bottom Controls -->
+<div class="mt-auto relative z-20 p-6 lg:p-10 flex flex-col items-center">
+<div class="bg-primary/80 dark:bg-primary/90 backdrop-blur-xl p-4 sm:p-6 rounded-full flex items-center gap-6 sm:gap-10 border border-white/10 shadow-2xl">
+<!-- Mute Toggle -->
+<div class="flex flex-col items-center gap-2">
+<button class="size-14 sm:size-16 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/20">
+<span class="material-symbols-outlined text-3xl">mic_off</span>
+</button>
+<span class="text-white/80 text-xs font-medium uppercase tracking-tighter">Mute</span>
+</div>
+<!-- Camera Flip -->
+<div class="flex flex-col items-center gap-2">
+<button class="size-14 sm:size-16 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/20">
+<span class="material-symbols-outlined text-3xl">flip_camera_ios</span>
+</button>
+<span class="text-white/80 text-xs font-medium uppercase tracking-tighter">Flip</span>
+</div>
+<!-- Video Toggle -->
+<div class="flex flex-col items-center gap-2">
+<button class="size-14 sm:size-16 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/20">
+<span class="material-symbols-outlined text-3xl">videocam</span>
+</button>
+<span class="text-white/80 text-xs font-medium uppercase tracking-tighter">Video</span>
+</div>
+<!-- End Call - Red and Large -->
+<div class="flex flex-col items-center gap-2">
+<button class="size-16 sm:size-20 rounded-full bg-danger hover:bg-red-700 text-white flex items-center justify-center transition-all shadow-lg shadow-danger/40 border-4 border-white/10">
+<span class="material-symbols-outlined text-4xl fill-icon">call_end</span>
+</button>
+<span class="text-danger font-bold text-xs uppercase tracking-tighter">End Call</span>
+</div>
+</div>
+<!-- Safe Area Spacer for mobile -->
+<div class="h-4"></div>
+</div>
+<!-- Accessibility Overlay: Caption Preview (Optional but helpful for DASS) -->
+<div class="absolute bottom-36 left-1/2 -translate-x-1/2 z-10 w-full max-w-lg px-6">
+<div class="bg-black/60 backdrop-blur-md rounded-lg p-3 border border-white/10 text-center">
+<p class="text-white/90 text-sm italic font-light">"Captions: Hello Akua, how can I assist you today with your project?"</p>
+</div>
+</div>
+</div>
+</body></html>

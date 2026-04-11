@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <title>Interpreter Event Requests</title>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden max-w-md mx-auto shadow-2xl">
+        <!-- Header -->
+        <div class="sticky top-0 z-10 flex items-center bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 justify-between">
+            <a href="../interpreter_dashboard/code.html" class="text-primary dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 transition-colors" data-icon="arrow_back">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Event Requests</h2>
+        </div>
+        <!-- Tabs Navigation -->
+        <div class="bg-white dark:bg-slate-900 px-4">
+            <div class="flex border-b border-slate-200 dark:border-slate-800 gap-8">
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-4" href="#">
+                    <p class="text-sm font-bold tracking-wide">Pending</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+                    <p class="text-sm font-bold tracking-wide">Approved</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+                    <p class="text-sm font-bold tracking-wide">History</p>
+                </a>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto pb-24">
+            <div class="flex items-center justify-between px-4 pb-2 pt-6">
+                <h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Pending Requests</h3>
+                <span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full">3 New</span>
+            </div>
+            <!-- Request Card 1 -->
+            <div class="p-4">
+                <div class="flex flex-col items-stretch justify-start rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Group of university students in a modern classroom setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB53IZsFMirhcybGGNKN7JuRLZ6q2R3A4b-Yz0pXLFsz3pXxCrp5Vu2l3nzUAL8fMBiR5gfucVrFZgz4fZFk51B5LWw0RZPZ2G3E4oa_dsA1zt6RzQvy5kjIVQP5AwHLKB6RCKNpzcbPBejvdgRjduYPzYDJUyKB34AANoI51bHy1uw8gZdYM8xI782McW3Li572CbSHp-dF_D3G1fQVjXXP4REQ4vPvKn2Wv-ddERLOQT7vsOsbz5ylvMByRwJQ4jQ8PlcIjOVgHs");'>
+                    </div>
+                    <div class="flex w-full flex-col items-stretch justify-center gap-3 p-4">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-primary dark:text-primary/80 text-xs font-bold uppercase tracking-wider">Business Math Class</p>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">calendar_today</span> Monday, Oct 24 • 10:00 AM - 11:30 AM
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 py-2 border-y border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                <p class="text-sm font-medium">Student: <span class="font-bold">Alex Rivera</span></p>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                                <p class="text-sm font-medium">Location: <span class="font-bold">Building C, Room 402</span></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <button class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 transition-colors">
+                                Decline
+                            </button>
+                            <a href="../confirm_availability/code.html" class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                                Approve
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Request Card 2 -->
+            <div class="p-4 pt-0">
+                <div class="flex flex-col items-stretch justify-start rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Person writing notes on paper during a lecture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKfkTcRuBcibwu6enlXM36u7FVz1fa4HmT1wPnTUfS7HHLPJRdHgTu3LywD904-Xz3k4ZbuNiUlYk2jkY-HHGqDwduiJZ3fTk4O_0iDX7ZLZsRSGmvjD6PagNsK26CjXd0UxvDMUkzefv_gQjcS-dCbIYkdZQmEUPZ8mICzXqSe6c8kN_luH4sPxlX-Bu7F_u1CUh9J8ri9K-pE_tTvFP_UB3sYMzANBsJEAcArSs1O_1xtMIBkTDw3dasQ77K3cVYVjtiX-bvxpE");'>
+                    </div>
+                    <div class="flex w-full flex-col items-stretch justify-center gap-3 p-4">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-primary dark:text-primary/80 text-xs font-bold uppercase tracking-wider">Intro to Psychology</p>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">calendar_today</span> Tuesday, Oct 25 • 01:00 PM - 02:30 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 py-2 border-y border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                <p class="text-sm font-medium">Student: <span class="font-bold">Jordan Lee</span></p>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                                <p class="text-sm font-medium">Location: <span class="font-bold">Main Hall, Auditiorium B</span></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <button class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 transition-colors">
+                                Decline
+                            </button>
+                            <a href="../confirm_availability/code.html" class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                                Approve
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Request Card 3 -->
+            <div class="p-4 pt-0">
+                <div class="flex flex-col items-stretch justify-start rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Modern office meeting room with wooden table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDO5CLFAfDtBfPQsz0ZCdSZ_nrbU_99qfGyS3mNUENbHvgMF3fsQ5AGR-jToJbY6QqrSVzK3OQfaoczap2ZWdwilHZ5nB3Pa2n6oIVG18dFvP_ZTUBA0AOvQuvRx3GY_D7N1iFu6h6FPiY17KfF2-S144PsdJlUEFvU4oAvM-WX-tBt4BAbz4WwlDnGPfelHjasUdw4EfYpZ1gbr7F1_yvaiQuGOW9kYfS68dpwsnd4ghaOxPMcorIZux31YpP4MwJelTINKbV0InY");'>
+                    </div>
+                    <div class="flex w-full flex-col items-stretch justify-center gap-3 p-4">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-primary dark:text-primary/80 text-xs font-bold uppercase tracking-wider">Department Seminar</p>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1 flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">calendar_today</span> Friday, Oct 28 • 09:00 AM - 11:00 AM
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 py-2 border-y border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                <p class="text-sm font-medium">Student: <span class="font-bold">Sarah Chen</span></p>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                                <p class="text-sm font-medium">Location: <span class="font-bold">Faculty Wing, Room 12</span></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <button class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 transition-colors">
+                                Decline
+                            </button>
+                            <a href="../confirm_availability/code.html" class="flex-1 flex cursor-pointer items-center justify-center rounded-lg h-11 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                                Approve
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Navigation Bar -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 pb-6 pt-3 z-20">
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">schedule</span>
+                </div>
+                <p class="text-xs font-bold leading-normal tracking-wide">Requests</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="../interpreter_schedule/code.html">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </div>
+                <p class="text-xs font-medium leading-normal tracking-wide">Schedule</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="../interpreter_profile/code.html">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </div>
+                <p class="text-xs font-medium leading-normal tracking-wide">Profile</p>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

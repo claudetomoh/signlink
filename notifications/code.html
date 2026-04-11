@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Notifications - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="../student_dashboard_1/code.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1 class="text-xl font-bold text-primary dark:text-slate-100">Notifications</h1>
+            </div>
+            <button class="text-xs font-bold text-primary dark:text-blue-400 hover:underline px-2 py-1">
+      Mark all read
+    </button>
+        </header>
+
+        <!-- Notification Sections -->
+        <main class="flex-1 overflow-y-auto pb-24">
+
+            <!-- Today -->
+            <div class="px-4 pt-5 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Today</p>
+            </div>
+
+            <!-- Unread notification: Interpreter Assigned -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-primary/5 dark:bg-primary/10 rounded-xl p-4 border border-primary/10 relative">
+                <div class="absolute top-4 right-4 w-2.5 h-2.5 bg-primary rounded-full"></div>
+                <div class="shrink-0 size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">interpreter_mode</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Interpreter Assigned</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        <span class="font-semibold text-primary">Kofi Mensah</span> has been assigned to your <span class="font-semibold">CS 111</span> class on Monday.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1.5">10 minutes ago</p>
+                </div>
+            </div>
+
+            <!-- Unread notification: Request Approved -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-green-50 dark:bg-green-900/10 rounded-xl p-4 border border-green-100 dark:border-green-900/20 relative">
+                <div class="absolute top-4 right-4 w-2.5 h-2.5 bg-green-500 rounded-full"></div>
+                <div class="shrink-0 size-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+                    <span class="material-symbols-outlined">check_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Request Approved</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        Your interpreter request for <span class="font-semibold">Business Law</span> on Oct 25 has been approved.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1.5">1 hour ago</p>
+                </div>
+            </div>
+
+            <!-- Unread notification: Upcoming class reminder -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl p-4 border border-blue-100 dark:border-blue-900/20 relative">
+                <div class="absolute top-4 right-4 w-2.5 h-2.5 bg-blue-500 rounded-full"></div>
+                <div class="shrink-0 size-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                    <span class="material-symbols-outlined">alarm</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Class Reminder</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        Your <span class="font-semibold">Intro to Computing</span> class starts in 30 minutes. Kofi is on his way.
+                    </p>
+                    <div class="flex gap-2 mt-3">
+                        <a href="../chat_with_interpreter/code.html" class="flex items-center gap-1 px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                            <span class="material-symbols-outlined text-sm">chat</span> Message Kofi
+                        </a>
+                        <a href="../in_app_video_call/code.html" class="flex items-center gap-1 px-3 py-1.5 bg-primary/10 text-primary text-xs font-bold rounded-lg hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-sm">videocam</span> Join Call
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2">2 hours ago</p>
+                </div>
+            </div>
+
+            <!-- Yesterday -->
+            <div class="px-4 pt-5 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Yesterday</p>
+            </div>
+
+            <!-- Read notification: New Event -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+                <div class="shrink-0 size-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+                    <span class="material-symbols-outlined">event</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">New Inclusion Event</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        <span class="font-semibold">Sign Language Workshop</span> has been scheduled for Oct 12 at Norton Hall.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1.5">Yesterday at 3:45 PM</p>
+                </div>
+            </div>
+
+            <!-- Read notification: Timetable Updated -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+                <div class="shrink-0 size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Timetable Processed</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        Your uploaded timetable has been processed successfully. Your schedule is now up to date.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1.5">Yesterday at 10:12 AM</p>
+                </div>
+            </div>
+
+            <!-- Older -->
+            <div class="px-4 pt-5 pb-2">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Earlier</p>
+            </div>
+
+            <!-- Read notification: Account Verified -->
+            <div class="mx-4 mb-3 flex items-start gap-4 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700 opacity-80">
+                <div class="shrink-0 size-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500">
+                    <span class="material-symbols-outlined">verified</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Account Verified</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">
+                        Welcome to SignLink! Your Ashesi DASS account has been verified and is ready to use.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1.5">Oct 10 at 9:00 AM</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+            <div class="max-w-md mx-auto flex justify-between items-center">
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_dashboard_1/code.html">
+                    <span class="material-symbols-outlined text-[28px]">home</span>
+                    <span class="text-[10px] font-medium">Home</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_timetable/code.html">
+                    <span class="material-symbols-outlined text-[28px]">calendar_month</span>
+                    <span class="text-[10px] font-medium">Schedule</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../messages_list/code.html">
+                    <span class="material-symbols-outlined text-[28px]">chat_bubble</span>
+                    <span class="text-[10px] font-medium">Messages</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_profile/code.html">
+                    <span class="material-symbols-outlined text-[28px]">account_circle</span>
+                    <span class="text-[10px] font-medium">Profile</span>
+                </a>
+            </div>
+        </nav>
+
+    </div>
+</body>
+
+</html>

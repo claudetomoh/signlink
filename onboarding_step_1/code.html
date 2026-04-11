@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-0 m-0">
+    <div class="relative flex h-screen max-h-[932px] w-full max-w-[430px] flex-col bg-white dark:bg-slate-900 shadow-2xl overflow-hidden rounded-none md:rounded-xl">
+        <!-- Top Navigation -->
+        <div class="flex items-center bg-transparent p-6 justify-end">
+            <a href="../login_screen/code.html" class="text-primary dark:text-blue-400 text-base font-bold leading-normal tracking-wide hover:opacity-70 transition-opacity">
+                Skip
+            </a>
+        </div>
+        <!-- Hero Visual Area -->
+        <div class="flex w-full grow flex-col items-center justify-center px-8">
+            <div class="w-full aspect-square max-w-[280px] bg-primary/5 dark:bg-primary/20 rounded-full flex items-center justify-center relative mb-12">
+                <!-- Abstract Communication Illustration Representation -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary dark:text-blue-400 !text-[120px] opacity-90">
+                        interpreter_mode
+                    </span>
+                </div>
+                <!-- Decorative Circles -->
+                <div class="absolute -top-4 -right-2 w-16 h-16 bg-primary/10 rounded-full"></div>
+                <div class="absolute bottom-4 -left-4 w-12 h-12 bg-primary/20 rounded-full"></div>
+            </div>
+            <!-- Content Area -->
+            <div class="text-center space-y-4">
+                <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-bold leading-tight">
+                    Request Interpreters with Ease
+                </h1>
+                <p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed px-2">
+                    Schedule sign language interpreters for your classes and campus events in just a few taps.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom Controls -->
+        <div class="p-8 space-y-8">
+            <!-- Pagination Dots -->
+            <div class="flex w-full flex-row items-center justify-center gap-3">
+                <div class="h-2.5 w-6 rounded-full bg-primary dark:bg-blue-500"></div>
+                <div class="h-2.5 w-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                <div class="h-2.5 w-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+            </div>
+            <!-- Primary Action Button -->
+            <a href="../onboarding_step_2/code.html" class="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-4 rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                Next
+                <span class="material-symbols-outlined !text-xl">arrow_forward</span>
+</a>
+            <!-- Bottom Safety Area -->
+            <div class="h-2"></div>
+        </div>
+        <!-- Decorative background elements -->
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full -z-10"></div>
+    </div>
+</body>
+
+</html>

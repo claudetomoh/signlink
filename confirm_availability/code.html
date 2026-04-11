@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Availability Confirmation - Sign Language Interpreter App</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-10 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 py-4">
+        <div class="flex items-center justify-between max-w-2xl mx-auto">
+            <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+            <h1 class="text-lg font-bold tracking-tight">Availability Confirmation</h1>
+            <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">help_outline</span>
+</button>
+        </div>
+    </header>
+    <main class="flex-1 w-full max-w-2xl mx-auto pb-32">
+        <!-- Week Range Selector/Display -->
+        <div class="p-4">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-primary dark:text-blue-400">Next Week: Oct 21 - Oct 27</h2>
+                <span class="text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">Pending Review</span>
+            </div>
+            <!-- Summary Card -->
+            <div class="bg-primary rounded-xl p-6 text-white shadow-lg mb-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-blue-100 text-sm font-medium uppercase tracking-wider">Total Invitations</p>
+                        <p class="text-4xl font-bold mt-1">5 Sessions</p>
+                        <p class="text-blue-200 text-xs mt-2 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-xs">info</span> Please review each session before confirming
+                        </p>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-lg">
+                        <span class="material-symbols-outlined text-4xl">calendar_month</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Session List Header -->
+            <div class="flex items-center justify-between mb-4 px-1">
+                <h3 class="text-base font-bold text-slate-700 dark:text-slate-300">Individual Session Details</h3>
+                <span class="text-xs text-slate-500">5 items total</span>
+            </div>
+            <!-- Session Cards -->
+            <div class="space-y-4">
+                <!-- Session 1 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="bg-primary/10 text-primary dark:bg-primary/20 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">medical_services</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 dark:text-slate-100">Oct 21, 09:00 AM - 10:30 AM</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">General Check-up</p>
+                                <p class="text-slate-500 text-xs mt-1">Medical Center • Remote (Video)</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="p-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+                            <button class="p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Session 2 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="bg-primary/10 text-primary dark:bg-primary/20 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 dark:text-slate-100">Oct 22, 01:00 PM - 03:00 PM</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">University Lecture</p>
+                                <p class="text-slate-500 text-xs mt-1">State University • On-site</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="p-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+                            <button class="p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Session 3 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="bg-primary/10 text-primary dark:bg-primary/20 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">work</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 dark:text-slate-100">Oct 24, 10:00 AM - 11:00 AM</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">Job Interview</p>
+                                <p class="text-slate-500 text-xs mt-1">Tech Solutions Inc • Remote (Video)</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="p-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+                            <button class="p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Session 4 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="bg-primary/10 text-primary dark:bg-primary/20 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">groups</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 dark:text-slate-100">Oct 25, 02:30 PM - 04:00 PM</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">Community Workshop</p>
+                                <p class="text-slate-500 text-xs mt-1">Civic Center Hall A • On-site</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="p-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+                            <button class="p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Session 5 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <div class="bg-primary/10 text-primary dark:bg-primary/20 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">account_balance_wallet</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 dark:text-slate-100">Oct 27, 11:30 AM - 12:30 PM</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm">Personal Finance Briefing</p>
+                                <p class="text-slate-500 text-xs mt-1">Online Webinar • Remote (Video)</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="p-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+                            <button class="p-1 text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Sticky Footer CTA -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-4 pb-8">
+        <div class="max-w-2xl mx-auto flex flex-col gap-3">
+            <p class="text-center text-xs text-slate-500 dark:text-slate-400 px-4">
+                By confirming, you agree to fulfill the sessions listed above.
+            </p>
+            <a href="../interpreter_dashboard/code.html" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">check_circle</span> Confirm My Availability
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Nav Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-100 flex hidden">
+        <!-- Hidden as requested by context of 'screen' focusing on confirmation but listed here for design consistency -->
+        <a class="flex flex-1 flex-col items-center justify-center py-2 text-slate-400" href="#">
+            <span class="material-symbols-outlined">home</span>
+            <p class="text-[10px] font-medium">Home</p>
+        </a>
+        <a class="flex flex-1 flex-col items-center justify-center py-2 text-primary" href="#">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <p class="text-[10px] font-medium">Schedule</p>
+        </a>
+        <a class="flex flex-1 flex-col items-center justify-center py-2 text-slate-400" href="#">
+            <span class="material-symbols-outlined">payments</span>
+            <p class="text-[10px] font-medium">Earnings</p>
+        </a>
+        <a class="flex flex-1 flex-col items-center justify-center py-2 text-slate-400" href="#">
+            <span class="material-symbols-outlined">person</span>
+            <p class="text-[10px] font-medium">Profile</p>
+        </a>
+    </nav>
+</body>
+
+</html>

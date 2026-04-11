@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Manage Users - SignLink Admin</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl overflow-x-hidden pb-24">
+
+        <!-- Header -->
+        <header class="flex items-center bg-white dark:bg-background-dark p-4 sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+            <a href="../admin_dashboard/code.html" class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-300">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight flex-1 text-center pr-10">Manage Users</h1>
+        </header>
+
+        <!-- Search + Filter -->
+        <div class="px-4 py-4 space-y-3">
+            <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-4 py-3">
+                <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                <input type="text" placeholder="Search by name or email..." class="bg-transparent border-none outline-none flex-1 text-sm text-slate-700 dark:text-slate-200 placeholder-slate-400" />
+            </div>
+            <!-- Role filter tabs -->
+            <div class="flex gap-2">
+                <button class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold">All</button>
+                <button class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Students</button>
+                <button class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Interpreters</button>
+                <button class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Admin</button>
+            </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="px-4 mb-4">
+            <div class="grid grid-cols-3 gap-3">
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 text-center">
+                    <p class="text-2xl font-bold text-primary dark:text-blue-400">48</p>
+                    <p class="text-[10px] font-semibold text-blue-700 dark:text-blue-400 uppercase tracking-wide mt-1">Students</p>
+                </div>
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3 text-center">
+                    <p class="text-2xl font-bold text-emerald-700 dark:text-emerald-400">12</p>
+                    <p class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mt-1">Interpreters</p>
+                </div>
+                <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-3 text-center">
+                    <p class="text-2xl font-bold text-purple-700 dark:text-purple-400">4</p>
+                    <p class="text-[10px] font-semibold text-purple-700 dark:text-purple-400 uppercase tracking-wide mt-1">Admin</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users List -->
+        <main class="px-4 space-y-3">
+
+            <!-- Section: Students -->
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Students</h2>
+                <span class="text-xs text-slate-500">48 users</span>
+            </div>
+
+            <!-- User Card 1 -->
+            <div class="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                <div class="size-12 rounded-full bg-primary/10 overflow-hidden flex-shrink-0 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9FuEkNOz-n4PD8Qz5qLy2v7b6V1NkJ4x8pT2mR3sC5wA1Q5ZcY3V8X6a9B2Ue7Dm4E6jI8lP0OhQ9Wn2mN5cR7sT1SsJ8VM2guGPSZJdvOmB4LhPn3cQ1qI8p-A8j7UoQ0WLX6E" alt="Student Akua Asante" class="w-full h-full object-cover"
+                    />
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Akua Asante</p>
+                    <p class="text-xs text-slate-500 truncate">akua.asante@ashesi.edu.gh</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold rounded uppercase">Student</span>
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Active</span>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <button class="p-2 hover:bg-primary/5 rounded-lg text-primary transition-colors">
+          <span class="material-symbols-outlined text-lg">edit</span>
+        </button>
+                    <button class="p-2 hover:bg-red-50 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+          <span class="material-symbols-outlined text-lg">block</span>
+        </button>
+                </div>
+            </div>
+
+            <!-- User Card 2 -->
+            <div class="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                <div class="size-12 rounded-full bg-primary/10 overflow-hidden flex-shrink-0 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP4aZ348rq99w7ag8gzYGO6V8QFli7JY7vVyZyGO5WRGLaZIbmUH_lKz0vTV0GaJse78xyQWjwmRVKSi5agWGaiVbfFOqwgTRYLpWFLTbX0j8RxK2Xc6YC1xHuosvEP9zS0FyGqosp4eqa9XIxbQTR3orG_PHlNbqaM2em38o-UieOxY9x3xc87b8wB2YKWvnMLJ752OlmSKIFlfuTAkLOvEnGSAZdibCqGA7g1zd4y3cdmJs9X0D74HXcISiQrHuh-h1ITEOmNIY"
+                        alt="Student Ama Mensah" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Ama Mensah</p>
+                    <p class="text-xs text-slate-500 truncate">ama.mensah@ashesi.edu.gh</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold rounded uppercase">Student</span>
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Active</span>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <button class="p-2 hover:bg-primary/5 rounded-lg text-primary transition-colors">
+          <span class="material-symbols-outlined text-lg">edit</span>
+        </button>
+                    <button class="p-2 hover:bg-red-50 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+          <span class="material-symbols-outlined text-lg">block</span>
+        </button>
+                </div>
+            </div>
+
+            <!-- User Card 3 - Pending -->
+            <div class="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-orange-200 dark:border-orange-900/30 shadow-sm">
+                <div class="size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex-shrink-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-orange-500 text-2xl">person</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Kwame Boateng</p>
+                    <p class="text-xs text-slate-500 truncate">kwame.boateng@ashesi.edu.gh</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold rounded uppercase">Student</span>
+                        <span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold rounded uppercase">Pending</span>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <button class="p-2 hover:bg-emerald-50 rounded-lg text-emerald-600 transition-colors">
+          <span class="material-symbols-outlined text-lg">check_circle</span>
+        </button>
+                    <button class="p-2 hover:bg-red-50 rounded-lg text-red-400 transition-colors">
+          <span class="material-symbols-outlined text-lg">cancel</span>
+        </button>
+                </div>
+            </div>
+
+            <!-- Section: Interpreters -->
+            <div class="flex items-center justify-between pt-4 mb-2">
+                <h2 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Interpreters</h2>
+                <span class="text-xs text-slate-500">12 users</span>
+            </div>
+
+            <!-- Interpreter Card 1 -->
+            <div class="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                <div class="size-12 rounded-full bg-primary/10 overflow-hidden flex-shrink-0">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE1N-Ztb0kqwnsh5yS-zlDFzSBsVM46mgNy0RrrqlyyEUf2dCh6A7SXGi_93_mQn_fwtZsOM131Y-PAB8rtDpI72wCGuWgBw5-VSVExvXgy01g22WYQnqh37TdpeQnulaNaGR1KQkKV-0PjEz073sBLGjfbnPXPKa9XbRf_gqbnGwtWRksv-x5aW12eQg9MEVugg9jnAPBT0VH2yit_uMlUzg3fXww9Ud5NIvNwb3l1epqJ2KGTnuWdDyruIV8hqKEkkYJyzrOwik"
+                        alt="Interpreter Kofi Mensah" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Kofi Mensah</p>
+                    <p class="text-xs text-slate-500 truncate">kofi.mensah@dass.ashesi.edu.gh</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Interpreter</span>
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Active</span>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <a href="../interpreter_profile/code.html" class="p-2 hover:bg-primary/5 rounded-lg text-primary transition-colors">
+                        <span class="material-symbols-outlined text-lg">open_in_new</span>
+                    </a>
+                    <button class="p-2 hover:bg-red-50 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+          <span class="material-symbols-outlined text-lg">block</span>
+        </button>
+                </div>
+            </div>
+
+            <!-- Interpreter Card 2 -->
+            <div class="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                <div class="size-12 rounded-full bg-primary/10 flex-shrink-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-2xl">person</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Abena Osei</p>
+                    <p class="text-xs text-slate-500 truncate">abena.osei@dass.ashesi.edu.gh</p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Interpreter</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold rounded uppercase">Offline</span>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <a href="../interpreter_profile/code.html" class="p-2 hover:bg-primary/5 rounded-lg text-primary transition-colors">
+                        <span class="material-symbols-outlined text-lg">open_in_new</span>
+                    </a>
+                    <button class="p-2 hover:bg-red-50 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+          <span class="material-symbols-outlined text-lg">block</span>
+        </button>
+                </div>
+            </div>
+
+            <!-- Add User FAB -->
+            <div class="h-8"></div>
+        </main>
+
+        <!-- Floating Add Button -->
+        <button class="fixed bottom-24 right-6 size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform z-10">
+    <span class="material-symbols-outlined text-3xl">person_add</span>
+  </button>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+            <div class="flex justify-between items-center">
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../admin_dashboard/code.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-[10px] font-medium">Dashboard</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../event_requests/code.html">
+                    <span class="material-symbols-outlined">list_alt</span>
+                    <span class="text-[10px] font-medium">Requests</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../create_event/code.html">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span class="text-[10px] font-medium">Events</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-primary" href="#">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">group</span>
+                    <span class="text-[10px] font-bold">Users</span>
+                </a>
+            </div>
+        </nav>
+
+    </div>
+</body>
+
+</html>

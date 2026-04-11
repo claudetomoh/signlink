@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <title>Student Timetable - Interpreter View</title>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden max-w-md mx-auto shadow-2xl">
+        <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+            <div class="flex items-center p-4 justify-between">
+                <a href="../student_dashboard_1/code.html" class="text-primary dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <div class="flex-1 px-2 text-center">
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Weekly Timetable</h2>
+                </div>
+                <div class="size-10"></div>
+            </div>
+            <div class="flex p-4 items-center gap-4">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 ring-2 ring-primary/10" data-alt="Professional portrait of a male student wearing glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY-s8XfDVTy07ArfGMZQB8KytJHCAV6qQ5hv_mfz9gD8sZjg0V7ny6gD5yzBiH05oZETp956Q0StLUo1hP9LmhipItSiIMFVfP8LvuI0h-I5Lcj0s7rQ__Qiw0vL_269JZgBIxP7V_QqP_aQbMx32NP4xgVtad5_zAh9nMkpK6IzoNnrxGIIroS7VAvLEQzD-zdmk0ZIWEAzpAhyjclUbhFREE-cRESw497uoviXny3CDGvQeuMB6robnhhr5T9gIK1TlxCVQhFSw");'></div>
+                <div class="flex flex-col">
+                    <p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Alex Johnson</p>
+                    <p class="text-primary font-medium text-sm">Interpreter View Mode</p>
+                </div>
+            </div>
+            <div class="px-4 pb-0">
+                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800">
+                    <a class="flex flex-1 flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2" href="#">
+                        <p class="text-xs font-medium uppercase tracking-wider">Mon</p>
+                        <p class="text-lg font-bold">23</p>
+                    </a>
+                    <a class="flex flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-400 dark:text-slate-500 pb-3 pt-2" href="#">
+                        <p class="text-xs font-medium uppercase tracking-wider">Tue</p>
+                        <p class="text-lg font-bold">24</p>
+                    </a>
+                    <a class="flex flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-400 dark:text-slate-500 pb-3 pt-2" href="#">
+                        <p class="text-xs font-medium uppercase tracking-wider">Wed</p>
+                        <p class="text-lg font-bold">25</p>
+                    </a>
+                    <a class="flex flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-400 dark:text-slate-500 pb-3 pt-2" href="#">
+                        <p class="text-xs font-medium uppercase tracking-wider">Thu</p>
+                        <p class="text-lg font-bold">26</p>
+                    </a>
+                    <a class="flex flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-400 dark:text-slate-500 pb-3 pt-2" href="#">
+                        <p class="text-xs font-medium uppercase tracking-wider">Fri</p>
+                        <p class="text-lg font-bold">27</p>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 p-4 pb-24 overflow-y-auto">
+            <div class="flex flex-col gap-6">
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">09:00 AM</p>
+                    </div>
+                    <div class="flex-1 bg-primary text-white p-4 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded">Core Course</span>
+                            <span class="material-symbols-outlined text-sm">more_vert</span>
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">Advanced Data Structures</h4>
+                        <div class="flex items-center gap-1 mt-2 text-white/80 text-xs">
+                            <span class="material-symbols-outlined text-xs">location_on</span>
+                            <span>Engineering Building, Room 402</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">10:30 AM</p>
+                    </div>
+                    <div class="flex-1 h-px bg-slate-200 dark:bg-slate-800 self-center"></div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">11:00 AM</p>
+                    </div>
+                    <div class="flex-1 bg-indigo-600 text-white p-4 rounded-lg shadow-sm border-l-4 border-indigo-300">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded">Lab Session</span>
+                            <span class="material-symbols-outlined text-sm">more_vert</span>
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">Computer Vision Workshop</h4>
+                        <div class="flex items-center gap-1 mt-2 text-white/80 text-xs">
+                            <span class="material-symbols-outlined text-xs">location_on</span>
+                            <span>Main Lab 2A (Virtual Access Enabled)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">01:00 PM</p>
+                    </div>
+                    <div class="flex-1 bg-slate-100 dark:bg-slate-800 p-4 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-700">
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <span class="material-symbols-outlined text-sm">lunch_dining</span>
+                            <h4 class="font-bold text-sm">Lunch Break</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">02:30 PM</p>
+                    </div>
+                    <div class="flex-1 bg-emerald-600 text-white p-4 rounded-lg shadow-sm border-l-4 border-emerald-300">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded">Elective</span>
+                            <span class="material-symbols-outlined text-sm">more_vert</span>
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">History of Modern Art</h4>
+                        <div class="flex items-center gap-1 mt-2 text-white/80 text-xs">
+                            <span class="material-symbols-outlined text-xs">location_on</span>
+                            <span>Arts Annex, Hall B</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 pt-1">
+                        <p class="text-xs font-bold text-slate-400 dark:text-slate-500">04:00 PM</p>
+                    </div>
+                    <div class="flex-1 bg-orange-600 text-white p-4 rounded-lg shadow-sm border-l-4 border-orange-300">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded">Appointment</span>
+                            <span class="material-symbols-outlined text-sm">more_vert</span>
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">Academic Advisor Meeting</h4>
+                        <div class="flex items-center gap-1 mt-2 text-white/80 text-xs">
+                            <span class="material-symbols-outlined text-xs">location_on</span>
+                            <span>Student Services, Office 12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <nav class="fixed bottom-0 left-0 right-0 z-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 max-w-md mx-auto">
+            <div class="flex gap-2 px-4 pb-4 pt-2">
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+                    <div class="flex h-8 items-center justify-center">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">calendar_month</span>
+                    </div>
+                    <p class="text-[10px] font-bold leading-normal tracking-wider uppercase">Schedule</p>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../student_dashboard_1/code.html">
+                    <div class="flex h-8 items-center justify-center">
+                        <span class="material-symbols-outlined text-[24px]">group</span>
+                    </div>
+                    <p class="text-[10px] font-bold leading-normal tracking-wider uppercase">Students</p>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../messages_list/code.html">
+                    <div class="flex h-8 items-center justify-center relative">
+                        <span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+                        <div class="absolute -top-0.5 -right-0.5 size-2 bg-red-500 rounded-full border border-white dark:border-slate-900"></div>
+                    </div>
+                    <p class="text-[10px] font-bold leading-normal tracking-wider uppercase">Messages</p>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../student_profile/code.html">
+                    <div class="flex h-8 items-center justify-center">
+                        <span class="material-symbols-outlined text-[24px]">account_circle</span>
+                    </div>
+                    <p class="text-[10px] font-bold leading-normal tracking-wider uppercase">Profile</p>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

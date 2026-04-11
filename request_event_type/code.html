@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Request Interpreter - Step 1</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .custom-radio:checked+div {
+            border-color: #003366;
+            background-color: rgba(0, 51, 102, 0.05);
+        }
+        
+        .custom-radio:checked+div .radio-circle {
+            border-color: #003366;
+            background-color: #003366;
+        }
+        
+        .custom-radio:checked+div .radio-circle::after {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-xl flex flex-col">
+        <!-- Top App Bar -->
+        <header class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
+            <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block text-slate-600 dark:text-slate-400">close</span>
+</button>
+            <h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">Request Interpreter</h1>
+            <button class="text-sm font-semibold text-primary dark:text-primary/80 px-2 py-1">Cancel</button>
+        </header>
+        <!-- Progress Indicator -->
+        <div class="p-4 space-y-2">
+            <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <span>Step 1 of 3</span>
+                <span>33% Complete</span>
+            </div>
+            <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 33.33%;"></div>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="flex-1 px-4 py-6 overflow-y-auto">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">What type of event is this?</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    Select the category that best describes your request to help us find the right interpreter for your specific needs.
+                </p>
+            </div>
+            <!-- Selection Options -->
+            <div class="space-y-4">
+                <!-- Academic Class -->
+                <label class="relative block cursor-pointer group">
+<input checked="" class="peer hidden custom-radio" name="event-type" type="radio" value="academic"/>
+<div class="flex items-center p-4 border-2 border-slate-200 dark:border-slate-800 rounded-lg transition-all peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-800 text-primary dark:text-primary/80 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Academic Class</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Lectures, labs, or study groups</p>
+</div>
+<div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center transition-colors"></div>
+</div>
+</label>
+                <!-- Campus Event -->
+                <label class="relative block cursor-pointer group">
+<input class="peer hidden custom-radio" name="event-type" type="radio" value="campus"/>
+<div class="flex items-center p-4 border-2 border-slate-200 dark:border-slate-800 rounded-lg transition-all peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-800 text-primary dark:text-primary/80 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">celebration</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Campus Event</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Workshops, clubs, or social gatherings</p>
+</div>
+<div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center transition-colors"></div>
+</div>
+</label>
+                <!-- Private Meeting -->
+                <label class="relative block cursor-pointer group">
+<input class="peer hidden custom-radio" name="event-type" type="radio" value="meeting"/>
+<div class="flex items-center p-4 border-2 border-slate-200 dark:border-slate-800 rounded-lg transition-all peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10">
+<div class="flex-shrink-0 w-12 h-12 bg-slate-100 dark:bg-slate-800 text-primary dark:text-primary/80 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Private Meeting</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">One-on-one appointments or interviews</p>
+</div>
+<div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center transition-colors"></div>
+</div>
+</label>
+                <!-- Emergency Support -->
+                <label class="relative block cursor-pointer group">
+<input class="peer hidden custom-radio" name="event-type" type="radio" value="emergency"/>
+<div class="flex items-center p-4 border-2 border-slate-200 dark:border-slate-800 rounded-lg transition-all peer-checked:border-red-600 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20 group">
+<div class="flex-shrink-0 w-12 h-12 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl font-bold">emergency</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-red-700 dark:text-red-400">Emergency Support</h3>
+<p class="text-xs text-red-600/70 dark:text-red-400/70 mt-0.5 font-medium">Urgent assistance required</p>
+</div>
+<div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center transition-colors group-peer-checked:border-red-600 group-peer-checked:bg-red-600"></div>
+</div>
+</label>
+            </div>
+            <!-- Emergency Note -->
+            <div class="mt-8 p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 flex items-start gap-3">
+                <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-xl">info</span>
+                <p class="text-xs text-slate-500 dark:text-slate-400 italic leading-snug">
+                    For life-threatening emergencies, please call emergency services (911) directly before requesting an interpreter.
+                </p>
+            </div>
+        </main>
+        <!-- Fixed Footer Actions -->
+        <footer class="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <a href="../request_date_time/code.html" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                Continue
+                <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</a>
+        </footer>
+    </div>
+</body>
+
+</html>

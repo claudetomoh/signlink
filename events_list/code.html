@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Upcoming Events - SignLink</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+
+    <!-- Top Header -->
+    <header class="sticky top-0 z-10 bg-white dark:bg-background-dark border-b border-slate-100 dark:border-slate-800 px-4 py-4">
+        <div class="flex items-center justify-between max-w-md mx-auto">
+            <a href="../student_dashboard_2/code.html" class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-300">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="text-lg font-bold tracking-tight">Inclusion Events</h1>
+            <button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400">
+      <span class="material-symbols-outlined">tune</span>
+    </button>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 pb-28">
+
+        <!-- Filter Tabs -->
+        <div class="flex gap-2 py-4 overflow-x-auto hide-scrollbar">
+            <button class="flex-none px-4 py-2 rounded-full bg-primary text-white text-xs font-bold">All Events</button>
+            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">This Week</button>
+            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">This Month</button>
+            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Signed Up</button>
+        </div>
+
+        <!-- Section: Upcoming -->
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-base font-bold">Upcoming</h2>
+            <span class="text-xs text-slate-500">3 events</span>
+        </div>
+        <div class="space-y-4 mb-8">
+
+            <!-- Event Card 1 -->
+            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-28 flex-shrink-0 relative">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAabSH5HMgrcy28vNkwzqi6ZvgJwxKYtybIeVXp0LuSRiq9FKoP-poBAqn2_7rhY4uWptGZ4RaR9fXyp6wpxbGSolp7hCcaZIkUulB2ZxgQEPkWDnLoWmR137ofbIHIcxhx_Slao0qnFvc-XL-9ev4H2Ty5-Yvin7PRCeHkyS3qYAz7PZGVQV5yloYC4nL2SyxTUi68pZd6yoE_mAgy7Rhw2aXNMQx8PVI8QwfpAxhhZLv6Raa4KrfFVeZ4LtQgeVf5q8RhfbPGuLw"
+                        alt="Sign Language Workshop" class="w-full h-full object-cover" />
+                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">OCT 12</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between flex-1">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Workshop</p>
+                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Sign Language Workshop</h3>
+                    </div>
+                    <div class="space-y-1 mt-2">
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>10:00 AM — 12:00 PM</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span>Norton Hall, Room 101</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-3">
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Open</span>
+                        <span class="text-xs text-slate-400">24 / 50 attending</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Event Card 2 -->
+            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-28 flex-shrink-0 relative">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp4mTn8YTleSddQvcFrTMVAh0ONx2dP-FKWiJlD-tlkTmO4GJIC78IqO7FjO_Ew6yY2ltGoaAkhjlwe8TbYCqf9waOsSpxAF8kGjCpdELrkqFMe-yM0BvZDjQYCfRenn5kXkyUQDz1Z7pKxQkeVZERD-DJzYUTuh4rbbjKomf0-0wjkf65ZsWR5DFe5BQUvjn5Djk86dbLGwEehtbbMS4oLb6IRENQ138lPZg_Tmh-gzJaNQ1pxmdW0SqRwt7oTN1IwwQCr1US3Mk"
+                        alt="Disability Awareness Week" class="w-full h-full object-cover" />
+                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">OCT 25</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between flex-1">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Awareness</p>
+                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Disability Awareness Week</h3>
+                    </div>
+                    <div class="space-y-1 mt-2">
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>All Day</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span>Ashesi Campus</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-3">
+                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Open</span>
+                        <span class="text-xs text-slate-400">Free entry</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Event Card 3 -->
+            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-28 flex-shrink-0 relative">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvMtFdiUg4jR2jlNEQheaDkpLYkU2I2-cciB3JLR49B16uGKbSPTzJMau2rbLQsRvJ3DvjaR9aGddKvQh9cHWyGejN8V5l5xiga1XGZAdB80Sfu3HxdVDuSnZYiNvgtvzKccBoxZbZGSv2cVOOZ70IBsvPKQkLzuW3M-HJEA3z4ahBckFqegRlie6M9eiPgAwfkY6CwAdKRVbADpWyT8M5dOcnwIZeJe6__vcFnePEkq_TPbnGxWl_K9VqiPT0wV2OLoALRS6z6s8"
+                        alt="Tech Accessibility Meetup" class="w-full h-full object-cover" />
+                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">NOV 02</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between flex-1">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Meetup</p>
+                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Tech Accessibility Meetup</h3>
+                    </div>
+                    <div class="space-y-1 mt-2">
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>3:00 PM — 5:00 PM</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span>CS Lab 1</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-3">
+                        <span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold rounded uppercase">Limited</span>
+                        <span class="text-xs text-slate-400">18 / 20 attending</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Section: Past Events -->
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-base font-bold text-slate-500">Past Events</h2>
+            <span class="text-xs text-slate-400">2 events</span>
+        </div>
+        <div class="space-y-4 opacity-60">
+            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer">
+                <div class="w-28 flex-shrink-0 bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-slate-400 text-4xl">event</span>
+                </div>
+                <div class="p-4 flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Workshop</p>
+                    <h3 class="font-bold text-sm mt-0.5 text-slate-600 dark:text-slate-400">Orientation for New Students</h3>
+                    <p class="text-xs text-slate-400 mt-2">Sep 15 • Completed</p>
+                </div>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-2 py-3 z-50">
+        <div class="flex justify-around items-center max-w-md mx-auto">
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../student_dashboard_2/code.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../student_timetable/code.html">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="text-[10px] font-medium">Schedule</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">event</span>
+                <span class="text-[10px] font-bold">Events</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../messages_list/code.html">
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="text-[10px] font-medium">Messages</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../student_profile/code.html">
+                <span class="material-symbols-outlined">person_outline</span>
+                <span class="text-[10px] font-medium">Profile</span>
+            </a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

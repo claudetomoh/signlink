@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DASS Admin Dashboard | Ashesi University</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .active-nav {
+            color: #003366;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+    <div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl overflow-x-hidden pb-24">
+        <!-- Header -->
+        <header class="flex items-center bg-white dark:bg-background-dark p-4 sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                <img class="size-8 rounded-full object-cover" data-alt="Ashesi University DASS Logo Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoyoNCAUMXMn-NcWIoWPNRveLQs5inHdFUQ-m1w9cSmbi7pSU8nKVPMvHkkVXpxMAffU48x9LnqWuhNyQ6RsaHGMEh5LV7y6wxe7QXUIKTUJZrZTGENYQbliRoG44-xLrWma1HJfaIDWry-nUo8RFmpxVU9ihslm5wIOpslBB-bZwDyqiL3bylzCKzqgtFn8rGKOdgXZnIOLwAdDOs9nckxNSqIPfxSLqIIdNtjGdn8ly123B6hUgLMnOikFlyeSBnqtieWt0cuD0"
+                    style="">
+            </div>
+            <div class="flex-1 ml-3">
+                <p class="text-xs font-medium text-slate-500 uppercase tracking-wider" style="">Ashesi University</p>
+                <h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight" style="">SignLink Coordinator</h2>
+            </div>
+            <a href="../notifications/code.html" class="relative p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors" style="">
+                <span class="material-symbols-outlined" style="">notifications</span>
+                <span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+            </a>
+        </header>
+        <!-- KPI Scorecards -->
+        <div class="p-4">
+            <div class="grid grid-cols-3 gap-3">
+                <div class="flex flex-col gap-1 rounded-xl p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30">
+                    <p class="text-orange-800 dark:text-orange-400 text-xs font-semibold uppercase" style="">Pending</p>
+                    <p class="text-slate-900 dark:text-white text-2xl font-bold" style="">12</p>
+                    <div class="flex items-center text-orange-700 dark:text-orange-300 text-[10px] font-medium" style="">
+                        <span class="material-symbols-outlined text-xs mr-0.5" style="">trending_up</span> +2
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 rounded-xl p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900/30">
+                    <p class="text-emerald-800 dark:text-emerald-400 text-xs font-semibold uppercase" style="">Confirmed</p>
+                    <p class="text-slate-900 dark:text-white text-2xl font-bold" style="">45</p>
+                    <div class="flex items-center text-emerald-700 dark:text-emerald-300 text-[10px] font-medium" style="">
+                        <span class="material-symbols-outlined text-xs mr-0.5" style="">check_circle</span> 88%
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 rounded-xl p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30">
+                    <p class="text-red-800 dark:text-red-400 text-xs font-semibold uppercase" style="">Urgent</p>
+                    <p class="text-slate-900 dark:text-white text-2xl font-bold" style="">3</p>
+                    <div class="flex items-center text-red-700 dark:text-red-300 text-[10px] font-medium" style="">
+                        <span class="material-symbols-outlined text-xs mr-0.5" style="">priority_high</span> High
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Coverage Gaps (Alert Section) -->
+        <section class="px-4 py-2">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold" style="">Coverage Gaps</h3>
+                <span class="px-2 py-1 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase" style="">Action Required</span>
+            </div>
+            <div class="space-y-3">
+                <!-- Gap Item 1 -->
+                <div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <div class="flex flex-1 flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="material-symbols-outlined text-red-500 text-sm" style="">warning</span>
+                                <p class="text-red-600 dark:text-red-400 text-[10px] font-bold uppercase tracking-wide" style="">Critical</p>
+                            </div>
+                            <p class="text-slate-900 dark:text-white text-base font-bold leading-tight" style="">CS 111 - Intro to Computing</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1" style="">5 students waiting • Needs Sign Language Interpreter</p>
+                        </div>
+                        <a href="../assign_interpreter/code.html" class="mt-4 flex items-center justify-center rounded-lg bg-primary py-2 px-4 text-white text-sm font-bold gap-2 transition-all active:scale-95" style="">
+                            <span class="material-symbols-outlined text-sm" style="">person_add</span>
+                            <span class="" style="">Assign Now</span>
+                        </a>
+                    </div>
+                    <div class="w-24 shrink-0 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden relative">
+                        <img class="h-full w-full object-cover" data-alt="Abstract campus map showing classroom location" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUjQLgd4PtAhkzuDMVvqh__SknI5bXpHaFTtp-D4rPP4a59TB_9R3vrkD9u4pAMR5rV5doU5iy-OOtpSqXeI1elxNRbSOIq81UlAIwcWzWefnzCizHSx5oTTng0VKSiFJznWFO8PJ8LECm-Vc77wHf6FnFSCis60eKRXWNS3EB_bdeI417ezXxfdsATbDI044gGhJvntMepxzXe_ODh4-kgI-5BYqjFea0eYv1m10x0ZxrbqOlgyxeUM4xyXgFeJETFbn5G9tfilY"
+                            style="">
+                        <div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary/40 text-3xl" style="">map</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gap Item 2 -->
+                <div class="flex items-center justify-between gap-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 p-3 border border-dashed border-slate-300 dark:border-slate-700">
+                    <div class="flex flex-col">
+                        <p class="text-slate-900 dark:text-white text-sm font-semibold" style="">MATH 101 - Calculus I</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs" style="">2 students • Notetaker requested</p>
+                    </div>
+                    <button class="flex items-center justify-center p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-primary dark:text-slate-300" style="">
+<span class="material-symbols-outlined" style="">add</span>
+</button>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Action Hub -->
+        <section class="px-4 py-6">
+            <h3 class="text-slate-900 dark:text-white text-lg font-bold mb-4" style="">Quick Actions</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <a href="../assign_interpreter/code.html" class="flex flex-col items-center gap-2" style="">
+                    <div class="flex size-14 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 transition-transform active:scale-90">
+                        <span class="material-symbols-outlined text-2xl" style="">assignment_ind</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 text-[11px] font-semibold" style="">Assign Staff</p>
+                </a>
+                <a href="../create_event/code.html" class="flex flex-col items-center gap-2" style="">
+                    <div class="flex size-14 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 border-2 border-primary/20 text-primary dark:text-slate-300 transition-transform active:scale-90">
+                        <span class="material-symbols-outlined text-2xl" style="">calendar_add_on</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 text-[11px] font-semibold" style="">New Event</p>
+                </a>
+                <a href="../manage_users/code.html" class="flex flex-col items-center gap-2" style="">
+                    <div class="flex size-14 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 border-2 border-primary/20 text-primary dark:text-slate-300 transition-transform active:scale-90">
+                        <span class="material-symbols-outlined text-2xl" style="">group_add</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 text-[11px] font-semibold" style="">Manage Users</p>
+                </a>
+            </div>
+        </section>
+        <!-- Upcoming Inclusion Events -->
+        <section class="px-4 py-2 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold" style="">Upcoming Events</h3>
+                <button class="text-primary text-xs font-bold" style="">See All</button>
+            </div>
+            <div class="space-y-4">
+                <!-- Event 1 -->
+                <div class="flex items-center gap-4 group">
+                    <div class="flex flex-col items-center justify-center h-14 w-12 rounded-xl bg-primary/5 dark:bg-primary/20 border border-primary/10">
+                        <span class="text-[10px] font-bold text-primary/60 uppercase" style="">Oct</span>
+                        <span class="text-lg font-black text-primary" style="">15</span>
+                    </div>
+                    <div class="flex-1 border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-slate-900 dark:text-white text-sm font-bold" style="">Inclusion Workshop</h4>
+                            <span class="material-symbols-outlined text-slate-300 text-sm" style="">chevron_right</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="material-symbols-outlined text-xs text-slate-400" style="">schedule</span>
+                            <p class="text-slate-500 dark:text-slate-400 text-[11px]" style="">2:00 PM • Norton Hall</p>
+                        </div>
+                        <p class="text-[10px] mt-1 text-primary/60 font-medium" style="">12 students RSVP'd</p>
+                    </div>
+                </div>
+                <!-- Event 2 -->
+                <div class="flex items-center gap-4 group">
+                    <div class="flex flex-col items-center justify-center h-14 w-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase" style="">Oct</span>
+                        <span class="text-lg font-black text-slate-600 dark:text-slate-300" style="">22</span>
+                    </div>
+                    <div class="flex-1 border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-slate-900 dark:text-white text-sm font-bold" style="">DASS Peer Mentor Meet</h4>
+                            <span class="material-symbols-outlined text-slate-300 text-sm" style="">chevron_right</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="material-symbols-outlined text-xs text-slate-400" style="">schedule</span>
+                            <p class="text-slate-500 dark:text-slate-400 text-[11px]" style="">4:30 PM • Student Lounge</p>
+                        </div>
+                        <p class="text-[10px] mt-1 text-slate-400 font-medium" style="">8 staff attending</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Bottom Navigation Bar -->
+        <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+            <div class="flex justify-between items-center">
+                <a class="flex flex-col items-center gap-1 flex-1 text-primary" href="#" style="">
+                    <span class="material-symbols-outlined font-bold" style="">dashboard</span>
+                    <span class="text-[10px] font-bold" style="">Dashboard</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../event_requests/code.html" style="">
+                    <span class="material-symbols-outlined" style="">list_alt</span>
+                    <span class="text-[10px] font-medium" style="">Requests</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../create_event/code.html" style="">
+                    <span class="material-symbols-outlined" style="">calendar_month</span>
+                    <span class="text-[10px] font-medium" style="">Events</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../manage_users/code.html" style="">
+                    <span class="material-symbols-outlined" style="">group</span>
+                    <span class="text-[10px] font-medium" style="">Users</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 flex-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_profile/code.html" style="">
+                    <span class="material-symbols-outlined" style="">account_circle</span>
+                    <span class="text-[10px] font-medium" style="">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

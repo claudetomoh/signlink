@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Sign Up - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col max-w-[480px] mx-auto bg-white dark:bg-background-dark overflow-x-hidden">
+        <!-- Top Navigation -->
+        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between">
+            <button aria-label="Go back" class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" style="">
+<span class="material-symbols-outlined" style="">arrow_back</span>
+</button>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12" style="">Join SignLink</h2>
+        </div>
+        <!-- Header Content -->
+        <div class="px-6 pt-8 pb-4">
+            <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-bold leading-tight" style="">Create Account</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal mt-2" style="">Join the Disability and Academic Support Services community.</p>
+        </div>
+        <!-- Registration Form -->
+        <form class="flex flex-col gap-5 px-6 pb-10">
+            <!-- Role Selection -->
+            <div class="flex flex-col gap-3">
+                <p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-normal" style="">I am registering as a:</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="relative flex cursor-pointer" style="">
+<input checked="" class="peer sr-only" name="role" type="radio" value="student">
+<div class="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 transition-all peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/20">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 peer-checked:text-primary" style="">school</span>
+<span class="font-medium text-slate-900 dark:text-slate-100" style="">Student</span>
+</div>
+</label>
+                    <label class="relative flex cursor-pointer" style="">
+<input class="peer sr-only" name="role" type="radio" value="interpreter">
+<div class="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 transition-all peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/20">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 peer-checked:text-primary" style="">interpreter_mode</span>
+<span class="font-medium text-slate-900 dark:text-slate-100" style="">Interpreter</span>
+</div>
+</label>
+                </div>
+            </div>
+            <!-- Input: Full Name -->
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold" for="full_name" style="">Full Name</label>
+                <div class="relative">
+                    <input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3.5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400"
+                        id="full_name" placeholder="John Doe" type="text">
+                </div>
+            </div>
+            <!-- Input: Ashesi Email -->
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold" for="email" style="">Ashesi Email Address</label>
+                <div class="relative">
+                    <input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3.5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400"
+                        id="email" placeholder="username@ashesi.edu.gh" type="email">
+                </div>
+            </div>
+            <!-- Input: ID Number -->
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold" for="student_id" style="">Student/Staff ID Number</label>
+                <div class="relative">
+                    <input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3.5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400"
+                        id="student_id" placeholder="8-digit ID" type="text">
+                </div>
+            </div>
+            <!-- Input: Password -->
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold" for="password" style="">Create Password</label>
+                <div class="relative flex items-center">
+                    <input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3.5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-slate-400"
+                        id="password" placeholder="••••••••" type="password">
+                    <button class="absolute right-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" type="button" style="">
+<span class="material-symbols-outlined" style="">visibility</span>
+</button>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" style="">Must be at least 8 characters with one number.</p>
+            </div>
+            <!-- Terms & Conditions -->
+            <div class="flex items-start gap-3 py-2">
+                <input class="mt-1 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer" id="terms" type="checkbox">
+                <label class="text-sm text-slate-600 dark:text-slate-400 leading-tight" for="terms" style="">
+                    By signing up, I agree to the <a class="text-primary font-semibold hover:underline" href="#" style="">Terms of Service</a> and <a class="text-primary font-semibold hover:underline" href="#" style="">Privacy Policy</a>.
+                </label>
+            </div>
+            <!-- Submit Button -->
+            <a href="../sign_up_success/code.html" class="mt-4 flex w-full items-center justify-center rounded-lg bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/20 active:scale-[0.98] transition-all" style="">
+                Sign Up
+            </a>
+            <!-- Login Link -->
+            <div class="mt-4 text-center">
+                <p class="text-slate-600 dark:text-slate-400" style="">
+                    Already have an account?
+                    <a class="text-primary font-bold hover:underline ml-1" href="../login_screen/code.html" style="">Log In</a>
+                </p>
+            </div>
+        </form>
+        <!-- Illustration / Subtle Branding -->
+        <div class="mt-auto flex flex-col items-center justify-center p-8 opacity-20">
+            <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-5xl" style="">diversity_3</span>
+            </div>
+            <p class="text-xs mt-2 font-bold tracking-widest text-primary uppercase" style="">Ashesi University</p>
+        </div>
+    </div>
+</body>
+
+</html>

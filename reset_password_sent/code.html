@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Reset Link Sent - Ashesi DASS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center">
+    <div class="relative flex h-full min-h-screen w-full max-w-md flex-col bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden mx-auto">
+
+        <!-- Top Bar -->
+        <div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between">
+            <a href="../login_screen/code.html" class="text-slate-700 dark:text-slate-100 flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </a>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight flex-1 text-center pr-12">Check Your Email</h2>
+        </div>
+
+        <!-- Success Visual -->
+        <div class="flex flex-col items-center justify-center pt-10 pb-6 px-8">
+            <div class="relative">
+                <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20 rounded-full scale-150 blur-xl"></div>
+                <div class="relative bg-primary text-white rounded-full p-8 flex items-center justify-center">
+                    <span class="material-symbols-outlined" style="font-size: 64px; font-variation-settings: 'FILL' 1;">mark_email_read</span>
+                </div>
+            </div>
+
+            <!-- Animated dots -->
+            <div class="flex gap-2 mt-8">
+                <div class="w-2 h-2 bg-primary/30 rounded-full"></div>
+                <div class="w-2 h-2 bg-primary/60 rounded-full"></div>
+                <div class="w-2 h-2 bg-primary rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="px-6 text-center space-y-4">
+            <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight tracking-tight">Reset Link Sent!</h1>
+            <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                We've sent a password reset link to <span class="font-bold text-primary dark:text-blue-400">username@ashesi.edu.gh</span>
+            </p>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Please check your email inbox and click the link to reset your password. The link will expire in 30 minutes.
+            </p>
+        </div>
+
+        <!-- Info Box -->
+        <div class="mx-6 mt-6 bg-blue-50 dark:bg-primary/10 border border-blue-100 dark:border-primary/20 rounded-xl p-4">
+            <div class="flex gap-3">
+                <span class="material-symbols-outlined text-primary shrink-0 mt-0.5">info</span>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Didn't receive the email? Check your spam folder or make sure you used the correct Ashesi email address.
+                </p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-auto flex justify-center pb-10">
+            <div class="flex flex-1 gap-4 max-w-[480px] flex-col items-stretch px-6 py-6">
+                <a href="../login_screen/code.html" class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-base font-bold w-full shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to Sign In
+                </a>
+                <button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-14 px-5 bg-primary/10 dark:bg-primary/20 text-primary dark:text-slate-100 text-base font-bold w-full hover:bg-primary/20 transition-colors"
+                    onclick="alert('Reset email resent!')">
+        <span class="material-symbols-outlined">refresh</span>
+        Resend Email
+      </button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
