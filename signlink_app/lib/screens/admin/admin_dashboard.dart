@@ -46,6 +46,25 @@ class _AdminDashboardState extends State<AdminDashboard> {
         leading: UserAvatar(name: user.fullName, imageUrl: user.profilePhoto, radius: 18),
         actions: [
           AppBarAction(icon: Icons.notifications_outlined, onPressed: () => Navigator.pushNamed(context, AppRoutes.notifications)),
+          AppBarAction(
+            icon: Icons.logout_rounded,
+            onPressed: () async {
+              final confirmed = await showDialog<bool>(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('Sign Out'),
+                  content: const Text('Are you sure you want to sign out?'),
+                  actions: [
+                    TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+                    TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Sign Out')),
+                  ],
+                ),
+              );
+              if (confirmed == true && context.mounted) {
+                await context.read<AuthProvider>().logout();
+              }
+            },
+          ),
         ],
       ),
       body: SingleChildScrollView(

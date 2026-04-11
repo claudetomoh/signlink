@@ -125,6 +125,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 28),
                 PrimaryButton(label: AppStrings.login, onPressed: _login, isLoading: auth.isLoading),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account? ", style: Theme.of(context).textTheme.bodyMedium),
+                    GestureDetector(
+                      onTap: () => Navigator.pushNamed(context, AppRoutes.signUp),
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 // Hint for demo
                 Container(
@@ -145,19 +159,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 28),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account? ", style: Theme.of(context).textTheme.bodyMedium),
-                    GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, AppRoutes.signUp),
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

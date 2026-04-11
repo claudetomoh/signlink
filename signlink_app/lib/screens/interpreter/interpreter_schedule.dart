@@ -21,8 +21,11 @@ class _InterpreterScheduleState extends State<InterpreterSchedule> with SingleTi
   void initState() {
     super.initState();
     _tabs = TabController(length: 3, vsync: this);
-    final auth = context.read<AuthProvider>();
-    context.read<ScheduleProvider>().loadInterpreterSchedule(auth.currentUser?.id ?? 'interpreter1');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final auth = context.read<AuthProvider>();
+      context.read<ScheduleProvider>().loadInterpreterSchedule(auth.currentUser?.id ?? 'interpreter1');
+    });
   }
 
   @override

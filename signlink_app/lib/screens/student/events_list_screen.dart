@@ -22,7 +22,9 @@ class _EventsListScreenState extends State<EventsListScreen> with SingleTickerPr
   void initState() {
     super.initState();
     _tabs = TabController(length: 3, vsync: this);
-    context.read<EventProvider>().loadEvents();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) context.read<EventProvider>().loadEvents();
+    });
   }
 
   @override

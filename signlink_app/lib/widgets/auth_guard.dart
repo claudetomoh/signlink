@@ -69,12 +69,14 @@ class _AuthGuardState extends State<AuthGuard> {
     final auth = context.watch<AuthProvider>();
     // While the guard is evaluating, show a neutral loading indicator.
     if (!auth.isLoggedIn) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _check());
       return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }
     if (widget.allowedRoles.isNotEmpty &&
         !widget.allowedRoles.contains(auth.role)) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _check());
       return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );

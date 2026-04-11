@@ -22,10 +22,13 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    final auth = context.read<AuthProvider>();
-    context.read<ChatProvider>()
-      ..loadMessages(widget.conversationId)
-      ..markRead(widget.conversationId, auth.currentUser?.id ?? 'student1');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final auth = context.read<AuthProvider>();
+      context.read<ChatProvider>()
+        ..loadMessages(widget.conversationId)
+        ..markRead(widget.conversationId, auth.currentUser?.id ?? 'student1');
+    });
   }
 
   @override

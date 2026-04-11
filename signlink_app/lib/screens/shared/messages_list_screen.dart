@@ -18,8 +18,11 @@ class _MessagesListScreenState extends State<MessagesListScreen> {
   @override
   void initState() {
     super.initState();
-    final auth = context.read<AuthProvider>();
-    context.read<ChatProvider>().loadConversations(auth.currentUser?.id ?? 'student1');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final auth = context.read<AuthProvider>();
+      context.read<ChatProvider>().loadConversations(auth.currentUser?.id ?? 'student1');
+    });
   }
 
   @override
