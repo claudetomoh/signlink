@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Central HTTP client for the SignLink REST API.
 ///
@@ -11,11 +13,38 @@ class ApiService {
   static const String baseUrl =
       'http://169.239.251.102:280/~tomoh.ikfingeh/uploads/api';
 
-  static const _storage = FlutterSecureStorage(
+  static const _secureStorage = FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
     iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
   );
   static const _tokenKey = 'sl_api_token';
+
+  static Future<void> _writeToken(String value) async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_tokenKey, value);
+    } else {
+      await _secureStorage.write(key: _tokenKey, value: value);
+    }
+  }
+
+  static Future<String?> _readToken() async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getString(_tokenKey);
+    } else {
+      return _secureStorage.read(key: _tokenKey);
+    }
+  }
+
+  static Future<void> _deleteToken() async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_tokenKey);
+    } else {
+      await _secureStorage.delete(key: _tokenKey);
+    }
+  }
 
   String? _token;
 
@@ -28,17 +57,17 @@ class ApiService {
 
   /// Load persisted token from secure storage. Call once on app start.
   Future<void> init() async {
-    _token = await _storage.read(key: _tokenKey);
+    _token = await _readToken();
   }
 
   Future<void> setToken(String token) async {
     _token = token;
-    await _storage.write(key: _tokenKey, value: token);
+    await _writeToken(token);
   }
 
   Future<void> clearToken() async {
     _token = null;
-    await _storage.delete(key: _tokenKey);
+    await _deleteToken();
   }
 
   // ── HTTP helpers ──────────────────────────────────────────────────────────
