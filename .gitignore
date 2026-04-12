@@ -63,6 +63,24 @@ Thumbs.db
 Desktop.ini
 
 # ============================================================
+# Reports / submissions / activity files (keep off GitHub)
+# ============================================================
+*.pdf
+*.docx
+*.doc
+*.pptx
+SUBMISSION*/
+SUBMISSION - Activity */
+SignLink_*_Report.md
+*_Report.md
+*_Implementation_*.md
+
+# Backend probe / debug scripts
+signlink_app/backend/probe*.php
+signlink_app/backend/debug*.php
+signlink_app/backend/setup*.php
+
+# ============================================================
 # Logs / deployment artefacts
 # ============================================================
 deploy_result.txt
