@@ -139,25 +139,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                // Hint for demo
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.06),
-                    borderRadius: BorderRadius.circular(AppSizes.radiusMD),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Demo accounts', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12, color: AppColors.primary)),
-                      const SizedBox(height: 4),
-                      _demoHint('Student', 'alex.johnson@ashesi.edu.gh'),
-                      _demoHint('Interpreter', 'kofi.mensah@ashesi.edu.gh'),
-                      _demoHint('Admin', 'sarah.asante@ashesi.edu.gh'),
-                    ],
-                  ),
-                ),
                 const SizedBox(height: 28),
               ],
             ),
@@ -167,17 +148,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _demoHint(String role, String email) => Padding(
-        padding: const EdgeInsets.only(top: 2),
-        child: GestureDetector(
-          onTap: () {
-            _emailCtrl.text = email;
-            _passwordCtrl.text = 'Password1!';
-          },
-          child: Text(
-            '$role: $email',
-            style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
-          ),
-        ),
-      );
 }
