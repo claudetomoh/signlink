@@ -25,9 +25,16 @@ class UserProvider extends ChangeNotifier {
       if (role != null && role.isNotEmpty) params['role'] = role;
       final data = await _api.get('/users/list.php', params: params.isEmpty ? null : params);
       final list = data['users'] as List<dynamic>;
-      _users = list
+      final loaded = list
           .map((u) => UserModel.fromJson(u as Map<String, dynamic>))
           .toList();
+      if (role != null && role.isNotEmpty) {
+        // Merge: keep users of other roles already in list; replace only this role.
+        final others = _users.where((u) => u.role != role).toList();
+        _users = [...others, ...loaded];
+      } else {
+        _users = loaded;
+      }
     } catch (e) {
       _error = 'Failed to load users.';
     }

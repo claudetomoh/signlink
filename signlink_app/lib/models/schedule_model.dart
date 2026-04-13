@@ -1,6 +1,7 @@
 class ScheduleModel {
   final String id;
   final String studentId;
+  final String? studentName;
   final String? interpreterId;
   final String courseName;
   final String courseCode;
@@ -8,13 +9,14 @@ class ScheduleModel {
   final DateTime scheduleDate;
   final DateTime startTime;
   final DateTime endTime;
-  final String status; // 'pending' | 'confirmed' | 'cancelled' | 'completed'
+  final String status; // 'pending' | 'approved' | 'declined' | 'completed'
   final String? interpreterName;
   final bool isRated;
 
   const ScheduleModel({
     required this.id,
     required this.studentId,
+    this.studentName,
     this.interpreterId,
     required this.courseName,
     required this.courseCode,
@@ -60,6 +62,7 @@ class ScheduleModel {
   ScheduleModel copyWith({String? status, bool? isRated}) => ScheduleModel(
         id: id,
         studentId: studentId,
+        studentName: studentName,
         interpreterId: interpreterId,
         courseName: courseName,
         courseCode: courseCode,
@@ -96,6 +99,7 @@ class ScheduleModel {
       startTime: startTime,
       endTime: startTime.add(const Duration(hours: 1)),
       status: j['status'] as String,
+      studentName: (j['student'] as Map<String, dynamic>?)?['name'] as String?,
       interpreterName:
           (j['interpreter'] as Map<String, dynamic>?)?['name'] as String?,
       isRated: (j['isRated'] as bool?) ?? (j['is_rated'] as int? ?? 0) == 1,

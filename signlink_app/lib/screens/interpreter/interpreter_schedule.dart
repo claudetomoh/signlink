@@ -39,7 +39,7 @@ class _InterpreterScheduleState extends State<InterpreterSchedule> with SingleTi
     final schedule = context.watch<ScheduleProvider>();
     final all = schedule.interpreterSchedules;
     final pending = all.where((s) => s.status == 'pending').toList();
-    final confirmed = all.where((s) => s.status == 'confirmed').toList();
+    final confirmed = all.where((s) => s.status == 'approved').toList();
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -102,7 +102,7 @@ class _ScheduleCard extends StatelessWidget {
               const SizedBox(height: 6),
               Text('${Helpers.formatTime(schedule.startTime)} - ${Helpers.formatTime(schedule.endTime)}  •  ${schedule.location}', style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
               const SizedBox(height: 4),
-              Text('Student: ${schedule.studentId}', style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+              Text('Student: ${schedule.studentName ?? schedule.studentId}', style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
               if (showActions && schedule.status == 'pending') ...[
                 const SizedBox(height: 12),
                 Row(
@@ -111,7 +111,7 @@ class _ScheduleCard extends StatelessWidget {
                       child: OutlinedButton.icon(
                         icon: const Icon(Icons.close_rounded, size: 16),
                         label: const Text('Decline'),
-                        onPressed: () => onUpdate(schedule, 'cancelled'),
+                        onPressed: () => onUpdate(schedule, 'declined'),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.error,
                           side: const BorderSide(color: AppColors.error),
@@ -124,7 +124,7 @@ class _ScheduleCard extends StatelessWidget {
                       child: ElevatedButton.icon(
                         icon: const Icon(Icons.check_rounded, size: 16),
                         label: const Text('Accept'),
-                        onPressed: () => onUpdate(schedule, 'confirmed'),
+                        onPressed: () => onUpdate(schedule, 'approved'),
                         style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 8)),
                       ),
                     ),
