@@ -2,6 +2,16 @@
 // SignLink — Shared helpers (CORS, auth middleware, response format, utilities)
 require_once __DIR__ . '/db.php';
 
+// ── Global error → JSON handler (prevents HTML 500 pages reaching the app) ───
+set_exception_handler(function (Throwable $e): void {
+    if (!headers_sent()) {
+        http_response_code(500);
+        header('Content-Type: application/json; charset=utf-8');
+    }
+    echo json_encode(['error' => $e->getMessage()]);
+    exit;
+});
+
 // ── CORS ──────────────────────────────────────────────────────────────────────
 function cors(): void
 {
@@ -40,9 +50,18 @@ function body(): array
 // ── Authentication middleware ─────────────────────────────────────────────────
 function requireAuth(): array
 {
-    $headers = function_exists('getallheaders') ? getallheaders() : [];
-    // Apache may lowercase header keys
-    $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    // Try multiple sources — Apache/mod_rewrite/CGI may put the header in
+    // different places depending on server configuration.
+    $auth = '';
+    if (function_exists('getallheaders')) {
+        $headers = getallheaders();
+        $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    }
+    if (empty($auth)) {
+        $auth = $_SERVER['HTTP_AUTHORIZATION']
+            ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+            ?? '';
+    }
     if (!preg_match('/^Bearer\s+(.+)$/i', trim($auth), $m)) {
         error('Unauthorized — missing or malformed Authorization header', 401);
     }

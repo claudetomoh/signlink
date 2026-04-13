@@ -104,7 +104,7 @@ class ScheduleProvider extends ChangeNotifier {
       notifyListeners();
       return result;
     } catch (e) {
-      _error = e.toString();
+      _error = e is ApiException ? e.message : e.toString();
       _isLoading = false;
       notifyListeners();
       return false;
