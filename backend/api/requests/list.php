@@ -62,6 +62,7 @@ $requests = array_map(static function (array $r): array {
             'email'     => $r['interpreter_email'],
             'avatarUrl' => $r['interpreter_avatar'],
         ] : null,
+        'isRated'     => (bool)($r['is_rated'] ?? 0),
     ];
 }, $rows);
 

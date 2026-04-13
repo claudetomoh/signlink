@@ -2,7 +2,7 @@
 /**
  * SignLink — One-time database setup script.
  *
- * Visit: http://169.239.251.102:280/~tomoh.ikfingeh/setup.php?key=sl_setup_2026
+ * Visit: http://169.239.251.102:280/~tomoh.ikfingeh/uploads/setup.php?key=sl_setup_2026
  *
  * IMPORTANT: Delete this file from the server after first successful run:
  *   rm /home/tomoh.ikfingeh/public_html/setup.php
@@ -59,6 +59,7 @@ $tables = [
         event_time     TIME         DEFAULT NULL,
         notes          TEXT         DEFAULT NULL,
         status         ENUM('pending','approved','declined','completed') DEFAULT 'pending',
+        is_rated       TINYINT(1)   DEFAULT 0,
         created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
         updated_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (student_id)     REFERENCES users(id) ON DELETE CASCADE,
@@ -122,6 +123,27 @@ $tables = [
         created_at      TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
         FOREIGN KEY (sender_id)       REFERENCES users(id)          ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
+
+    'interpreter_availability' => "CREATE TABLE IF NOT EXISTS interpreter_availability (
+        id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        interpreter_id  VARCHAR(36)  NOT NULL,
+        start_date      DATE         NOT NULL,
+        end_date        DATE         NOT NULL,
+        is_recurring    TINYINT(1)   DEFAULT 0,
+        recurring_days  VARCHAR(20)  DEFAULT NULL,
+        created_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+        updated_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (interpreter_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
+
+    'password_resets' => "CREATE TABLE IF NOT EXISTS password_resets (
+        id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        user_id    VARCHAR(36)  NOT NULL,
+        token      VARCHAR(64)  NOT NULL UNIQUE,
+        expires_at TIMESTAMP    NOT NULL,
+        created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
 ];
 

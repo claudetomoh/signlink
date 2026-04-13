@@ -67,13 +67,19 @@ class RequestModel {
         location: j['location'] as String,
         requestDate:
             DateTime.tryParse(j['eventDate'] as String? ?? '') ?? DateTime.now(),
-        requestTime:
-            DateTime.tryParse(j['eventTime'] as String? ?? '') ?? DateTime.now(),
+        requestTime: _parseTime(j['eventTime'] as String?),
         status: j['status'] as String,
         assignedInterpreterId: j['interpreterId'] as String?,
         notes: j['notes'] as String?,
         isRated: (j['isRated'] as bool?) ?? false,
       );
+
+  /// Parses a MySQL TIME string like "09:00:00" into a DateTime on today's date,
+  /// or falls back to DateTime.now() if parsing fails.
+  static DateTime _parseTime(String? timeStr) {
+    if (timeStr == null || timeStr.isEmpty) return DateTime.now();
+    return DateTime.tryParse('1970-01-01T$timeStr') ?? DateTime.now();
+  }
 
   bool get isPending => status == 'pending';
   bool get isApproved => status == 'approved';

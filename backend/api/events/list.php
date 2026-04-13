@@ -61,6 +61,7 @@ $events = array_map(static function (array $e): array {
         'isSignedUp'      => (bool)$e['is_signed_up_raw'],
         'imageUrl'        => $e['image_url'],
         'isPast'          => strtotime($e['event_date']) < time(),
+        'createdBy'       => $e['created_by'] ?? '',
     ];
 }, $rows);
 

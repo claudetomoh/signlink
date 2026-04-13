@@ -61,7 +61,7 @@ $interp = $stmt->fetch();
 // Count how many completed requests this interpreter has (as proxy for rating count)
 $stmt = $db->prepare(
     "SELECT COUNT(*) as cnt FROM interpreter_requests
-     WHERE interpreter_id = ? AND status = 'completed' AND (is_rated IS NULL OR is_rated = 1)"
+     WHERE interpreter_id = ? AND status = 'completed' AND is_rated = 1"
 );
 try { $stmt->execute([$interpreterId]); $row = $stmt->fetch(); $ratingCount = (int)($row['cnt'] ?? 0); }
 catch (Throwable $e) { $ratingCount = 0; }

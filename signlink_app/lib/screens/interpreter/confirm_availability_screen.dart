@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../services/api_service.dart';
 import '../../utils/constants.dart';
 import '../../widgets/primary_button.dart';
 
@@ -16,6 +17,8 @@ class _ConfirmAvailabilityScreenState extends State<ConfirmAvailabilityScreen> {
   final List<bool> _days = List.filled(7, false);
   final _dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   bool _submitted = false;
+  bool _loading  = false;
+  String? _error;
 
   Future<void> _pickDate(bool isFrom) async {
     final picked = await showDatePicker(
@@ -29,6 +32,26 @@ class _ConfirmAvailabilityScreenState extends State<ConfirmAvailabilityScreen> {
       if (isFrom) _from = picked;
       else _to = picked;
     });
+  }
+
+  Future<void> _submit() async {
+    setState(() { _loading = true; _error = null; });
+    try {
+      final selectedDays = [
+        for (int i = 0; i < 7; i++) if (_days[i]) i,
+      ];
+      await ApiService.instance.post('/availability/set.php', {
+        'startDate': '${_from!.year}-${_from!.month.toString().padLeft(2, '0')}-${_from!.day.toString().padLeft(2, '0')}',
+        'endDate':   '${_to!.year}-${_to!.month.toString().padLeft(2, '0')}-${_to!.day.toString().padLeft(2, '0')}',
+        'recurring': _recurring,
+        'days':      selectedDays,
+      });
+      if (mounted) setState(() => _submitted = true);
+    } catch (e) {
+      if (mounted) setState(() => _error = e.toString().replaceFirst('Exception: ', ''));
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
   }
 
   @override
@@ -88,9 +111,14 @@ class _ConfirmAvailabilityScreenState extends State<ConfirmAvailabilityScreen> {
                       ),
                     ],
                     const SizedBox(height: 36),
+                    if (_error != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Text(_error!, style: const TextStyle(color: AppColors.error, fontSize: 13)),
+                      ),
                     PrimaryButton(
-                      label: 'Confirm Availability',
-                      onPressed: _from == null || _to == null ? null : () => setState(() => _submitted = true),
+                      label: _loading ? 'Saving…' : 'Confirm Availability',
+                      onPressed: (_from == null || _to == null || _loading) ? null : _submit,
                     ),
                   ],
                 ),
