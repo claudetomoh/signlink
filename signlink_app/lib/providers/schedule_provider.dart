@@ -100,6 +100,22 @@ class ScheduleProvider extends ChangeNotifier {
         requestType: requestType,
         notes: notes,
       );
+      if (result) {
+        // Refresh both the request list and the schedule list so the newly
+        // submitted booking is immediately visible in the student timetable.
+        try {
+          final data = await _api.get('/requests/list.php');
+          final list = data['requests'] as List<dynamic>;
+          _requests = list
+              .map((r) => RequestModel.fromJson(r as Map<String, dynamic>))
+              .toList();
+          _schedules = list
+              .map((r) => ScheduleModel.fromJson(r as Map<String, dynamic>))
+              .toList();
+        } catch (_) {
+          // Best-effort refresh — ignore errors so the submit still succeeds.
+        }
+      }
       _isLoading = false;
       notifyListeners();
       return result;
@@ -116,7 +132,7 @@ class ScheduleProvider extends ChangeNotifier {
     if (result) {
       final idx = _schedules.indexWhere((s) => s.id == scheduleId);
       if (idx != -1) {
-        // Update local state optimistically
+        _schedules = List.from(_schedules)..[idx] = _schedules[idx].copyWith(status: status);
         notifyListeners();
       }
     }

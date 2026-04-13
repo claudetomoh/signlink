@@ -57,7 +57,7 @@ class ScheduleModel {
         'is_rated': isRated ? 1 : 0,
       };
 
-  ScheduleModel copyWith({bool? isRated}) => ScheduleModel(
+  ScheduleModel copyWith({String? status, bool? isRated}) => ScheduleModel(
         id: id,
         studentId: studentId,
         interpreterId: interpreterId,
@@ -67,7 +67,7 @@ class ScheduleModel {
         scheduleDate: scheduleDate,
         startTime: startTime,
         endTime: endTime,
-        status: status,
+        status: status ?? this.status,
         interpreterName: interpreterName,
         isRated: isRated ?? this.isRated,
       );
@@ -98,7 +98,7 @@ class ScheduleModel {
       status: j['status'] as String,
       interpreterName:
           (j['interpreter'] as Map<String, dynamic>?)?['name'] as String?,
-      isRated: (j['is_rated'] as int? ?? 0) == 1,
+      isRated: (j['isRated'] as bool?) ?? (j['is_rated'] as int? ?? 0) == 1,
     );
   }
 

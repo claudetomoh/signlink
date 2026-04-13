@@ -30,6 +30,10 @@ class EventProvider extends ChangeNotifier {
     notifyListeners();
     try {
       _events = await _service.getEvents();
+      // Rebuild signed-up set from the API response so state survives reloads.
+      _signedUpEventIds
+        ..clear()
+        ..addAll(_events.where((e) => e.isSignedUp).map((e) => e.id));
     } catch (e) {
       _error = 'Failed to load events.';
     }
@@ -38,12 +42,15 @@ class EventProvider extends ChangeNotifier {
   }
 
   Future<bool> signUp(String eventId) async {
-    final result = await _service.signUpForEvent(eventId);
-    if (result) {
+    // API toggles sign-up; returns the new isSignedUp state.
+    final isNowSignedUp = await _service.signUpForEvent(eventId);
+    if (isNowSignedUp) {
       _signedUpEventIds.add(eventId);
-      notifyListeners();
+    } else {
+      _signedUpEventIds.remove(eventId);
     }
-    return result;
+    notifyListeners();
+    return isNowSignedUp;
   }
 
   Future<bool> createEvent({

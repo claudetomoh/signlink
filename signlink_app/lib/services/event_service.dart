@@ -44,8 +44,9 @@ class EventService {
   }
 
   // POST /api/events/signup.php
+  // Returns the new isSignedUp state (true = signed up, false = cancelled).
   Future<bool> signUpForEvent(String eventId) async {
-    await _api.post('/events/signup.php', {'event_id': eventId});
-    return true;
+    final data = await _api.post('/events/signup.php', {'event_id': eventId});
+    return (data['isSignedUp'] as bool?) ?? true;
   }
 }
