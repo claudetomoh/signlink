@@ -75,9 +75,12 @@ class _RequestInterpreterFlowState extends State<RequestInterpreterFlow> {
     if (ok) {
       setState(() => _step++);
     } else {
+      final errMsg = context.read<ScheduleProvider>().error;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to submit request. Please try again.'),
+        SnackBar(
+          content: Text(errMsg != null && errMsg.isNotEmpty
+              ? errMsg
+              : 'Failed to submit request. Please try again.'),
           backgroundColor: AppColors.error,
         ),
       );

@@ -49,7 +49,8 @@ class ScheduleService {
       'request_type': requestType,
       'location': location,
       'event_date': date.toIso8601String().split('T').first,
-      'event_time': time.toIso8601String(),
+      'event_time':
+          '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}:00',
       if (notes != null) 'notes': notes,
     });
     return true;

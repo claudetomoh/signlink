@@ -227,7 +227,7 @@ class MockDataService {
         ConversationModel(
           id: 'conv-03',
           participantId: 'admin-01',
-          participantName: 'DASS Office',
+          participantName: 'SignLink Office',
           participantRole: 'admin',
           lastMessage: 'Please upload your updated timetable.',
           lastMessageAt: DateTime.now().subtract(const Duration(days: 1)),

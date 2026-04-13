@@ -37,7 +37,7 @@ class SignUpSuccessScreen extends StatelessWidget {
                 ).animate().fadeIn(delay: 300.ms, duration: 300.ms).slideY(begin: 0.15, end: 0, delay: 300.ms, duration: 300.ms),
                 const SizedBox(height: 12),
                 Text(
-                  'Your ${AppStrings.appName} account has been created successfully. Welcome to the DASS community!',
+                  'Your ${AppStrings.appName} account has been created successfully. Welcome to the SignLink community!',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary, height: 1.6),
                   textAlign: TextAlign.center,
                 ).animate().fadeIn(delay: 400.ms, duration: 300.ms).slideY(begin: 0.15, end: 0, delay: 400.ms, duration: 300.ms),

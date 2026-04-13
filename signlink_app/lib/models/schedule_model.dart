@@ -73,24 +73,34 @@ class ScheduleModel {
       );
 
   /// Construct from the REST API JSON response (requests used as schedule source).
-  factory ScheduleModel.fromJson(Map<String, dynamic> j) => ScheduleModel(
-        id: j['id'] as String,
-        studentId: j['studentId'] as String,
-        interpreterId: j['interpreterId'] as String?,
-        courseName: j['eventTitle'] as String,
-        courseCode: (j['requestType'] as String?) ?? '',
-        location: j['location'] as String,
-        scheduleDate:
-            DateTime.tryParse(j['eventDate'] as String? ?? '') ?? DateTime.now(),
-        startTime:
-            DateTime.tryParse(j['eventTime'] as String? ?? '') ?? DateTime.now(),
-        endTime:
-            DateTime.tryParse(j['eventTime'] as String? ?? '') ?? DateTime.now(),
-        status: j['status'] as String,
-        interpreterName:
-            (j['interpreter'] as Map<String, dynamic>?)?['name'] as String?,
-        isRated: (j['is_rated'] as int? ?? 0) == 1,
-      );
+  factory ScheduleModel.fromJson(Map<String, dynamic> j) {
+    // event_date is DATE (YYYY-MM-DD), event_time is TIME (HH:MM:SS).
+    // Combine them into a full DateTime for startTime/endTime.
+    final dateStr = j['eventDate'] as String? ?? '';
+    final timeStr = j['eventTime'] as String? ?? '';
+    final scheduleDate = DateTime.tryParse(dateStr) ?? DateTime.now();
+    DateTime startTime;
+    if (dateStr.isNotEmpty && timeStr.isNotEmpty) {
+      startTime = DateTime.tryParse('${dateStr}T$timeStr') ?? scheduleDate;
+    } else {
+      startTime = scheduleDate;
+    }
+    return ScheduleModel(
+      id: j['id'] as String,
+      studentId: j['studentId'] as String,
+      interpreterId: j['interpreterId'] as String?,
+      courseName: j['eventTitle'] as String,
+      courseCode: (j['requestType'] as String?) ?? '',
+      location: j['location'] as String,
+      scheduleDate: scheduleDate,
+      startTime: startTime,
+      endTime: startTime.add(const Duration(hours: 1)),
+      status: j['status'] as String,
+      interpreterName:
+          (j['interpreter'] as Map<String, dynamic>?)?['name'] as String?,
+      isRated: (j['is_rated'] as int? ?? 0) == 1,
+    );
+  }
 
   bool get isToday {
     final now = DateTime.now();

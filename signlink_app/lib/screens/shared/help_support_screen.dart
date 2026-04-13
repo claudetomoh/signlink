@@ -6,12 +6,12 @@ class HelpSupportScreen extends StatelessWidget {
   const HelpSupportScreen({super.key});
 
   static const _faqs = [
-    _FAQ(q: 'How do I request a sign language interpreter?', a: 'Go to your dashboard and tap "Request Interpreter". Fill in the request type, event details, and preferred date/time. Your request will be reviewed by DASS admin.'),
-    _FAQ(q: 'How long does it take to assign an interpreter?', a: 'Requests are typically processed within 24-48 hours. For urgent needs, please contact DASS directly at dass@ashesi.edu.gh.'),
+    _FAQ(q: 'How do I request a sign language interpreter?', a: 'Go to your dashboard and tap "Request Interpreter". Fill in the request type, event details, and preferred date/time. Your request will be reviewed by the SignLink admin.'),
+    _FAQ(q: 'How long does it take to assign an interpreter?', a: 'Requests are typically processed within 24-48 hours. For urgent needs, please contact SignLink directly at dass@ashesi.edu.gh.'),
     _FAQ(q: 'Can I cancel or modify a request?', a: 'Yes. Go to My Schedule or My Requests and tap the request you want to modify. Changes can be made up to 24 hours before the event.'),
     _FAQ(q: 'How do I upload my timetable?', a: 'Tap "Upload Timetable" on your dashboard. You can take a photo, select from gallery, or upload a PDF/Excel file.'),
     _FAQ(q: 'Can I chat with my assigned interpreter?', a: 'Yes, once an interpreter is assigned, a message thread will appear in your Messages tab. You can also initiate a video call.'),
-    _FAQ(q: 'What if my interpreter doesn\'t show up?', a: 'Contact DASS immediately via the help section or call the DASS office. We will arrange an alternate interpreter as quickly as possible.'),
+    _FAQ(q: 'What if my interpreter doesn\'t show up?', a: 'Contact SignLink immediately via the help section or call the SignLink office. We will arrange an alternate interpreter as quickly as possible.'),
     _FAQ(q: 'Is my information private?', a: 'Yes. All student disability records are kept strictly confidential in accordance with Ashesi University\'s privacy policy.'),
   ];
 
@@ -35,7 +35,7 @@ class HelpSupportScreen extends StatelessWidget {
                   const Row(children: [
                     Icon(Icons.support_agent_rounded, color: Colors.white, size: 28),
                     SizedBox(width: 10),
-                    Text('Contact DASS', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800, fontFamily: 'Inter')),
+                    Text('Contact SignLink', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800, fontFamily: 'Inter')),
                   ]),
                   const SizedBox(height: 12),
                   _ContactRow(icon: Icons.email_outlined, text: 'dass@ashesi.edu.gh', url: 'mailto:dass@ashesi.edu.gh'),
