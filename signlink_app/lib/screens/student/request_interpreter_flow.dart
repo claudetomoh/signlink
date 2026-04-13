@@ -67,6 +67,7 @@ class _RequestInterpreterFlowState extends State<RequestInterpreterFlow> {
       location: _location,
       date: _date!,
       time: requestDateTime,
+      requestType: _requestType.isEmpty ? 'class' : _requestType,
       notes: _notes.isEmpty ? null : _notes,
     );
     if (!mounted) return;

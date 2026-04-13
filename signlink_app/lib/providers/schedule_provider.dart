@@ -85,21 +85,30 @@ class ScheduleProvider extends ChangeNotifier {
     required String location,
     required DateTime date,
     required DateTime time,
+    String requestType = 'class',
     String? notes,
   }) async {
     _isLoading = true;
     notifyListeners();
-    final result = await _service.submitInterpreterRequest(
-      studentId: studentId,
-      courseName: courseName,
-      location: location,
-      date: date,
-      time: time,
-      notes: notes,
-    );
-    _isLoading = false;
-    notifyListeners();
-    return result;
+    try {
+      final result = await _service.submitInterpreterRequest(
+        studentId: studentId,
+        courseName: courseName,
+        location: location,
+        date: date,
+        time: time,
+        requestType: requestType,
+        notes: notes,
+      );
+      _isLoading = false;
+      notifyListeners();
+      return result;
+    } catch (e) {
+      _error = e.toString();
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 
   Future<bool> updateStatus(String scheduleId, String status) async {

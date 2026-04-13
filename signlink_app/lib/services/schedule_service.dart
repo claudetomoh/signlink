@@ -41,11 +41,12 @@ class ScheduleService {
     required String location,
     required DateTime date,
     required DateTime time,
+    String requestType = 'class',
     String? notes,
   }) async {
     await _api.post('/requests/create.php', {
       'event_title': courseName,
-      'request_type': 'class',
+      'request_type': requestType,
       'location': location,
       'event_date': date.toIso8601String().split('T').first,
       'event_time': time.toIso8601String(),

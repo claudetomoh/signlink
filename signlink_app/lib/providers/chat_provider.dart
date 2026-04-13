@@ -21,7 +21,11 @@ class ChatProvider extends ChangeNotifier {
   Future<void> loadConversations(String userId) async {
     _isLoading = true;
     notifyListeners();
-    _conversations = await _service.getConversations(userId);
+    try {
+      _conversations = await _service.getConversations(userId);
+    } catch (_) {
+      _conversations = [];
+    }
     _isLoading = false;
     notifyListeners();
   }
@@ -30,7 +34,11 @@ class ChatProvider extends ChangeNotifier {
     _isLoading = true;
     _activeConversationId = conversationId;
     notifyListeners();
-    _messages = await _service.getMessages(conversationId);
+    try {
+      _messages = await _service.getMessages(conversationId);
+    } catch (_) {
+      _messages = [];
+    }
     _isLoading = false;
     notifyListeners();
   }
