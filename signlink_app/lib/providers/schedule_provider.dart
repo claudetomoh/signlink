@@ -34,7 +34,8 @@ class ScheduleProvider extends ChangeNotifier {
       ..sort((a, b) => a.scheduleDate.compareTo(b.scheduleDate));
   }
 
-  final _service = ScheduleService();
+  final ScheduleService _service;
+  ScheduleProvider({ScheduleService? service}) : _service = service ?? ScheduleService();
 
   Future<void> loadStudentSchedule(String studentId) async {
     _isLoading = true;

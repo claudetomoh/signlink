@@ -22,7 +22,8 @@ class EventProvider extends ChangeNotifier {
 
   bool isSignedUp(String eventId) => _signedUpEventIds.contains(eventId);
 
-  final _service = EventService();
+  final EventService _service;
+  EventProvider({EventService? service}) : _service = service ?? EventService();
 
   Future<void> loadEvents() async {
     _isLoading = true;

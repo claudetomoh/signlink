@@ -16,7 +16,8 @@ class ChatProvider extends ChangeNotifier {
   int get totalUnread =>
       _conversations.fold(0, (sum, c) => sum + c.unreadCount);
 
-  final _service = ChatService();
+  final ChatService _service;
+  ChatProvider({ChatService? service}) : _service = service ?? ChatService();
 
   Future<void> loadConversations(String userId) async {
     _isLoading = true;
