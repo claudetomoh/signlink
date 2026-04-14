@@ -35,11 +35,25 @@ class StudentProfile extends StatelessWidget {
     );
     if (source == null) return;
     final picker = ImagePicker();
-    final XFile? image =
-        await picker.pickImage(source: source, imageQuality: 80);
-    if (image == null) return;
-    // ignore: use_build_context_synchronously
-    if (context.mounted) await context.read<AuthProvider>().uploadProfilePhoto(image.path);
+    try {
+      final XFile? image =
+          await picker.pickImage(source: source, imageQuality: 80);
+      if (image == null) return;
+      // ignore: use_build_context_synchronously
+      if (context.mounted) await context.read<AuthProvider>().uploadProfilePhoto(image.path);
+    } catch (e) {
+      // ignore: use_build_context_synchronously
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+              e.toString().contains('camera_access_denied') ||
+                      e.toString().contains('photo_access_denied')
+                  ? 'Permission denied. Please allow access in Settings.'
+                  : 'Could not pick image. Please try again.'),
+          backgroundColor: Colors.red,
+        ));
+      }
+    }
   }
 
   @override

@@ -24,23 +24,46 @@ class _UploadTimetableScreenState extends State<UploadTimetableScreen> {
 
   Future<void> _pickFromCamera() async {
     final picker = ImagePicker();
-    final XFile? photo = await picker.pickImage(
-      source: ImageSource.camera,
-      imageQuality: 85,     // compress slightly to save storage
-      preferredCameraDevice: CameraDevice.rear,
-    );
-    if (photo == null) return;
-    _applyPick(photo.path, photo.name, isImage: true);
+    try {
+      final XFile? photo = await picker.pickImage(
+        source: ImageSource.camera,
+        imageQuality: 85,
+        preferredCameraDevice: CameraDevice.rear,
+      );
+      if (photo == null) return;
+      _applyPick(photo.path, photo.name, isImage: true);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            e.toString().contains('camera_access_denied') ||
+                    e.toString().contains('photo_access_denied')
+                ? 'Camera permission denied. Please allow it in Settings.'
+                : 'Could not open camera. Please try again.'),
+        backgroundColor: Colors.red,
+      ));
+    }
   }
 
   Future<void> _pickFromGallery() async {
     final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 85,
-    );
-    if (image == null) return;
-    _applyPick(image.path, image.name, isImage: true);
+    try {
+      final XFile? image = await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 85,
+      );
+      if (image == null) return;
+      _applyPick(image.path, image.name, isImage: true);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            e.toString().contains('photo_access_denied')
+                ? 'Gallery permission denied. Please allow it in Settings.'
+                : 'Could not open gallery. Please try again.'),
+        backgroundColor: Colors.red,
+      ));
+    }
   }
 
   // ── File picker (PDF / Excel) ─────────────────────────────────────────────
