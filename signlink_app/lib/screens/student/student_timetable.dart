@@ -22,8 +22,11 @@ class _StudentTimetableState extends State<StudentTimetable> with SingleTickerPr
   void initState() {
     super.initState();
     _tabs = TabController(length: 3, vsync: this);
-    final auth = context.read<AuthProvider>();
-    context.read<ScheduleProvider>().loadStudentSchedule(auth.currentUser?.id ?? 'student1');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final auth = context.read<AuthProvider>();
+      context.read<ScheduleProvider>().loadStudentSchedule(auth.currentUser?.id ?? 'student1');
+    });
   }
 
   @override
@@ -54,7 +57,27 @@ class _StudentTimetableState extends State<StudentTimetable> with SingleTickerPr
       ),
       body: schedule.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : TabBarView(
+          : schedule.error != null
+              ? Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.wifi_off_rounded, size: 56, color: AppColors.border),
+                      const SizedBox(height: 12),
+                      Text(schedule.error!, style: const TextStyle(color: AppColors.textSecondary)),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          final auth = context.read<AuthProvider>();
+                          context.read<ScheduleProvider>().loadStudentSchedule(auth.currentUser?.id ?? 'student1');
+                        },
+                        icon: const Icon(Icons.refresh_rounded),
+                        label: const Text('Retry'),
+                      ),
+                    ],
+                  ),
+                )
+              : TabBarView(
               controller: _tabs,
               children: [
                 _ScheduleList(items: today, emptyMessage: 'No classes today'),
