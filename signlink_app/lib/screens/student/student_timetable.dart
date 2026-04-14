@@ -127,7 +127,7 @@ class _ScheduleTile extends StatelessWidget {
                 const SizedBox(height: 4),
                 _Row(icon: Icons.person_rounded, text: 'Interpreter: ${schedule.interpreterName ?? ""}', color: AppColors.success),
               ],
-              if (!schedule.hasInterpreter && schedule.status != 'cancelled') ...[
+              if (!schedule.hasInterpreter && schedule.status != 'pending') ...[
                 const SizedBox(height: 12),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, AppRoutes.requestStep1),

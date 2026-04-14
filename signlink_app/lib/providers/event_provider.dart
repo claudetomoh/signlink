@@ -42,15 +42,21 @@ class EventProvider extends ChangeNotifier {
   }
 
   Future<bool> signUp(String eventId) async {
-    // API toggles sign-up; returns the new isSignedUp state.
-    final isNowSignedUp = await _service.signUpForEvent(eventId);
-    if (isNowSignedUp) {
-      _signedUpEventIds.add(eventId);
-    } else {
-      _signedUpEventIds.remove(eventId);
+    try {
+      // API toggles sign-up; returns the new isSignedUp state.
+      final isNowSignedUp = await _service.signUpForEvent(eventId);
+      if (isNowSignedUp) {
+        _signedUpEventIds.add(eventId);
+      } else {
+        _signedUpEventIds.remove(eventId);
+      }
+      notifyListeners();
+      return isNowSignedUp;
+    } catch (e) {
+      _error = 'Failed to update sign-up. Please try again.';
+      notifyListeners();
+      return false;
     }
-    notifyListeners();
-    return isNowSignedUp;
   }
 
   Future<bool> createEvent({
