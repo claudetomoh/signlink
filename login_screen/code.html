@@ -90,11 +90,9 @@
                     </div>
                     <input class="block w-full h-14 pl-11 pr-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base outline-none"
                         id="password" name="password" placeholder="Enter your password" type="password">
-                    <button class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" type="button" style="">
-<span class="material-symbols-outlined text-[20px]" style="">
-                            visibility
-                        </span>
-</button>
+                    <button class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" type="button" onclick="togglePasswordVisibility()">
+                        <span class="material-symbols-outlined text-[20px]" id="togglePwIcon">visibility</span>
+                    </button>
                 </div>
             </div>
             <!-- Remember Me -->
@@ -129,6 +127,30 @@
     <script>
         const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
 
+        function showLoginError(msg) {
+            const err = document.getElementById('loginError');
+            err.textContent = msg;
+            err.classList.remove('hidden');
+        }
+
+        function resetLoginBtn() {
+            document.getElementById('loginBtn').disabled = false;
+            document.getElementById('loginLabel').textContent = 'Sign In';
+            document.getElementById('loginIcon').textContent = 'arrow_forward';
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('togglePwIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
         async function handleLogin(e) {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
@@ -136,15 +158,16 @@
             const btn = document.getElementById('loginBtn');
             const label = document.getElementById('loginLabel');
             const icon = document.getElementById('loginIcon');
-            const err = document.getElementById('loginError');
 
-            err.classList.add('hidden');
+            document.getElementById('loginError').classList.add('hidden');
             btn.disabled = true;
             label.textContent = 'Signing in…';
             icon.textContent = 'hourglass_top';
 
+            // Step 1 — network request
+            let res;
             try {
-                const res = await fetch(`${BASE_URL}/api/auth/login.php`, {
+                res = await fetch(`${BASE_URL}/api/auth/login.php`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -154,23 +177,37 @@
                         password
                     }),
                 });
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.error || 'Login failed');
-
-                localStorage.setItem('sl_token', data.token);
-                localStorage.setItem('sl_user', JSON.stringify(data.user));
-
-                const role = data.user.role;
-                if (role === 'admin') location.href = '../admin_dashboard/code.html';
-                else if (role === 'interpreter') location.href = '../interpreter_dashboard/code.html';
-                else location.href = '../student_dashboard_1/code.html';
-            } catch (ex) {
-                err.textContent = ex.message;
-                err.classList.remove('hidden');
-                btn.disabled = false;
-                label.textContent = 'Sign In';
-                icon.textContent = 'arrow_forward';
+            } catch {
+                showLoginError('Unable to reach the server. Please check your internet connection and try again.');
+                resetLoginBtn();
+                return;
             }
+
+            // Step 2 — parse JSON (server always returns JSON, but guard anyway)
+            let data;
+            try {
+                data = await res.json();
+            } catch {
+                showLoginError(`Server error (${res.status}). Please try again later.`);
+                resetLoginBtn();
+                return;
+            }
+
+            // Step 3 — HTTP error (API returned an error message)
+            if (!res.ok) {
+                showLoginError(data.error || `Login failed (${res.status}). Please try again.`);
+                resetLoginBtn();
+                return;
+            }
+
+            // Success — store session and redirect by role
+            localStorage.setItem('sl_token', data.token);
+            localStorage.setItem('sl_user', JSON.stringify(data.user));
+
+            const role = data.user ? .role;
+            if (role === 'admin') location.href = '../admin_dashboard/code.html';
+            else if (role === 'interpreter') location.href = '../interpreter_dashboard/code.html';
+            else location.href = '../student_dashboard_1/code.html';
         }
     </script>
 </body>

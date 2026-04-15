@@ -59,7 +59,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Welcome back</p>
-                    <h2 class="text-lg font-bold leading-tight text-primary dark:text-white">Hello, Kofi!</h2>
+                    <h2 class="text-lg font-bold leading-tight text-primary dark:text-white">Hello, <span id="welcomeName">Interpreter</span>!</h2>
                 </div>
             </div>
             <div class="relative">
@@ -203,6 +203,29 @@
             </a>
         </div>
     </nav>
+
+    <script>
+        // Auth guard — redirect to login if not logged in as interpreter
+        (function() {
+            const token = localStorage.getItem('sl_token');
+            const userRaw = localStorage.getItem('sl_user');
+            if (!token || !userRaw) {
+                location.href = '../login_screen/code.html';
+                return;
+            }
+            try {
+                const user = JSON.parse(userRaw);
+                if (user.role !== 'interpreter') {
+                    location.href = '../login_screen/code.html';
+                    return;
+                }
+                const firstName = (user.name || 'Interpreter').split(' ')[0];
+                document.getElementById('welcomeName').textContent = firstName;
+            } catch {
+                location.href = '../login_screen/code.html';
+            }
+        })();
+    </script>
 </body>
 
 </html>
