@@ -75,9 +75,11 @@
             </div>
 
             <!-- Send Reset Link Button -->
-            <a href="../reset_password_sent/code.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-primary h-14 text-base font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all">
-                <span class="material-symbols-outlined">send</span> Send Reset Link
-            </a>
+            <div id="fpError" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3"></div>
+            <button id="fpBtn" type="button" onclick="handleForgotPassword()" class="mt-4 w-full flex items-center justify-center gap-2 rounded-lg bg-primary h-14 text-base font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+                <span class="material-symbols-outlined" id="fpIcon">send</span>
+                <span id="fpLabel">Send Reset Link</span>
+            </button>
 
             <!-- Back to Login -->
             <div class="text-center mt-2">
@@ -116,6 +118,47 @@
         </div>
 
     </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        async function handleForgotPassword() {
+            const email = document.getElementById('email').value.trim();
+            const btn = document.getElementById('fpBtn');
+            const label = document.getElementById('fpLabel');
+            const icon = document.getElementById('fpIcon');
+            const err = document.getElementById('fpError');
+
+            err.classList.add('hidden');
+
+            if (!email) {
+                err.textContent = 'Please enter your email address.';
+                err.classList.remove('hidden');
+                return;
+            }
+
+            btn.disabled = true;
+            label.textContent = 'Sending…';
+            icon.textContent = 'hourglass_top';
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/auth/forgot_password.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email
+                    }),
+                });
+                // API always returns success to prevent enumeration (OWASP A07)
+                location.href = '../reset_password_sent/code.html';
+            } catch (ex) {
+                // Network error — still navigate to prevent enumeration
+                location.href = '../reset_password_sent/code.html';
+            }
+        }
+    </script>
 </body>
 
 </html>

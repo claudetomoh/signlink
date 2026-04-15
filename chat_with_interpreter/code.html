@@ -139,8 +139,8 @@
                 <button class="p-2 text-primary/60 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">attach_file</span>
 </button>
-                <input class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] text-slate-700 dark:text-slate-200 placeholder-slate-400 py-2" placeholder="Type a message..." type="text" />
-                <button class="bg-primary text-white size-10 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+                <input id="chatInput" class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] text-slate-700 dark:text-slate-200 placeholder-slate-400 py-2" placeholder="Type a message..." type="text" onkeydown="if(event.key==='Enter')sendMessage()" />
+                <button id="sendBtn" onclick="sendMessage()" class="bg-primary text-white size-10 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-95 transition-transform">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
 </button>
             </div>
@@ -148,6 +148,86 @@
             <div class="w-24 h-1 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mt-4 mb-1"></div>
         </footer>
     </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        // Get conversationId from URL param (?conv=ID) or fall back to 1 for demo
+        const params = new URLSearchParams(location.search);
+        const CONV_ID = params.get('conv') || '1';
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                location.href = '../login_screen/code.html';
+                return;
+            }
+
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = true;
+            input.value = '';
+
+            // Optimistically append message to UI
+            appendMessage(text, true);
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/messages/send.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                    },
+                    body: JSON.stringify({
+                        conversationId: CONV_ID,
+                        text
+                    }),
+                });
+                if (!res.ok) {
+                    const data = await res.json();
+                    console.error('Send error:', data.error);
+                }
+            } catch (ex) {
+                console.error('Send failed:', ex);
+            } finally {
+                btn.disabled = false;
+                input.focus();
+            }
+        }
+
+        function appendMessage(text, isSent) {
+            const main = document.querySelector('main');
+            if (!main) return;
+            const user = JSON.parse(localStorage.getItem('sl_user') || '{}');
+            const wrap = document.createElement('div');
+            wrap.className = isSent ?
+                'flex flex-col items-end gap-1 px-4 mb-4' :
+                'flex flex-col items-start gap-1 px-4 mb-4';
+            const now = new Date();
+            const time = now.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            wrap.innerHTML = `
+                <div class="max-w-[78%] ${
+                    isSent
+                        ? 'bg-primary text-white rounded-2xl rounded-br-sm'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-2xl rounded-bl-sm'
+                } px-4 py-2.5 shadow-sm">
+                    <p class="text-[15px] leading-relaxed">${escapeHtml(text)}</p>
+                </div>
+                <span class="text-[11px] text-slate-400">${time}</span>`;
+            main.appendChild(wrap);
+            main.scrollTop = main.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+    </script>
 </body>
 
 </html>

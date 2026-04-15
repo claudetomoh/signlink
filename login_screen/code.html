@@ -58,7 +58,7 @@
             <p class="text-slate-500 dark:text-slate-400 text-center" style="">Data Analytics &amp; Student Support</p>
         </div>
         <!-- Form Section -->
-        <form class="space-y-6" onsubmit="return false;">
+        <form class="space-y-6" onsubmit="handleLogin(event);">
             <!-- Email Field -->
             <div class="flex flex-col gap-2">
                 <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold leading-none" for="email" style="">
@@ -102,10 +102,12 @@
                 <input class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary" id="remember" type="checkbox">
                 <label class="ml-2 text-sm text-slate-600 dark:text-slate-400" for="remember" style="">Remember this device</label>
             </div>
+            <!-- Error Banner -->
+            <div id="loginError" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3"></div>
             <!-- Sign In Button -->
-            <button class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2" style="">
-                Sign In
-                <span class="material-symbols-outlined" style="">
+            <button id="loginBtn" class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed" style="">
+                <span id="loginLabel">Sign In</span>
+                <span class="material-symbols-outlined" id="loginIcon" style="">
                     arrow_forward
                 </span>
 </button>
@@ -123,6 +125,54 @@
         <span class="material-symbols-outlined text-sm" style="">verified_user</span>
         <span class="text-xs font-medium uppercase tracking-widest" style="">Secure Institutional Access</span>
     </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('loginBtn');
+            const label = document.getElementById('loginLabel');
+            const icon = document.getElementById('loginIcon');
+            const err = document.getElementById('loginError');
+
+            err.classList.add('hidden');
+            btn.disabled = true;
+            label.textContent = 'Signing in…';
+            icon.textContent = 'hourglass_top';
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/auth/login.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    }),
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Login failed');
+
+                localStorage.setItem('sl_token', data.token);
+                localStorage.setItem('sl_user', JSON.stringify(data.user));
+
+                const role = data.user.role;
+                if (role === 'admin') location.href = '../admin_dashboard/code.html';
+                else if (role === 'interpreter') location.href = '../interpreter_dashboard/code.html';
+                else location.href = '../student_dashboard_1/code.html';
+            } catch (ex) {
+                err.textContent = ex.message;
+                err.classList.remove('hidden');
+                btn.disabled = false;
+                label.textContent = 'Sign In';
+                icon.textContent = 'arrow_forward';
+            }
+        }
+    </script>
 </body>
 
 </html>

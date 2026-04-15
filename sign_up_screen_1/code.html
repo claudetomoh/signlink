@@ -118,10 +118,12 @@
                     By signing up, I agree to the <a class="text-primary font-semibold hover:underline" href="#" style="">Terms of Service</a> and <a class="text-primary font-semibold hover:underline" href="#" style="">Privacy Policy</a>.
                 </label>
             </div>
+            <!-- Error Banner -->
+            <div id="signupError" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3"></div>
             <!-- Submit Button -->
-            <a href="../sign_up_success/code.html" class="mt-4 flex w-full items-center justify-center rounded-lg bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/20 active:scale-[0.98] transition-all" style="">
-                Sign Up
-            </a>
+            <button id="signupBtn" type="button" onclick="handleSignUp()" class="mt-4 w-full flex items-center justify-center rounded-lg bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/20 active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+                <span id="signupLabel">Sign Up</span>
+            </button>
             <!-- Login Link -->
             <div class="mt-4 text-center">
                 <p class="text-slate-600 dark:text-slate-400" style="">
@@ -131,6 +133,63 @@
             </div>
         </form>
         <!-- Illustration / Subtle Branding -->
+        <script>
+            const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+            async function handleSignUp() {
+                const name = document.getElementById('full_name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const role = document.querySelector('input[name="role"]:checked').value;
+                const terms = document.getElementById('terms').checked;
+                const btn = document.getElementById('signupBtn');
+                const label = document.getElementById('signupLabel');
+                const err = document.getElementById('signupError');
+
+                err.classList.add('hidden');
+
+                if (!name || !email || !password) {
+                    err.textContent = 'Please fill in all required fields.';
+                    err.classList.remove('hidden');
+                    return;
+                }
+                if (!terms) {
+                    err.textContent = 'You must agree to the Terms of Service.';
+                    err.classList.remove('hidden');
+                    return;
+                }
+
+                btn.disabled = true;
+                label.textContent = 'Creating account…';
+
+                try {
+                    const res = await fetch(`${BASE_URL}/api/auth/register.php`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            password,
+                            role
+                        }),
+                    });
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+                    localStorage.setItem('sl_token', data.token);
+                    localStorage.setItem('sl_user', JSON.stringify(data.user));
+                    location.href = '../sign_up_success/code.html';
+                } catch (ex) {
+                    err.textContent = ex.message;
+                    err.classList.remove('hidden');
+                    btn.disabled = false;
+                    label.textContent = 'Sign Up';
+                }
+            }
+        </script>
+
         <div class="mt-auto flex flex-col items-center justify-center p-8 opacity-20">
             <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center">
                 <span class="material-symbols-outlined text-primary text-5xl" style="">diversity_3</span>

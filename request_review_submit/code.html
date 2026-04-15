@@ -105,15 +105,69 @@
         </div>
         <!-- Sticky Bottom Button -->
         <div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-            <a href="../request_success/code.html" class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-primary/90 text-white text-lg font-bold leading-normal tracking-wide shadow-lg active:scale-[0.98] transition-all">
-                <span class="truncate">Submit Request</span>
-            </a>
+            <div id="rvError" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg px-3 py-2 mb-3"></div>
+            <button id="rvBtn" onclick="submitRequest()" class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-primary/90 text-white text-lg font-bold leading-normal tracking-wide shadow-lg active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+                <span class="truncate" id="rvLabel">Submit Request</span>
+            </button>
             <p class="text-center text-slate-400 dark:text-slate-500 text-xs mt-4">
                 By clicking submit, you agree to our Terms of Service
             </p>
         </div>
         <div class="h-6 bg-white dark:bg-slate-900"></div>
     </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        async function submitRequest() {
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                location.href = '../login_screen/code.html';
+                return;
+            }
+
+            const btn = document.getElementById('rvBtn');
+            const label = document.getElementById('rvLabel');
+            const err = document.getElementById('rvError');
+            const notes = document.getElementById('notes') ? document.getElementById('notes').value.trim() : '';
+
+            const saved = JSON.parse(sessionStorage.getItem('sl_request') || '{}');
+
+            const body = {
+                requestType: saved.requestType || 'campus_event',
+                eventTitle: saved.eventTitle || 'Interpretation Request',
+                location: saved.location || 'On Campus',
+                eventDate: saved.eventDate || null,
+                eventTime: saved.eventTime || null,
+                notes,
+            };
+
+            err.classList.add('hidden');
+            btn.disabled = true;
+            label.textContent = 'Submitting…';
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/requests/create.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                    },
+                    body: JSON.stringify(body),
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+                sessionStorage.removeItem('sl_request');
+                location.href = '../request_success/code.html';
+            } catch (ex) {
+                err.textContent = ex.message;
+                err.classList.remove('hidden');
+                btn.disabled = false;
+                label.textContent = 'Submit Request';
+            }
+        }
+    </script>
 </body>
 
 </html>

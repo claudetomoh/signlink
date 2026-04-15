@@ -54,7 +54,7 @@
                 </a>
                 <h1 class="text-xl font-bold text-primary dark:text-slate-100">Notifications</h1>
             </div>
-            <button class="text-xs font-bold text-primary dark:text-blue-400 hover:underline px-2 py-1">
+            <button onclick="markAllRead()" class="text-xs font-bold text-primary dark:text-blue-400 hover:underline px-2 py-1">
       Mark all read
     </button>
         </header>
@@ -197,6 +197,38 @@
         </nav>
 
     </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        async function markAllRead() {
+            const token = localStorage.getItem('sl_token');
+            if (!token) return;
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/notifications/mark_read.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                    },
+                    body: JSON.stringify({
+                        all: true
+                    }),
+                });
+                if (res.ok) {
+                    // Remove unread dots and highlighted backgrounds
+                    document.querySelectorAll('[class*="bg-primary/5"]').forEach(el => {
+                        el.classList.remove('bg-primary/5', 'dark:bg-primary/10', 'border-primary/10');
+                        el.classList.add('bg-white', 'dark:bg-slate-900', 'border-slate-100');
+                    });
+                    document.querySelectorAll('.bg-primary.rounded-full.w-2\.5').forEach(el => el.remove());
+                }
+            } catch (ex) {
+                console.error('Mark read failed:', ex);
+            }
+        }
+    </script>
 </body>
 
 </html>

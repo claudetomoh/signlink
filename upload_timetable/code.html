@@ -87,7 +87,7 @@
           <p class="text-xs text-slate-400 text-center">Supports PDF, PNG, JPG, or Excel (.xlsx)</p>
         </div>
       </label>
-                <input class="sr-only" id="timetableFile" name="timetableFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.xlsx">
+                <input class="sr-only" id="timetableFile" name="timetable" type="file" accept=".pdf,.png,.jpg,.jpeg,.xlsx">
             </div>
 
             <!-- OR Divider -->
@@ -117,17 +117,17 @@
                         <span class="material-symbols-outlined">description</span>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Timetable_Semester1.pdf</p>
-                        <p class="text-xs text-slate-500 mt-0.5">245 KB • Uploaded just now</p>
+                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate" id="uploadedFileName">—</p>
+                        <p class="text-xs text-slate-500 mt-0.5" id="uploadedFileMeta">—</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-green-600">check_circle</span>
-                        <button class="text-red-400 hover:text-red-600 transition-colors">
-            <span class="material-symbols-outlined text-[20px]">delete</span>
-          </button>
                     </div>
                 </div>
             </div>
+
+            <!-- Error state -->
+            <div class="mt-4 hidden bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-4 text-sm text-red-700 dark:text-red-300" id="errorBanner"></div>
 
             <!-- Instructions -->
             <div class="mt-8">
@@ -167,27 +167,99 @@
 
         <!-- Footer CTA -->
         <div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 py-4 max-w-md mx-auto">
-            <button class="w-full flex items-center justify-center gap-2 rounded-xl h-14 bg-primary text-white font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all" onclick="document.getElementById('timetableFile').click()">
-      <span class="material-symbols-outlined">upload</span>
-      Upload Timetable
+            <button id="submitBtn" class="w-full flex items-center justify-center gap-2 rounded-xl h-14 bg-primary text-white font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                onclick="submitUpload()">
+      <span class="material-symbols-outlined" id="submitIcon">upload</span>
+      <span id="submitLabel">Upload Timetable</span>
     </button>
         </div>
 
     </div>
 
     <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+        let selectedFile = null;
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function showFile(file) {
+            selectedFile = file;
+            document.getElementById('uploadedFileName').textContent = file.name;
+            document.getElementById('uploadedFileMeta').textContent = formatBytes(file.size) + ' • Ready to upload';
+            document.getElementById('uploadedSection').classList.remove('hidden');
+            document.getElementById('errorBanner').classList.add('hidden');
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorBanner');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
         function handleDrop(e) {
             e.preventDefault();
             document.getElementById('dropZone').classList.remove('active');
-            if (e.dataTransfer.files.length > 0) {
-                document.getElementById('uploadedSection').classList.remove('hidden');
+            if (e.dataTransfer.files.length > 0) showFile(e.dataTransfer.files[0]);
+        }
+
+        document.getElementById('timetableFile').addEventListener('change', function() {
+            if (this.files.length > 0) showFile(this.files[0]);
+        });
+
+        async function submitUpload() {
+            if (!selectedFile) {
+                document.getElementById('timetableFile').click();
+                return;
+            }
+
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                showError('You must be logged in to upload a timetable.');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const icon = document.getElementById('submitIcon');
+            const label = document.getElementById('submitLabel');
+            btn.disabled = true;
+            icon.textContent = 'hourglass_top';
+            label.textContent = 'Uploading…';
+
+            try {
+                const form = new FormData();
+                form.append('timetable', selectedFile);
+
+                const res = await fetch(`${BASE_URL}/api/timetable/upload.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: form,
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || 'Upload failed');
+                }
+
+                document.getElementById('uploadedFileMeta').textContent =
+                    formatBytes(selectedFile.size) + ' • Uploaded successfully';
+                icon.textContent = 'check_circle';
+                label.textContent = 'Uploaded!';
+                btn.classList.replace('bg-primary', 'bg-green-600');
+                btn.classList.replace('shadow-primary/20', 'shadow-green-600/20');
+            } catch (err) {
+                showError(err.message || 'Something went wrong. Please try again.');
+                btn.disabled = false;
+                icon.textContent = 'upload';
+                label.textContent = 'Upload Timetable';
             }
         }
-        document.getElementById('timetableFile').addEventListener('change', function() {
-            if (this.files.length > 0) {
-                document.getElementById('uploadedSection').classList.remove('hidden');
-            }
-        });
     </script>
 </body>
 
