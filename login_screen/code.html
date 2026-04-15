@@ -127,14 +127,9 @@
     <script>
         const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
 
-        function showLoginError(msg, code) {
+        function showLoginError(msg) {
             const err = document.getElementById('loginError');
-            if (code === 'EMAIL_NOT_FOUND') {
-                err.innerHTML = msg +
-                    ' <a href="../sign_up_screen_1/code.html" class="font-bold underline">Sign up here</a>.';
-            } else {
-                err.textContent = msg;
-            }
+            err.textContent = msg;
             err.classList.remove('hidden');
         }
 
@@ -200,7 +195,7 @@
 
             // Step 3 — HTTP error (API returned an error message)
             if (!res.ok) {
-                showLoginError(data.error || `Login failed (${res.status}). Please try again.`, data.code);
+                showLoginError(data.error || `Login failed (${res.status}). Please try again.`);
                 resetLoginBtn();
                 return;
             }

@@ -18,19 +18,13 @@ $stmt = $db->prepare("SELECT * FROM users WHERE email = ? AND is_active = 1");
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
-// Distinguish 'email not found' from 'wrong password' so the UI can prompt
-// unregistered users to sign up.  Both return 401 to avoid timing attacks.
+// Unregistered email — generic message to avoid revealing registered emails
 if (!$user) {
-    http_response_code(401);
-    header('Content-Type: application/json; charset=utf-8');
-    echo json_encode(['error' => 'No account found with that email address.', 'code' => 'EMAIL_NOT_FOUND']);
-    exit;
+    error('Invalid credentials.', 401);
 }
+// Registered user but wrong password
 if (!password_verify($password, $user['password_hash'])) {
-    http_response_code(401);
-    header('Content-Type: application/json; charset=utf-8');
-    echo json_encode(['error' => 'Incorrect password. Please try again.', 'code' => 'WRONG_PASSWORD']);
-    exit;
+    error('Incorrect email or password.', 401);
 }
 
 if ($user['is_suspended']) error('Your account has been suspended. Contact admin.', 403);
