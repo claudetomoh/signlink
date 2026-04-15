@@ -49,9 +49,9 @@
         <!-- Header -->
         <header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="../student_dashboard_1/code.html" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
+                <button onclick="goBack()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-primary dark:text-slate-100">
                     <span class="material-symbols-outlined">arrow_back</span>
-                </a>
+                </button>
                 <h1 class="text-xl font-bold text-primary dark:text-slate-100">Notifications</h1>
             </div>
             <button onclick="markAllRead()" class="text-xs font-bold text-primary dark:text-blue-400 hover:underline px-2 py-1">
@@ -60,7 +60,7 @@
         </header>
 
         <!-- Notification Sections -->
-        <main class="flex-1 overflow-y-auto pb-24">
+        <main id="notifList" class="flex-1 overflow-y-auto pb-24">
 
             <!-- Today -->
             <div class="px-4 pt-5 pb-2">
@@ -175,24 +175,8 @@
         </main>
 
         <!-- Bottom Navigation Bar -->
-        <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+        <nav id="bottomNav" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
             <div class="max-w-md mx-auto flex justify-between items-center">
-                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_dashboard_1/code.html">
-                    <span class="material-symbols-outlined text-[28px]">home</span>
-                    <span class="text-[10px] font-medium">Home</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_timetable/code.html">
-                    <span class="material-symbols-outlined text-[28px]">calendar_month</span>
-                    <span class="text-[10px] font-medium">Schedule</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../messages_list/code.html">
-                    <span class="material-symbols-outlined text-[28px]">chat_bubble</span>
-                    <span class="text-[10px] font-medium">Messages</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="../student_profile/code.html">
-                    <span class="material-symbols-outlined text-[28px]">account_circle</span>
-                    <span class="text-[10px] font-medium">Profile</span>
-                </a>
             </div>
         </nav>
 
@@ -201,10 +185,88 @@
     <script>
         const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
 
+        function escHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function formatTime(ts) {
+            if (!ts) return '';
+            const d = new Date(ts);
+            const diff = (Date.now() - d) / 1000;
+            if (diff < 60) return 'Just now';
+            if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+            if (diff < 172800) return 'Yesterday';
+            return d.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function renderNotif(n) {
+            const icons = {
+                request_approved: 'check_circle',
+                interpreter_assigned: 'person_check',
+                class_reminder: 'alarm',
+                timetable_processed: 'calendar_today',
+                new_event: 'event',
+                account_verified: 'verified',
+                new_request: 'list_alt',
+                request_submitted: 'send',
+            };
+            const icon = icons[n.type] || 'notifications';
+            const bgClass = n.isRead ?
+                'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700' :
+                'bg-primary/5 dark:bg-primary/10 border-primary/10';
+            const dot = n.isRead ? '' : '<div class="absolute top-4 right-4 w-2.5 h-2.5 bg-primary rounded-full"></div>';
+            return `
+            <div class="mx-4 mb-3 flex items-start gap-4 ${bgClass} rounded-xl p-4 border relative">
+                ${dot}
+                <div class="shrink-0 size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">${icon}</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-slate-900 dark:text-slate-100">${escHtml(n.title)}</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-0.5 leading-snug">${escHtml(n.body)}</p>
+                    <p class="text-xs text-slate-400 mt-1.5">${formatTime(n.createdAt)}</p>
+                </div>
+            </div>`;
+        }
+
+        async function loadNotifications() {
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                window.location.href = '../login_screen/code.html';
+                return;
+            }
+            const list = document.getElementById('notifList');
+            list.innerHTML = '<p class="text-center text-slate-400 py-12">Loading notifications...</p>';
+            try {
+                const res = await fetch(`${BASE_URL}/api/notifications/list.php`, {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    list.innerHTML = `<p class="text-center text-red-500 py-12">${escHtml(data.error || 'Failed to load notifications')}</p>`;
+                    return;
+                }
+                if (!data.notifications.length) {
+                    list.innerHTML = '<p class="text-center text-slate-400 py-12">No notifications yet.</p>';
+                    return;
+                }
+                list.innerHTML = data.notifications.map(renderNotif).join('') + '<div class="h-8"></div>';
+            } catch (e) {
+                list.innerHTML = '<p class="text-center text-red-500 py-12">Connection error. Please try again.</p>';
+            }
+        }
+
         async function markAllRead() {
             const token = localStorage.getItem('sl_token');
             if (!token) return;
-
             try {
                 const res = await fetch(`${BASE_URL}/api/notifications/mark_read.php`, {
                     method: 'POST',
@@ -217,17 +279,91 @@
                     }),
                 });
                 if (res.ok) {
-                    // Remove unread dots and highlighted backgrounds
-                    document.querySelectorAll('[class*="bg-primary/5"]').forEach(el => {
-                        el.classList.remove('bg-primary/5', 'dark:bg-primary/10', 'border-primary/10');
-                        el.classList.add('bg-white', 'dark:bg-slate-900', 'border-slate-100');
-                    });
-                    document.querySelectorAll('.bg-primary.rounded-full.w-2\.5').forEach(el => el.remove());
+                    loadNotifications();
                 }
             } catch (ex) {
                 console.error('Mark read failed:', ex);
             }
         }
+
+        function goBack() {
+            const user = JSON.parse(localStorage.getItem('sl_user') || '{}');
+            if (user.role === 'admin') window.location.href = '../admin_dashboard/code.html';
+            else if (user.role === 'interpreter') window.location.href = '../interpreter_dashboard/code.html';
+            else window.location.href = '../student_dashboard_1/code.html';
+        }
+
+        function renderBottomNav() {
+            const user = JSON.parse(localStorage.getItem('sl_user') || '{}');
+            const role = user.role;
+            let links;
+            if (role === 'admin') {
+                links = [{
+                    href: '../admin_dashboard/code.html',
+                    icon: 'dashboard',
+                    label: 'Dashboard'
+                }, {
+                    href: '../event_requests/code.html',
+                    icon: 'list_alt',
+                    label: 'Requests'
+                }, {
+                    href: '../create_event/code.html',
+                    icon: 'calendar_month',
+                    label: 'Events'
+                }, {
+                    href: '../manage_users/code.html',
+                    icon: 'group',
+                    label: 'Users'
+                }, ];
+            } else if (role === 'interpreter') {
+                links = [{
+                    href: '../interpreter_dashboard/code.html',
+                    icon: 'home',
+                    label: 'Home'
+                }, {
+                    href: '../interpreter_schedule/code.html',
+                    icon: 'calendar_month',
+                    label: 'Schedule'
+                }, {
+                    href: '../messages_list/code.html',
+                    icon: 'chat_bubble',
+                    label: 'Messages'
+                }, {
+                    href: '../interpreter_profile/code.html',
+                    icon: 'account_circle',
+                    label: 'Profile'
+                }, ];
+            } else {
+                links = [{
+                    href: '../student_dashboard_1/code.html',
+                    icon: 'home',
+                    label: 'Home'
+                }, {
+                    href: '../student_timetable/code.html',
+                    icon: 'calendar_month',
+                    label: 'Schedule'
+                }, {
+                    href: '../messages_list/code.html',
+                    icon: 'chat_bubble',
+                    label: 'Messages'
+                }, {
+                    href: '../student_profile/code.html',
+                    icon: 'account_circle',
+                    label: 'Profile'
+                }, ];
+            }
+            const nav = document.querySelector('#bottomNav div');
+            nav.innerHTML = links.map(l => `
+                <a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="${l.href}">
+                    <span class="material-symbols-outlined text-[28px]">${l.icon}</span>
+                    <span class="text-[10px] font-medium">${l.label}</span>
+                </a>`).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBottomNav();
+            loadNotifications();
+        });
     </script>
 </body>
 
