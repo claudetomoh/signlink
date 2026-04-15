@@ -180,18 +180,96 @@
     </div>
 
     <!-- Fixed Footer CTA -->
-    <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 py-4">
+    <div id="footerCTA" class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 py-4">
         <div class="flex gap-3">
-            <button class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold h-14 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all text-base">
-      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_available</span>
-      RSVP to this Event
-    </button>
+            <button id="rsvpBtn" onclick="toggleRSVP()" class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold h-14 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all text-base">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_available</span>
+                RSVP to this Event
+            </button>
             <button class="size-14 shrink-0 flex items-center justify-center bg-primary/10 text-primary rounded-xl hover:bg-primary/20 transition-colors">
-      <span class="material-symbols-outlined">bookmark_add</span>
-    </button>
+                <span class="material-symbols-outlined">bookmark_add</span>
+            </button>
         </div>
     </div>
 
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+        let isSignedUp = false;
+
+        function getEventId() {
+            return sessionStorage.getItem('sl_event_id') || '';
+        }
+
+        async function checkRSVPStatus() {
+            const user = JSON.parse(localStorage.getItem('sl_user') || '{}');
+            const token = localStorage.getItem('sl_token');
+
+            // Hide RSVP for non-students
+            if (user.role !== 'student') {
+                document.getElementById('rsvpBtn').style.display = 'none';
+                return;
+            }
+
+            if (!token || !getEventId()) return;
+
+            // Check if student is already signed up via event list data
+            // We rely on the toggle response to update state
+        }
+
+        async function toggleRSVP() {
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                window.location.href = '../login_screen/code.html';
+                return;
+            }
+
+            const eventId = getEventId();
+            if (!eventId) {
+                alert('Event ID not found. Please open this event from the events list.');
+                return;
+            }
+
+            const btn = document.getElementById('rsvpBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined">progress_activity</span> Please wait...';
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/events/signup.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({
+                        eventId
+                    })
+                });
+                const data = await res.json();
+                btn.disabled = false;
+                if (res.ok) {
+                    isSignedUp = data.isSignedUp;
+                    if (isSignedUp) {
+                        btn.className = 'flex-1 flex items-center justify-center gap-2 bg-emerald-600 text-white font-bold h-14 rounded-xl shadow-lg hover:bg-emerald-700 active:scale-[0.98] transition-all text-base';
+                        btn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Signed Up — Tap to Cancel';
+                    } else {
+                        btn.className = 'flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold h-14 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all text-base';
+                        btn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">event_available</span> RSVP to this Event';
+                    }
+                } else {
+                    alert(data.error || 'Failed to update RSVP.');
+                    btn.innerHTML = isSignedUp ?
+                        '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Signed Up — Tap to Cancel' :
+                        '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">event_available</span> RSVP to this Event';
+                }
+            } catch (e) {
+                btn.disabled = false;
+                alert('Connection error. Please try again.');
+                btn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">event_available</span> RSVP to this Event';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkRSVPStatus);
+    </script>
 </body>
 
 </html>

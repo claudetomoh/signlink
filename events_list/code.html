@@ -62,123 +62,14 @@
 
         <!-- Filter Tabs -->
         <div class="flex gap-2 py-4 overflow-x-auto hide-scrollbar">
-            <button class="flex-none px-4 py-2 rounded-full bg-primary text-white text-xs font-bold">All Events</button>
-            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">This Week</button>
-            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">This Month</button>
-            <button class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Signed Up</button>
+            <button id="tabAll" onclick="setTab('all')" class="flex-none px-4 py-2 rounded-full bg-primary text-white text-xs font-bold">All Events</button>
+            <button id="tabUpcoming" onclick="setTab('upcoming')" class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Upcoming</button>
+            <button id="tabPast" onclick="setTab('past')" class="flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">Past</button>
         </div>
 
-        <!-- Section: Upcoming -->
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="text-base font-bold">Upcoming</h2>
-            <span class="text-xs text-slate-500">3 events</span>
-        </div>
-        <div class="space-y-4 mb-8">
-
-            <!-- Event Card 1 -->
-            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-                <div class="w-28 flex-shrink-0 relative">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAabSH5HMgrcy28vNkwzqi6ZvgJwxKYtybIeVXp0LuSRiq9FKoP-poBAqn2_7rhY4uWptGZ4RaR9fXyp6wpxbGSolp7hCcaZIkUulB2ZxgQEPkWDnLoWmR137ofbIHIcxhx_Slao0qnFvc-XL-9ev4H2Ty5-Yvin7PRCeHkyS3qYAz7PZGVQV5yloYC4nL2SyxTUi68pZd6yoE_mAgy7Rhw2aXNMQx8PVI8QwfpAxhhZLv6Raa4KrfFVeZ4LtQgeVf5q8RhfbPGuLw"
-                        alt="Sign Language Workshop" class="w-full h-full object-cover" />
-                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">OCT 12</div>
-                </div>
-                <div class="p-4 flex flex-col justify-between flex-1">
-                    <div>
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Workshop</p>
-                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Sign Language Workshop</h3>
-                    </div>
-                    <div class="space-y-1 mt-2">
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">schedule</span>
-                            <span>10:00 AM — 12:00 PM</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">location_on</span>
-                            <span>Norton Hall, Room 101</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between mt-3">
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Open</span>
-                        <span class="text-xs text-slate-400">24 / 50 attending</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Event Card 2 -->
-            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-                <div class="w-28 flex-shrink-0 relative">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp4mTn8YTleSddQvcFrTMVAh0ONx2dP-FKWiJlD-tlkTmO4GJIC78IqO7FjO_Ew6yY2ltGoaAkhjlwe8TbYCqf9waOsSpxAF8kGjCpdELrkqFMe-yM0BvZDjQYCfRenn5kXkyUQDz1Z7pKxQkeVZERD-DJzYUTuh4rbbjKomf0-0wjkf65ZsWR5DFe5BQUvjn5Djk86dbLGwEehtbbMS4oLb6IRENQ138lPZg_Tmh-gzJaNQ1pxmdW0SqRwt7oTN1IwwQCr1US3Mk"
-                        alt="Disability Awareness Week" class="w-full h-full object-cover" />
-                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">OCT 25</div>
-                </div>
-                <div class="p-4 flex flex-col justify-between flex-1">
-                    <div>
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Awareness</p>
-                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Disability Awareness Week</h3>
-                    </div>
-                    <div class="space-y-1 mt-2">
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">schedule</span>
-                            <span>All Day</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">location_on</span>
-                            <span>Ashesi Campus</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between mt-3">
-                        <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded uppercase">Open</span>
-                        <span class="text-xs text-slate-400">Free entry</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Event Card 3 -->
-            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-                <div class="w-28 flex-shrink-0 relative">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvMtFdiUg4jR2jlNEQheaDkpLYkU2I2-cciB3JLR49B16uGKbSPTzJMau2rbLQsRvJ3DvjaR9aGddKvQh9cHWyGejN8V5l5xiga1XGZAdB80Sfu3HxdVDuSnZYiNvgtvzKccBoxZbZGSv2cVOOZ70IBsvPKQkLzuW3M-HJEA3z4ahBckFqegRlie6M9eiPgAwfkY6CwAdKRVbADpWyT8M5dOcnwIZeJe6__vcFnePEkq_TPbnGxWl_K9VqiPT0wV2OLoALRS6z6s8"
-                        alt="Tech Accessibility Meetup" class="w-full h-full object-cover" />
-                    <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">NOV 02</div>
-                </div>
-                <div class="p-4 flex flex-col justify-between flex-1">
-                    <div>
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">Meetup</p>
-                        <h3 class="font-bold text-sm mt-0.5 leading-tight">Tech Accessibility Meetup</h3>
-                    </div>
-                    <div class="space-y-1 mt-2">
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">schedule</span>
-                            <span>3:00 PM — 5:00 PM</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-slate-500 text-xs">
-                            <span class="material-symbols-outlined text-[14px]">location_on</span>
-                            <span>CS Lab 1</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between mt-3">
-                        <span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold rounded uppercase">Limited</span>
-                        <span class="text-xs text-slate-400">18 / 20 attending</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Section: Past Events -->
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="text-base font-bold text-slate-500">Past Events</h2>
-            <span class="text-xs text-slate-400">2 events</span>
-        </div>
-        <div class="space-y-4 opacity-60">
-            <a href="../event_detail/code.html" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer">
-                <div class="w-28 flex-shrink-0 bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-slate-400 text-4xl">event</span>
-                </div>
-                <div class="p-4 flex-1">
-                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Workshop</p>
-                    <h3 class="font-bold text-sm mt-0.5 text-slate-600 dark:text-slate-400">Orientation for New Students</h3>
-                    <p class="text-xs text-slate-400 mt-2">Sep 15 • Completed</p>
-                </div>
-            </a>
+        <!-- Dynamic events container -->
+        <div id="eventsContainer" class="space-y-4">
+            <p class="text-center text-slate-400 py-12">Loading events...</p>
         </div>
 
     </main>
@@ -209,6 +100,129 @@
         </div>
     </nav>
 
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        function openEvent(id) {
+            sessionStorage.setItem('sl_event_id', id);
+            window.location.href = '../event_detail/code.html';
+        }
+
+        function escHtml(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function fmtDate(dt) {
+            if (!dt) return '';
+            const d = new Date(dt);
+            return d.toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit'
+            }).toUpperCase();
+        }
+
+        function fmtTime(dt) {
+            if (!dt) return '';
+            const d = new Date(dt);
+            return d.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+        }
+
+        function statusBadge(e) {
+            if (new Date(e.eventDate) < new Date()) return '<span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] font-bold rounded uppercase">Ended</span>';
+            if (e.spotsLeft === 0) return '<span class="px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase">Full</span>';
+            if (e.spotsLeft <= 5) return '<span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-bold rounded uppercase">Limited</span>';
+            return '<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded uppercase">Open</span>';
+        }
+
+        function renderCard(e) {
+            return `
+        <div onclick="openEvent('${escHtml(e.id)}')" class="flex bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
+            <div class="w-28 flex-shrink-0 relative bg-primary/10">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary/30 text-4xl">event</span>
+                </div>
+                <div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">${fmtDate(e.eventDate)}</div>
+            </div>
+            <div class="p-4 flex flex-col justify-between flex-1">
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-primary dark:text-blue-400">${escHtml(e.type || 'Event')}</p>
+                    <h3 class="font-bold text-sm mt-0.5 leading-tight">${escHtml(e.title)}</h3>
+                </div>
+                <div class="space-y-1 mt-2">
+                    <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                        <span class="material-symbols-outlined text-[14px]">schedule</span>
+                        <span>${fmtTime(e.eventDate)}</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                        <span class="material-symbols-outlined text-[14px]">location_on</span>
+                        <span>${escHtml(e.location)}</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-3">
+                    ${statusBadge(e)}
+                    <span class="text-xs text-slate-400">${e.signedUpCount} / ${e.capacity} attending</span>
+                </div>
+            </div>
+        </div>`;
+        }
+
+        async function loadEvents(tab) {
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                window.location.href = '../login_screen/code.html';
+                return;
+            }
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = '<p class="text-center text-slate-400 py-12 col-span-full">Loading events...</p>';
+            try {
+                const res = await fetch(`${BASE_URL}/api/events/list.php?tab=${tab}`, {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    container.innerHTML = `<p class="text-center text-red-500 py-12">${escHtml(data.error || 'Failed to load events')}</p>`;
+                    return;
+                }
+                if (!data.events.length) {
+                    container.innerHTML = '<p class="text-center text-slate-400 py-12">No events found.</p>';
+                    return;
+                }
+                const upcoming = data.events.filter(e => new Date(e.eventDate) >= new Date());
+                const past = data.events.filter(e => new Date(e.eventDate) < new Date());
+                let html = '';
+                if (upcoming.length) {
+                    html += `<div class="flex items-center justify-between mb-3"><h2 class="text-base font-bold">Upcoming</h2><span class="text-xs text-slate-500">${upcoming.length} events</span></div>`;
+                    html += '<div class="space-y-4 mb-8">' + upcoming.map(renderCard).join('') + '</div>';
+                }
+                if (past.length) {
+                    html += `<div class="flex items-center justify-between mb-3"><h2 class="text-base font-bold text-slate-500">Past Events</h2><span class="text-xs text-slate-400">${past.length} events</span></div>`;
+                    html += '<div class="space-y-4 opacity-60">' + past.map(renderCard).join('') + '</div>';
+                }
+                container.innerHTML = html;
+            } catch (e) {
+                container.innerHTML = '<p class="text-center text-red-500 py-12">Connection error. Please try again.</p>';
+            }
+        }
+
+        function setTab(tab) {
+            ['all', 'upcoming', 'past'].forEach(t => {
+                const btn = document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1));
+                if (btn) btn.className = t === tab ?
+                    'flex-none px-4 py-2 rounded-full bg-primary text-white text-xs font-bold' :
+                    'flex-none px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold';
+            });
+            loadEvents(tab);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEvents('all');
+        });
+    </script>
 </body>
 
 </html>

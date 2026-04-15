@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Create New Event - Ashesi DASS Admin</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Create New Event - Ashesi DASS Admin</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -31,10 +33,11 @@
             },
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        
         select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -44,102 +47,182 @@
             padding-right: 2.5rem;
         }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
-<!-- Header Section -->
-<header class="sticky top-0 z-50 bg-primary text-white shadow-md">
-<div class="max-w-md mx-auto flex items-center h-16 px-4">
-<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 -ml-2 hover:bg-white/10 rounded-full transition-colors">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-primary text-white shadow-md">
+        <div class="max-w-md mx-auto flex items-center h-16 px-4">
+            <button aria-label="Go back" onclick="history.back()" class="flex items-center justify-center w-10 h-10 -ml-2 hover:bg-white/10 rounded-full transition-colors">
 <span class="material-symbols-outlined text-2xl">arrow_back</span>
 </button>
-<h1 class="flex-1 text-center text-lg font-bold tracking-tight pr-8">Create New Event</h1>
-</div>
-</header>
-<main class="max-w-md mx-auto px-4 py-6">
-<form class="space-y-6">
-<!-- Basic Information Card -->
-<section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-<h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Basic Information</h2>
-<div class="space-y-4">
-<!-- Event Title -->
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Title</label>
-<input class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g., Annual Inclusion Seminar" type="text"/>
-</div>
-<!-- Event Type -->
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Type</label>
-<select class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+            <h1 class="flex-1 text-center text-lg font-bold tracking-tight pr-8">Create New Event</h1>
+        </div>
+    </header>
+    <main class="max-w-md mx-auto px-4 py-6">
+        <form id="createEventForm" class="space-y-6">
+            <!-- Basic Information Card -->
+            <section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                <h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Basic Information</h2>
+                <div class="space-y-4">
+                    <!-- Event Title -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Title</label>
+                        <input id="eventTitle" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g., Annual Inclusion Seminar"
+                            type="text" />
+                    </div>
+                    <!-- Event Type -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Type</label>
+                        <select id="eventType" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
 <option disabled="" selected="" value="">Select an event type</option>
 <option value="salon">Sign Language Salon</option>
 <option value="workshop">Inclusion Workshop</option>
 <option value="training">Training</option>
 <option value="other">Other Professional Seminar</option>
 </select>
-</div>
-<!-- Location -->
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Location</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">location_on</span>
-<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g., Norton Hall, Room 202" type="text"/>
-</div>
-</div>
-</div>
-</section>
-<!-- Schedule Card -->
-<section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-<h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Date &amp; Time</h2>
-<div class="space-y-4">
-<!-- Date -->
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Date</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">calendar_today</span>
-<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="MM/DD/YYYY" type="text"/>
-</div>
-</div>
-<!-- Time Slots -->
-<div class="grid grid-cols-2 gap-4">
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Start Time</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">schedule</span>
-<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="09:00 AM" type="text"/>
-</div>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">End Time</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">schedule</span>
-<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="11:00 AM" type="text"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Description Card -->
-<section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-<h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Additional Details</h2>
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Description</label>
-<textarea class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400 resize-none" placeholder="Provide a brief summary of the event objectives and target audience..." rows="4"></textarea>
-</div>
-</section>
-</form>
-</main>
-<!-- Bottom Action Button -->
-<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-6">
-<div class="max-w-md mx-auto">
-<button class="w-full bg-primary hover:bg-blue-900 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    </div>
+                    <!-- Location -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Location</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">location_on</span>
+                            <input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g., Norton Hall, Room 202"
+                                type="text" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Schedule Card -->
+            <section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                <h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Date &amp; Time</h2>
+                <div class="space-y-4">
+                    <!-- Date -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Date</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">calendar_today</span>
+                            <input id="eventDate" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" type="date"
+                            />
+                        </div>
+                    </div>
+                    <!-- Time Slots -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Start Time</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">schedule</span>
+                                <input id="startTime" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" type="time"
+                                />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">End Time</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">schedule</span>
+                                <input id="endTime" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" type="time"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Description Card -->
+            <section class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                <h2 class="text-sm font-bold text-primary dark:text-blue-400 uppercase tracking-wider mb-4">Additional Details</h2>
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Event Description</label>
+                    <textarea id="eventDescription" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400 resize-none"
+                        placeholder="Provide a brief summary of the event objectives and target audience..." rows="4"></textarea>
+                </div>
+                <!-- Capacity -->
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Capacity</label>
+                    <input id="eventCapacity" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g., 50"
+                        type="number" min="1" value="50" />
+                </div>
+            </section>
+        </form>
+    </main>
+    <!-- Bottom Action Button -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-6">
+        <div class="max-w-md mx-auto">
+            <button onclick="createEvent()" type="button" class="w-full bg-primary hover:bg-blue-900 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
 <span class="material-symbols-outlined">add_circle</span>
                 Create Event
             </button>
-</div>
-</div>
-</body></html>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'http://169.239.251.102:280/~tomoh.ikfingeh/uploads';
+
+        async function createEvent() {
+            const token = localStorage.getItem('sl_token');
+            if (!token) {
+                window.location.href = '../login_screen/code.html';
+                return;
+            }
+
+            const title = document.getElementById('eventTitle').value.trim();
+            const location = document.getElementById('eventLocation').value.trim();
+            const date = document.getElementById('eventDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const description = document.getElementById('eventDescription').value.trim();
+            const capacity = parseInt(document.getElementById('eventCapacity').value) || 50;
+            const type = document.getElementById('eventType').value;
+
+            if (!title || !location || !date) {
+                alert('Please fill in the Event Title, Location, and Date.');
+                return;
+            }
+
+            const dateTime = startTime ? `${date} ${startTime}:00` : `${date} 00:00:00`;
+
+            const btn = document.querySelector('button[onclick="createEvent()"]');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined">progress_activity</span> Creating...';
+
+            try {
+                const res = await fetch(`${BASE_URL}/api/events/create.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        location,
+                        date: dateTime,
+                        start_time: startTime,
+                        end_time: endTime,
+                        type,
+                        capacity
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('Event created! All students have been notified.');
+                    window.location.href = '../events_list/code.html';
+                } else {
+                    alert(data.error || 'Failed to create event.');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="material-symbols-outlined">add_circle</span> Create Event';
+                }
+            } catch (e) {
+                alert('Connection error. Please try again.');
+                btn.disabled = false;
+                btn.innerHTML = '<span class="material-symbols-outlined">add_circle</span> Create Event';
+            }
+        }
+    </script>
+</body>
+
+</html>
